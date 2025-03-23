@@ -1,5 +1,5 @@
 services:
-  dls_mandatory_project:
+  MudBlazor-Frontend:
     image: ${DOCKER_REGISTRY-}dlsmandatoryproject
     build:
       context: .
