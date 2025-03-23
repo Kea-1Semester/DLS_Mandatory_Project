@@ -1,0 +1,6 @@
+services:
+  dls_mandatory_project:
+    image: ${DOCKER_REGISTRY-}dlsmandatoryproject
+    build:
+      context: .
+      dockerfile: DLS_Mandatory_Project/DLS_Mandatory_Project/Dockerfile
