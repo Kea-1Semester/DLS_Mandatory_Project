@@ -5,7 +5,7 @@
       "commandVersion": "1.0",
       "serviceActions": {
         "MudBlazor-Frontend": "StartDebugging",
-        "userservice": "StartDebugging"
+        "RabbitMQ": "StartWithoutDebugging"
       }
     }
   }

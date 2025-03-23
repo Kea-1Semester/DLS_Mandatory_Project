@@ -3,11 +3,7 @@ services:
     image: ${DOCKER_REGISTRY-}dlsmandatoryproject
     build:
       context: .
-      dockerfile: DLS_Mandatory_Project/DLS_Mandatory_Project/Dockerfile 
-
-  userservice:
-    image: ${DOCKER_REGISTRY-}userservice
-    build:
-      context: UserService
-      dockerfile: Dockerfile
+      dockerfile: DLS_Mandatory_Project/DLS_Mandatory_Project/Dockerfile
+  RabbitMQ:
+    image: rabbitmq:4.0-management    
 
