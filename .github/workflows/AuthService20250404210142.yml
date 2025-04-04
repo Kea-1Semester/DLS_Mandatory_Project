@@ -26,6 +26,6 @@ jobs:
       # Build and push Docker image for AuthService microservice
       - name: Build and push Docker image for AuthService microservice
         run: |
-          docker build -t xrasho/AuthService:latest ./AuthService
-          docker push xrasho/AuthService:latest
+          docker build -t rashox/AuthService:latest ./AuthService
+          docker push rashox/AuthService:latest
  
