@@ -26,6 +26,6 @@ jobs:
       # Build and push Docker image for UserService microservice
       - name: Build and push Docker image for UserService microservice
         run: |
-          docker build -t xrasho/UserService:latest ./UserService
-          docker push xrasho/UserService:latest
+          docker build -t rashox/UserService:latest ./UserService
+          docker push rashox/UserService:latest
  
