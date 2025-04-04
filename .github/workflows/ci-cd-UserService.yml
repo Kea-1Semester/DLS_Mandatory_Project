@@ -3,7 +3,7 @@ name: User Service Microservice - Build, Test, Push image to Docker Hub
 on:
   push:
     branches:
-      - main
+      - Shero
     paths:
       - "UserService/**" # Trigger if files in UserService/ folder change
 

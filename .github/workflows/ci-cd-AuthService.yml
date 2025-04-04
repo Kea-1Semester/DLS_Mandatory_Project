@@ -3,7 +3,7 @@ name: Auth Service Microservice - Build, Test, Push image to Docker Hub
 on:
   push:
     branches:
-      - main
+      - Shero
     paths:
       - "AuthService/**" # Trigger if files in AuthService/ folder change
 
