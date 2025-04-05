@@ -12,10 +12,10 @@ EXPOSE 8085
 FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["AuthService/AuthService.csproj", "AuthService/"]
-RUN dotnet restore "./AuthService/AuthService.csproj"
+COPY ["AuthService.csproj", "."]
+RUN dotnet restore "./AuthService.csproj"
 COPY . .
-WORKDIR "/src/AuthService"
+WORKDIR "/src/."
 RUN dotnet build "./AuthService.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 # This stage is used to publish the service project to be copied to the final stage

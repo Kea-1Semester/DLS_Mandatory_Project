@@ -16,8 +16,15 @@ spec:
     spec:
       containers:
       - name: authservice
-        image: authservice:latest # Ensure this matches your local image tag
-        imagePullPolicy: Never    # Use the local image
+        image: rashox/authservice:latest # Docker Hub image name
+        imagePullPolicy: Always    # Pull the image from Docker Hub every time the pod is created
         ports:
         - containerPort: 8084
         - containerPort: 8085
+        resources:
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
