@@ -1,0 +1,31 @@
+name: Auth Service Microservice - Build, Test, Push image to Docker Hub
+
+on:
+  push:
+    branches:
+      - Shero
+    paths:
+      - "AuthService/**" # Trigger if files in AuthService/ folder change
+
+  workflow_dispatch: # Allows you to manually run the workflow from the Actions tab
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }} # Store your Docker Hub username in GitHub Secrets
+          password: ${{ secrets.DOCKER_PASSWORD }} # Store your Docker Hub password/token in GitHub Secrets
+
+      # Build and push Docker image for AuthService microservice
+      - name: Build and push Docker image for AuthService microservice
+        run: |
+          docker build -t rashox/authService:latest ./AuthService
+          docker push rashox/authservice:latest
+ 
