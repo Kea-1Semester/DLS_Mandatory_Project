@@ -1,17 +1,14 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace AuthService.Controllers;
+namespace UserService.Controllers;
 
 [ApiController]
 [Route("[controller]")]
 public class PlaceholderController : ControllerBase
 {
-
-    [HttpGet("getstringFromAuthService")]
+    [HttpGet("getstringFromUserService")]
     public string GetString()
     {
-        return "This is a string response from auth";
+        return "This is a string response from user";
     }
-
-
 }
