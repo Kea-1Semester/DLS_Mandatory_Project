@@ -4,6 +4,15 @@ services:
     build:
       context: .
       dockerfile: DLS_Mandatory_Project/DLS_Mandatory_Project/Dockerfile
+  
+      
   RabbitMQ:
     image: rabbitmq:4.0-management    
+
+
+  chatservice:
+    image: ${DOCKER_REGISTRY-}chatservice
+    build:
+      context: .
+      dockerfile: DLS_Mandatory_Project/ChatService/Dockerfile
 
