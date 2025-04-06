@@ -16,15 +16,9 @@ spec:
     spec:
       containers:
       - name: userservice
-        image: rashox/userservice:latest         # Docker Hub image name
+        image: rashox/userservice:latest  # Docker Hub image name
         imagePullPolicy: Always    # Pull the image from Docker Hub every time the pod is created
         ports:
         - containerPort: 8082
         - containerPort: 8083
-        resources:
-          limits:
-            memory: "512Mi"
-            cpu: "500m"
-          requests:
-            memory: "256Mi"
-            cpu: "250m"
+

@@ -27,4 +27,49 @@ RUN dotnet publish "./UserService.csproj" -c $BUILD_CONFIGURATION -o /app/publis
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "UserService.dll"]
+
+# ENTRYPOINT ["dotnet", "UserService.dll"]
+
+
+# new lines added to copy the wait-for-it.sh script and set permissions
+
+# Add wait-for-it.sh script
+COPY scripts/wait-for-it.sh /app/wait-for-it.sh
+
+# Switch to root to set permissions to run the wait-for-it script
+USER root
+
+# Debug step to verify the file exists
+RUN ls -l /app
+
+# Make the script executable
+RUN chmod +x /app/wait-for-it.sh
+
+
+# Install 'dos2unix' to convert Windows line endings (CRLF) to Unix (LF)
+# Install 'netcat' (nc), which is required by wait-for-it.sh to check service availability
+# Convert the script's line endings, make it executable, then clean up to keep the image lean
+    #  instalation of dos2unix and netcat steps
+    ## Convert CRLF to LF in the script  
+    ## Make the script executable
+    ## Remove dos2unix after use to reduce image size
+    ## Clean up unused dependencies
+    ## Clear package cache
+RUN apt-get update && apt-get install -y dos2unix netcat-openbsd \
+    && dos2unix /app/wait-for-it.sh \            
+    && chmod +x /app/wait-for-it.sh \            
+    && apt-get remove -y dos2unix \              
+    && apt-get autoremove -y \                   
+    && apt-get clean                            
+    
+# RUN apt-get update && apt-get install -y dos2unix \
+#     && dos2unix /app/wait-for-it.sh \
+#     && chmod +x /app/wait-for-it.sh \
+#     && apt-get remove -y dos2unix && apt-get autoremove -y && apt-get clean      
+
+# Switch back to non-root user to run entrypoint script
+USER $APP_UID
+
+
+# Set the default command to run the wait-for-it script with a timeout of 30 seconds
+ENTRYPOINT ["/app/wait-for-it.sh", "rabbitmq:5672", "-t", "60", "--", "dotnet", "UserService.dll"]

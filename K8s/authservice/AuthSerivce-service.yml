@@ -9,11 +9,10 @@ spec:
   ports:
   - name: http
     protocol: TCP
-    port: 8084
-    targetPort: 8084
-    nodePort: 30084 # Optional: Specify a custom NodePort
-  - name: grpc
-    protocol: TCP
-    port: 8085
-    targetPort: 8085
-    nodePort: 30085 # Optional: Specify a custom NodePort
+    port: 8084       # External port for HTTP
+    targetPort: 8080 # Internal container port (application listening port)
+    nodePort: 30084  # Optional: Specify a custom NodePort
+
+
+
+  # The nodePort is used to expose the service on a specific port on the Kubernetes node. If you don’t need direct node access, you can omit the nodePort and rely on port and targetPort.

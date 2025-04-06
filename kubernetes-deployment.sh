@@ -36,10 +36,10 @@ if [ "$1" == "--delete" ]; then
   echo "Killing any existing port forwarding processes..."
   kill_port_forwarding
   echo "Deleting all existing deployments..."
-  kubectl delete -R -f kubernetes/
-  echo "Stopping the bank service Docker container..."
-  docker stop bank-service
-  docker rm bank-service
+  kubectl delete -R -f k8s/
+  echo "Stopping the all service Docker container..."
+  docker stop auth-service
+  docker rm userservice-service
   echo "All deployments deleted."
   exit 0
 fi
@@ -48,7 +48,6 @@ fi
 # Apply all Kubernetes configurations from the directory recursively
 echo "Applying Kubernetes configurations..."
 kubectl apply -R -f k8s/
-
 
 # Wait for the RabbitMQ service pod to be ready
 wait_for_pod "app=rabbitmq"
@@ -59,22 +58,26 @@ RABBITMQ_PORT_FORWARD_PID=$!
 echo $RABBITMQ_PORT_FORWARD_PID >> port_forward_pids.txt
 echo "? Port forwarding for RabbitMQ management UI set up on port 15672."
 
-# # Wait for the AuthService pod to be ready
-# wait_for_pod "app=authservice"
+# Wait for the AuthService pod to be ready
+wait_for_pod "app=authservice"
 
-# # Start port forwarding for AuthService
-# kubectl port-forward svc/authservice 8084:8084 > /dev/null 2>&1 &
-# AUTHSERVICE_PORT_FORWARD_PID=$!
-# echo $AUTHSERVICE_PORT_FORWARD_PID >> port_forward_pids.txt
-# echo "? Port forwarding for AuthService set up on port 8084."
+# Start port forwarding for AuthService
+kubectl port-forward svc/authservice 8084:8084 > /dev/null 2>&1 &
+AUTHSERVICE_PORT_FORWARD_PID=$!
+echo $AUTHSERVICE_PORT_FORWARD_PID >> port_forward_pids.txt
+echo "? Port forwarding for AuthService set up on port 8084."
 
-# # Wait for the UserService pod to be ready
-# wait_for_pod "app=userservice"
-# # Start port forwarding for UserService
-# kubectl port-forward svc/userservice 8085:8085 > /dev/null 2>&1 &
-# USERSERVICE_PORT_FORWARD_PID=$!
-# echo $USERSERVICE_PORT_FORWARD_PID >> port_forward_pids.txt
-# echo "? Port forwarding for UserService set up on port 8083."
+# Wait for the UserService pod to be ready
+wait_for_pod "app=userservice"
+
+# Start port forwarding for UserService
+kubectl port-forward svc/userservice 8086:8086 > /dev/null 2>&1 &
+USERSERVICE_PORT_FORWARD_PID=$!
+echo $USERSERVICE_PORT_FORWARD_PID >> port_forward_pids.txt
+echo "? Port forwarding for UserService set up on port 8086."
+
+# Open Chrome with different UI services
+./scripts/open-chrome.sh
 
 # Detach the script to keep port forwarding running
 disown
