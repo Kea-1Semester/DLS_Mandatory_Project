@@ -4,3 +4,10 @@ services:
     build:
       context: .
       dockerfile: DLS_Mandatory_Project/DLS_Mandatory_Project/Dockerfile
+
+  filetransferservice:
+    image: ${DOCKER_REGISTRY-}filetransferservice
+    build:
+      context: .
+      dockerfile: DLS_Mandatory_Project/FileTransferService/Dockerfile
+
