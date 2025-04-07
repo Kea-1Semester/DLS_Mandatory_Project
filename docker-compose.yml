@@ -5,7 +5,7 @@ services:
       context: .
       dockerfile: DLS_Mandatory_Project/DLS_Mandatory_Project/Dockerfile
   RabbitMQ:
-    image: rabbitmq:4.0-management  
+    image: rabbitmq:3.12-management  
     
   userservice:
     image: ${DOCKER_REGISTRY-}userservice
