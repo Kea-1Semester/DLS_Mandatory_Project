@@ -37,9 +37,6 @@ if [ "$1" == "--delete" ]; then
   kill_port_forwarding
   echo "Deleting all existing deployments..."
   kubectl delete -R -f k8s/
-  echo "Stopping the all service Docker container..."
-  docker stop auth-service
-  docker rm userservice-service
   echo "All deployments deleted."
   exit 0
 fi
@@ -53,8 +50,17 @@ kubectl apply -R -f k8s/
 wait_for_pod "app=rabbitmq"
 
 # Start port forwarding for RabbitMQ management UI
+# kubectl port-forward svc/rabbitmq 15672:15672 > /dev/null 2>&1 &
+# RABBITMQ_PORT_FORWARD_PID=$!
+# echo $RABBITMQ_PORT_FORWARD_PID >> port_forward_pids.txt
+# echo "? Port forwarding for RabbitMQ management UI set up on port 15672."
+
 kubectl port-forward svc/rabbitmq 15672:15672 > /dev/null 2>&1 &
 RABBITMQ_PORT_FORWARD_PID=$!
+if ! ps -p $RABBITMQ_PORT_FORWARD_PID > /dev/null; then
+  echo "Failed to start port forwarding for RabbitMQ."
+  exit 1
+fi
 echo $RABBITMQ_PORT_FORWARD_PID >> port_forward_pids.txt
 echo "? Port forwarding for RabbitMQ management UI set up on port 15672."
 

@@ -60,15 +60,13 @@ RUN apt-get update && apt-get install -y dos2unix netcat-openbsd \
     && apt-get remove -y dos2unix \              
     && apt-get autoremove -y \                   
     && apt-get clean                            
-    
-# RUN apt-get update && apt-get install -y dos2unix \
-#     && dos2unix /app/wait-for-it.sh \
-#     && chmod +x /app/wait-for-it.sh \
-#     && apt-get remove -y dos2unix && apt-get autoremove -y && apt-get clean      
+     
 
 # Switch back to non-root user to run entrypoint script
 USER $APP_UID
 
 
-# Set the default command to run the wait-for-it script with a timeout of 30 seconds
+# Set the default command to run the wait-for-it script with a timeout of 60 seconds
 ENTRYPOINT ["/app/wait-for-it.sh", "rabbitmq:5672", "-t", "60", "--", "dotnet", "AuthService.dll"]
+
+

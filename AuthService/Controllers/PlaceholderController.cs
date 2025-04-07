@@ -6,12 +6,10 @@ namespace AuthService.Controllers;
 [Route("[controller]")]
 public class PlaceholderController : ControllerBase
 {
-
     [HttpGet("getstringFromAuthService")]
     public string GetString()
-    {
+    {   
         return "This is a string response from auth";
     }
-
 
 }
