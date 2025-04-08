@@ -17,6 +17,7 @@ namespace DLS_Mandatory_Project
             builder.Services.AddRazorComponents()
                 .AddInteractiveWebAssemblyComponents();
 
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

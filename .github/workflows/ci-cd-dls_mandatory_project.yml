@@ -5,7 +5,7 @@ on:
     branches:
       - Shero
     # paths:
-    #   - "DLS_Mandatory_Project/**" # Trigger if files in AuthService/ folder change
+    #   - "DLS_Mandatory_Project/**" # Trigger if files in DLS_Mandatory_Project/ folder change
 
   workflow_dispatch: # Allows you to manually run the workflow from the Actions tab
 
@@ -23,8 +23,8 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }} # Store your Docker Hub username in GitHub Secrets
           password: ${{ secrets.DOCKER_PASSWORD }} # Store your Docker Hub password/token in GitHub Secrets
 
-      # Build and push Docker image for AuthService microservice
-      - name: Build and push Docker image for AuthService microservice
+      # Build and push Docker image for DLS_Mandatory_Project microservice
+      - name: Build and push Docker image for DLS Mandatory Project microservice
         run: |
-          docker build -t rashox/dls_mandatory_project:latest ./DLS_Mandatory_Project
+          docker build -t rashox/dls_mandatory_project:latest -f DLS_Mandatory_Project/DLS_Mandatory_Project/Dockerfile .
           docker push rashox/dls_mandatory_project:latest 
