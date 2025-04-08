@@ -1,3 +1,6 @@
+######building the docker #############
+# docker build -t rashox/dls_mandatory_project:latest -f DLS_Mandatory_Project/DLS_Mandatory_Project/Dockerfile .
+###################
 # See https://aka.ms/customizecontainer to learn how to customize your debug container and how Visual Studio uses this Dockerfile to build your images for faster debugging.
 
 # This stage is used when running from VS in fast mode (Default for Debug configuration)

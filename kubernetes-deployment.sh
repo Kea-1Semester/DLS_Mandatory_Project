@@ -64,23 +64,32 @@ fi
 echo $RABBITMQ_PORT_FORWARD_PID >> port_forward_pids.txt
 echo "? Port forwarding for RabbitMQ management UI set up on port 15672."
 
-# Wait for the AuthService pod to be ready
-wait_for_pod "app=authservice"
 
-# Start port forwarding for AuthService
-kubectl port-forward svc/authservice 8084:8084 > /dev/null 2>&1 &
-AUTHSERVICE_PORT_FORWARD_PID=$!
-echo $AUTHSERVICE_PORT_FORWARD_PID >> port_forward_pids.txt
-echo "? Port forwarding for AuthService set up on port 8084."
+# # Wait for the AuthService pod to be ready
+# wait_for_pod "app=authservice"
 
-# Wait for the UserService pod to be ready
-wait_for_pod "app=userservice"
+# # Start port forwarding for AuthService
+# kubectl port-forward svc/authservice 8084:8084 > /dev/null 2>&1 &
+# AUTHSERVICE_PORT_FORWARD_PID=$!
+# echo $AUTHSERVICE_PORT_FORWARD_PID >> port_forward_pids.txt
+# echo "? Port forwarding for AuthService set up on port 8084."
 
-# Start port forwarding for UserService
-kubectl port-forward svc/userservice 8086:8086 > /dev/null 2>&1 &
-USERSERVICE_PORT_FORWARD_PID=$!
-echo $USERSERVICE_PORT_FORWARD_PID >> port_forward_pids.txt
-echo "? Port forwarding for UserService set up on port 8086."
+# # Wait for the UserService pod to be ready
+# wait_for_pod "app=userservice"
+
+# # Start port forwarding for UserService
+# kubectl port-forward svc/userservice 8086:8086 > /dev/null 2>&1 &
+# USERSERVICE_PORT_FORWARD_PID=$!
+# echo $USERSERVICE_PORT_FORWARD_PID >> port_forward_pids.txt
+# echo "? Port forwarding for UserService set up on port 8086."
+
+# Wait for the UI service pod to be ready
+wait_for_pod "app=dlsmandatoryproject"
+# Start port forwarding for UI service
+kubectl port-forward svc/dlsmandatoryproject 8081:8081 > /dev/null 2>&1 &
+UI_PORT_FORWARD_PID=$!
+echo $UI_PORT_FORWARD_PID >> port_forward_pids.txt
+echo "? Port forwarding for UI service set up on port 8080." 
 
 # Open Chrome with different UI services
 ./scripts/open-chrome.sh
