@@ -1,3 +1,4 @@
+using DLS_Mandatory_Project.Client.Clients;
 using DLS_Mandatory_Project.Client.Pages;
 using DLS_Mandatory_Project.Components;
 using MudBlazor.Services;
@@ -16,6 +17,8 @@ namespace DLS_Mandatory_Project
             // Add services to the container.
             builder.Services.AddRazorComponents()
                 .AddInteractiveWebAssemblyComponents();
+
+            builder.Services.AddSingleton<IChatClient, ChatClient>();
 
             var app = builder.Build();
 

@@ -1,4 +1,6 @@
-﻿@inherits LayoutComponentBase
+﻿@using DLS_Mandatory_Project.Client.Clients
+@inherits LayoutComponentBase
+@inject IChatClient ChatClient
 
 <MudThemeProvider Theme="@_theme" IsDarkMode="_isDarkMode" />
 <MudPopoverProvider />
@@ -32,9 +34,9 @@
     private bool _isDarkMode = true;
     private MudTheme? _theme = null;
 
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
-        base.OnInitialized();
+        await base.OnInitializedAsync();
 
         _theme = new()
         {
@@ -42,6 +44,18 @@
             PaletteDark = _darkPalette,
             LayoutProperties = new LayoutProperties()
         };
+
+        await StartChatClient();
+    }
+
+    private async Task StartChatClient()
+    {
+        while (ChatClient is null)
+        {
+            await Task.Delay(1000);
+        }
+
+        await ChatClient.StartAsync();
     }
 
     private void DrawerToggle()

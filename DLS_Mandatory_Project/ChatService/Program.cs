@@ -1,27 +1,33 @@
 using ChatService;
+using Microsoft.AspNetCore.Http.Connections;
+using Microsoft.AspNetCore.ResponseCompression;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddSignalR();
-//builder.Services.AddAuthentication("Bearer")
-//    .AddBearerToken();
-
-builder.Services.AddCors(options =>
+builder.Services.AddSignalR(hubOptions =>
 {
-    options.AddDefaultPolicy(policy =>
+    hubOptions.EnableDetailedErrors = true;
+    hubOptions.KeepAliveInterval = TimeSpan.FromMinutes(1);
+});
+
+builder.Services.AddCors(policy =>
+{
+    policy.AddDefaultPolicy(option =>
     {
-        policy.AllowAnyOrigin()
-              .AllowAnyHeader()
-              .AllowAnyMethod();
+        option.AllowAnyOrigin();
+        option.AllowAnyHeader();
+        option.AllowAnyMethod();
     });
 });
 
 var app = builder.Build();
 
-//app.UseAuthentication();
-//app.UseAuthorization();
-
-app.MapHub<ChatHub>("/chathub");
+app.MapHub<ChatHub>("/ChatHub", options =>
+{
+    options.Transports =
+        HttpTransportType.WebSockets |
+        HttpTransportType.ServerSentEvents;
+});
 
 app.UseCors();
 

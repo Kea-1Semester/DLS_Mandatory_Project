@@ -1,4 +1,4 @@
-using DLS_Mandatory_Project.Client.Services;
+using DLS_Mandatory_Project.Client.Clients;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using MudBlazor.Services;
 
@@ -12,7 +12,7 @@ namespace DLS_Mandatory_Project.Client
             
             builder.Services.AddMudServices();
 
-            builder.Services.AddScoped<IChatClient, ChatClient>();
+            builder.Services.AddSingleton<IChatClient, ChatClient>();
 
             await builder.Build().RunAsync();
         }
