@@ -4,8 +4,8 @@ on:
   push:
     branches:
       - Shero
-    paths:
-      - "DLS_Mandatory_Project/**" # Trigger if files in AuthService/ folder change
+    # paths:
+    #   - "DLS_Mandatory_Project/**" # Trigger if files in AuthService/ folder change
 
   workflow_dispatch: # Allows you to manually run the workflow from the Actions tab
 
