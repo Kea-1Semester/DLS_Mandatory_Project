@@ -26,5 +26,5 @@ jobs:
       # Build and push Docker image for AuthService microservice
       - name: Build and push Docker image for AuthService microservice
         run: |
-          docker build -t rashox/dls_mandatory_project:latest ./DLS_Mandatory_Project/DLS_Mandatory_Project
+          docker build -t rashox/dls_mandatory_project:latest ./DLS_Mandatory_Project
           docker push rashox/dls_mandatory_project:latest 
