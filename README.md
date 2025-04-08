@@ -1,5 +1,18 @@
 # DLS_Mandatory_Project
 
 
-# k8s commado
-* kubectl get svc userservice 
+## Kubernetes Commands
+
+### Run:
+ ``` bash
+ bash kubernetes-deployment.sh
+ ```
+### Delete all k8s
+``` bash
+bash kubernetes-deployment.sh --delete
+```
+### Check Service
+``` bash
+kubectl get svc userservice 
+``` 
+
