@@ -11,6 +11,12 @@ namespace DLS_Mandatory_Project
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            if (builder.Environment.IsDevelopment())
+            {
+                builder.Logging.AddFilter("Microsoft.AspNetCore.SignalR.Client", LogLevel.Debug);
+                builder.Logging.AddFilter("Microsoft.AspNetCore.Http.Connections", LogLevel.Debug);
+            }
+
             // Add MudBlazor services
             builder.Services.AddMudServices();
 

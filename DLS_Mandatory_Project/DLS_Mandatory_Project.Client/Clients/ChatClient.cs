@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http.Connections;
 using Microsoft.AspNetCore.SignalR.Client;
+using Microsoft.Extensions.Logging;
 
 namespace DLS_Mandatory_Project.Client.Clients
 {
@@ -14,11 +15,7 @@ namespace DLS_Mandatory_Project.Client.Clients
         {
             _hubConnection = new HubConnectionBuilder()
                 .WithUrl("https://localhost:30001/ChatHub", HttpTransportType.WebSockets | HttpTransportType.ServerSentEvents)
-                .WithKeepAliveInterval(TimeSpan.FromSeconds(30))
-                .ConfigureLogging(logging =>
-                {
-                    logging.SetMinimumLevel(LogLevel.Information);
-                })
+                .WithAutomaticReconnect()
                 .Build();
 
             _hubConnection.On<string?, string?>("ReceiveBroadcastMessage", (user, message) =>
@@ -32,8 +29,15 @@ namespace DLS_Mandatory_Project.Client.Clients
         {
             try
             {
-                await _hubConnection.StartAsync();
-                OnStateChanged?.Invoke(_hubConnection.State);
+                if (_hubConnection.State != HubConnectionState.Connected)
+                {
+                    await _hubConnection.StartAsync();
+                    OnStateChanged?.Invoke(_hubConnection.State);
+                }
+                else
+                {
+                    OnStateChanged?.Invoke(_hubConnection.State);
+                }
             }
             catch (Exception ex)
             {
@@ -45,7 +49,16 @@ namespace DLS_Mandatory_Project.Client.Clients
         {
             try
             {
-                await _hubConnection.SendAsync("SendBroadcastMessage", user, message);
+                if (_hubConnection.State != HubConnectionState.Connected)
+                {
+                    await _hubConnection.StartAsync();
+                    OnStateChanged?.Invoke(_hubConnection.State);                    
+                }
+                else
+                {
+                    OnStateChanged?.Invoke(_hubConnection.State);
+                    await _hubConnection.SendAsync("SendBroadcastMessage", user, message);
+                }                
             }
             catch (Exception ex)
             {

@@ -55,10 +55,7 @@
             StateHasChanged();
         };
 
-        if (ChatClient.State != HubConnectionState.Connected)
-        {
-            await ChatClient.StartAsync();
-        }
+        await ChatClient.StartAsync();
     }
 
     private async Task Send()

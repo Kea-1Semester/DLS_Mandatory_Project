@@ -1,8 +1,13 @@
 using ChatService;
 using Microsoft.AspNetCore.Http.Connections;
-using Microsoft.AspNetCore.ResponseCompression;
 
 var builder = WebApplication.CreateBuilder(args);
+
+if (builder.Environment.IsDevelopment())
+{
+    builder.Logging.AddFilter("Microsoft.AspNetCore.SignalR", LogLevel.Debug);
+    builder.Logging.AddFilter("Microsoft.AspNetCore.Http.Connections", LogLevel.Debug);
+}
 
 builder.Services.AddSignalR(hubOptions =>
 {
