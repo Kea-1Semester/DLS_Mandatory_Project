@@ -1,0 +1,52 @@
+﻿@using DLS_Mandatory_Project.Client.Clients
+@using Microsoft.AspNetCore.SignalR.Client
+@inject IChatClient ChatClient
+
+<div class="indicator">
+    <div class="indicator-dot @indicatorDot"></div>
+    <div class="indicator-text">@indicatorText</div>
+</div>
+
+<style>
+    .indicator {
+        display: flex;
+        align-items: center;
+    }
+    .indicator-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        margin-right: 5px;
+    }
+    .indicator-text {
+        font-size: 14px;
+    }
+
+    .indicator-dot-red {
+        background-color: red;
+    }
+
+    .indicator-dot-green {
+        background-color: green;
+    }
+</style>
+
+@code {
+    private HubConnectionState hubConnectionState = HubConnectionState.Disconnected;
+    private string indicatorDot = "indicator-dot-red";
+    private string indicatorText = "Disconnected";
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+
+        ChatClient.OnStateChanged += async (state) =>
+        {
+            indicatorDot = hubConnectionState != HubConnectionState.Connected ? "indicator-dot-green" : "indicator-dot-red";
+            indicatorText = hubConnectionState != HubConnectionState.Connected ? "Connected" : "Disconnected";
+            await InvokeAsync(StateHasChanged);
+        };
+
+        await InvokeAsync(StateHasChanged);
+    }
+}

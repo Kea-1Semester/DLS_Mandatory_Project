@@ -7,11 +7,6 @@
 
 <div class="form-group">
     <label>
-        @(IsConnected ? "Is connected!" : "Disconnected!")
-    </label>
-</div>
-<div class="form-group">
-    <label>
         User:
         <input @bind-value="userInput" />
     </label>
@@ -22,7 +17,7 @@
         <input @bind-value="messageInput" type="text" size="50" />
     </label>
 </div>
-<button @onclick="Send" disabled="@(!IsConnected)">Send</button>
+<button @onclick="Send">Send</button>
 
 <hr>
 
@@ -35,27 +30,20 @@
 
 @code {
     private List<string> messages = [];
-    private HubConnectionState? hubConnectionState;
     private string? userInput;
     private string? messageInput;
 
     protected override async Task OnInitializedAsync()
     {
-        hubConnectionState = ChatClient.State;
-
-        ChatClient.OnMessageReceived += (message) =>
+        ChatClient.OnMessageReceived += async (message) =>
         {
             messages.Add(message);
-            StateHasChanged();
-        };
-
-        ChatClient.OnStateChanged += (state) =>
-        {
-            hubConnectionState = state;
-            StateHasChanged();
+            await InvokeAsync(StateHasChanged);
         };
 
         await ChatClient.StartAsync();
+
+        await InvokeAsync(StateHasChanged);
     }
 
     private async Task Send()
@@ -64,6 +52,4 @@
 
         messageInput = string.Empty;
     }
-
-    public bool IsConnected => hubConnectionState == HubConnectionState.Connected;
 }
