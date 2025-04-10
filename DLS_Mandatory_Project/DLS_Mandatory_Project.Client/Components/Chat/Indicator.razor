@@ -29,10 +29,17 @@
     .indicator-dot-green {
         background-color: green;
     }
+
+    .indicator-dot-yellow {
+        background-color: yellow;
+    }
+
+    .indicator-dot-blue {
+        background-color: dodgerblue;
+    }
 </style>
 
 @code {
-    private HubConnectionState hubConnectionState = HubConnectionState.Disconnected;
     private string indicatorDot = "indicator-dot-red";
     private string indicatorText = "Disconnected";
 
@@ -42,8 +49,25 @@
 
         ChatClient.OnStateChanged += async (state) =>
         {
-            indicatorDot = hubConnectionState != HubConnectionState.Connected ? "indicator-dot-green" : "indicator-dot-red";
-            indicatorText = hubConnectionState != HubConnectionState.Connected ? "Connected" : "Disconnected";
+            switch (state)
+            {
+                case HubConnectionState.Connected:
+                    indicatorDot = "indicator-dot-green";
+                    indicatorText = "Connected";
+                    break;
+                case HubConnectionState.Disconnected:
+                    indicatorDot = "indicator-dot-red";
+                    indicatorText = "Disconnected";
+                    break;
+                case HubConnectionState.Reconnecting:
+                    indicatorDot = "indicator-dot-yellow";
+                    indicatorText = "Reconnecting";
+                    break;
+                default:
+                    indicatorDot = "indicator-dot-blue";
+                    indicatorText = "Unknown State";
+                    break;
+            }
             await InvokeAsync(StateHasChanged);
         };
 

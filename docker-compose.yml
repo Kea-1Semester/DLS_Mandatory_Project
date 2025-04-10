@@ -4,9 +4,6 @@ services:
     build:
       context: .
       dockerfile: DLS_Mandatory_Project/DLS_Mandatory_Project/Dockerfile
-    depends_on:
-       chatservice:
-         condition: service_started
   
       
   RabbitMQ:

@@ -14,7 +14,7 @@
 <div class="form-group">
     <label>
         Message:
-        <input @bind-value="messageInput" type="text" size="50" />
+        <input @bind-value="messageInput" @bind-value:event="oninput" @onkeypress="EnterPressedHandler" type="text" size="50" />
     </label>
 </div>
 <button @onclick="Send">Send</button>
@@ -51,5 +51,14 @@
         await ChatClient.SendBroadcastMessage(userInput, messageInput);
 
         messageInput = string.Empty;
+    }
+    private async Task EnterPressedHandler(KeyboardEventArgs args)
+    {
+        if (args.Code == "Enter")
+        {
+            await ChatClient.SendBroadcastMessage(userInput, messageInput);
+
+            messageInput = string.Empty;
+        }
     }
 }

@@ -14,7 +14,8 @@ namespace DLS_Mandatory_Project.Client.Clients
         public ChatClient()
         {
             _hubConnection = new HubConnectionBuilder()
-                .WithUrl("https://localhost:30001/ChatHub", HttpTransportType.WebSockets | HttpTransportType.ServerSentEvents)
+                .WithUrl("https://localhost:30001/ChatHub")
+                .WithKeepAliveInterval(TimeSpan.FromMinutes(5))
                 .WithAutomaticReconnect()
                 .Build();
 
@@ -23,25 +24,46 @@ namespace DLS_Mandatory_Project.Client.Clients
                 var encodedMsg = $"{user}: {message}";
                 OnMessageReceived?.Invoke(encodedMsg);
             });
+
+            _hubConnection.Closed += async (error) =>
+            {
+                if (error is not null)
+                {
+                    Console.WriteLine(error.Message);
+                }
+                await Task.Run(() => OnStateChanged?.Invoke(_hubConnection.State));
+            };
+
+            _hubConnection.Reconnecting += async (error) =>
+            {
+                if (error is not null)
+                {
+                    Console.WriteLine(error.Message);
+                }
+                await Task.Run(() => OnStateChanged?.Invoke(_hubConnection.State));
+            };
+
+            _hubConnection.Reconnected += async (connectionId) =>
+            {
+                if (connectionId is not null)
+                {
+                    Console.WriteLine($"Reconnected to server with connection ID: {connectionId}");
+                }
+                await Task.Run(() => OnStateChanged?.Invoke(_hubConnection.State));
+            };
         }
 
         public async Task StartAsync()
         {
             try
             {
-                if (_hubConnection.State != HubConnectionState.Connected)
-                {
-                    await _hubConnection.StartAsync();
-                    OnStateChanged?.Invoke(_hubConnection.State);
-                }
-                else
-                {
-                    OnStateChanged?.Invoke(_hubConnection.State);
-                }
+                await _hubConnection.StartAsync();
+                OnStateChanged?.Invoke(_hubConnection.State);
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+                OnStateChanged?.Invoke(_hubConnection.State);
             }
         }
 
@@ -49,20 +71,12 @@ namespace DLS_Mandatory_Project.Client.Clients
         {
             try
             {
-                if (_hubConnection.State != HubConnectionState.Connected)
-                {
-                    await _hubConnection.StartAsync();
-                    OnStateChanged?.Invoke(_hubConnection.State);                    
-                }
-                else
-                {
-                    OnStateChanged?.Invoke(_hubConnection.State);
-                    await _hubConnection.SendAsync("SendBroadcastMessage", user, message);
-                }                
+                await _hubConnection.SendAsync("SendBroadcastMessage", user, message);
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+                OnStateChanged?.Invoke(_hubConnection.State);
             }
         }
     }

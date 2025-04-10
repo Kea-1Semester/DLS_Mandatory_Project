@@ -27,12 +27,7 @@ builder.Services.AddCors(policy =>
 
 var app = builder.Build();
 
-app.MapHub<ChatHub>("/ChatHub", options =>
-{
-    options.Transports =
-        HttpTransportType.WebSockets |
-        HttpTransportType.ServerSentEvents;
-});
+app.MapHub<ChatHub>("/ChatHub");
 
 app.UseCors();
 
