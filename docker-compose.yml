@@ -1,5 +1,9 @@
 ########environment variables########
 # Docker compose will automatically loads the .env file in the same directory as this file
+
+# To stop the services:
+##  docker-compose down
+
 #####################################
 
 services:
@@ -13,6 +17,7 @@ services:
     image: rabbitmq:3.12-management  
     
   userservice:
+    container_name: userservice
     image: ${DOCKER_REGISTRY-}userservice
     build:
       context: UserService
@@ -25,6 +30,7 @@ services:
     #   - backend
 
   authservice:
+    container_name: authservice
     image: ${DOCKER_REGISTRY-}authservice
     build:
       context: AuthService
@@ -66,3 +72,13 @@ services:
     # We can use volumes to persist data in MySQL, but it's not necessary for this example.
     # volumes:
 
+
+  apigateway:
+    container_name: apigateway
+    image: ${DOCKER_REGISTRY-}apigateway
+    build:
+      context: ApiGateway
+      dockerfile: Dockerfile
+    depends_on:
+      - userservice
+      - authservice

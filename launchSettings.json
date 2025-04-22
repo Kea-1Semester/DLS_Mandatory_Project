@@ -7,7 +7,8 @@
         "MudBlazor-Frontend": "StartDebugging",
         "RabbitMQ": "StartWithoutDebugging",
         "userservice": "StartDebugging",
-        "authservice": "StartDebugging"
+        "authservice": "StartDebugging",
+        "apigateway": "StartDebugging"
       }
     }
   }

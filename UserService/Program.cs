@@ -13,8 +13,8 @@ if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
 }
-
-app.UseHttpsRedirection();
+// Redirect HTTP to HTTPS
+// app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
