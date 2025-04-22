@@ -1,6 +1,10 @@
 # DLS_Mandatory_Project
 
+## Microservice Architecture Diagram
+![alt text](/imgs/MicroService%20DLS-V01.6.png "Microservice Architecture Diagram")
+ 
 
+ 
 ## Kubernetes Commands
 
 ### Run:

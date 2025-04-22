@@ -46,24 +46,26 @@ fi
 echo "Applying Kubernetes configurations..."
 kubectl apply -R -f k8s/
 
-# Wait for the RabbitMQ service pod to be ready
-wait_for_pod "app=rabbitmq"
 
-# Start port forwarding for RabbitMQ management UI
+
+
+
+
+# ============================
+# REGION: Port Forwarding Setup
+# ============================
+
+# # Wait for the RabbitMQ service pod to be ready
+# wait_for_pod "app=rabbitmq"
+
 # kubectl port-forward svc/rabbitmq 15672:15672 > /dev/null 2>&1 &
 # RABBITMQ_PORT_FORWARD_PID=$!
+# if ! ps -p $RABBITMQ_PORT_FORWARD_PID > /dev/null; then
+#   echo "Failed to start port forwarding for RabbitMQ."
+#   exit 1
+# fi
 # echo $RABBITMQ_PORT_FORWARD_PID >> port_forward_pids.txt
 # echo "? Port forwarding for RabbitMQ management UI set up on port 15672."
-
-kubectl port-forward svc/rabbitmq 15672:15672 > /dev/null 2>&1 &
-RABBITMQ_PORT_FORWARD_PID=$!
-if ! ps -p $RABBITMQ_PORT_FORWARD_PID > /dev/null; then
-  echo "Failed to start port forwarding for RabbitMQ."
-  exit 1
-fi
-echo $RABBITMQ_PORT_FORWARD_PID >> port_forward_pids.txt
-echo "? Port forwarding for RabbitMQ management UI set up on port 15672."
-
 
 # # Wait for the AuthService pod to be ready
 # wait_for_pod "app=authservice"
@@ -83,16 +85,21 @@ echo "? Port forwarding for RabbitMQ management UI set up on port 15672."
 # echo $USERSERVICE_PORT_FORWARD_PID >> port_forward_pids.txt
 # echo "? Port forwarding for UserService set up on port 8086."
 
-# Wait for the UI service pod to be ready
-wait_for_pod "app=dlsmandatoryproject"
-# Start port forwarding for UI service
-kubectl port-forward svc/dlsmandatoryproject 8081:8081 > /dev/null 2>&1 &
-UI_PORT_FORWARD_PID=$!
-echo $UI_PORT_FORWARD_PID >> port_forward_pids.txt
-echo "? Port forwarding for UI service set up on port 8080." 
+# # Wait for the UI service pod to be ready
+# wait_for_pod "app=dlsmandatoryproject"
+# # Start port forwarding for UI service
+# kubectl port-forward svc/dlsmandatoryproject 8081:8081 > /dev/null 2>&1 &
+# UI_PORT_FORWARD_PID=$!
+# echo $UI_PORT_FORWARD_PID >> port_forward_pids.txt
+# echo "? Port forwarding for UI service set up on port 8080." 
+
+# ============================
+# END REGION: Port Forwarding Setup
+# ========================
+
 
 # Open Chrome with different UI services
 ./scripts/open-chrome.sh
 
-# Detach the script to keep port forwarding running
+# Detach the script to keep port forwarding running in the background - we use this when we port forward the services in the script above
 disown
