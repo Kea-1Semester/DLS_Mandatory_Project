@@ -11,6 +11,9 @@
 # To delete all deployments and port forwarding processes, run:
 # bash kubernetes-deployment.sh --delete
 
+## to check the status of all pods, run:
+# kubectl get pods
+# kubectl get svc -A
 ###############################
 
 # Function to wait for a pod to be ready

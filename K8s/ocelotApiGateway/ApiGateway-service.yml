@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: apigateway
 spec:
-  type: ClusterIP # Changed from NodePort to ClusterIP
+  type: NodePort # Changed from NodePort to ClusterIP
   selector:
     app: apigateway
   ports:
@@ -11,3 +11,4 @@ spec:
     protocol: TCP
     port: 8086 # External port for HTTP (used by Ingress)
     targetPort: 8080 # Internal container port (application listening port)
+    nodePort: 30086 # NodePort for external access (optional, can be removed if not needed)

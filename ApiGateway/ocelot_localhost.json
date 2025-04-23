@@ -3,13 +3,13 @@
     "BaseUrl": "http://localhost:8086",
     "RateLimitOptions": {
       "ClientIdHeader": "ClientId",
-      "QuotaExceededMessage": "Too many requests, please try again later.",
+      "QuotaExceededMessage": "Too many requests, please try again later.", 
       "HttpStatusCode": 429
     }
   },
   "Routes": [
     {
-      "UpstreamPathTemplate": "/",
+      "UpstreamPathTemplate": "/GetUsers",
       "UpstreamHttpMethod": [ "GET" ],
       "DownstreamPathTemplate": "/Placeholder/getstringFromUserService",
       "DownstreamScheme": "http",
@@ -24,6 +24,24 @@
         "Period": "1m",
         "Limit": 5
       }
+    },
+    {
+      "UpstreamPathTemplate": "/GetAuth",
+      "UpstreamHttpMethod": [ "GET" ],
+      "DownstreamPathTemplate": "/Placeholder/getstringFromAuthService",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "authservice",
+          "Port": 8084
+        }
+      ],
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "1m",
+        "Limit": 5
+      }
     }
+
   ]
 }
