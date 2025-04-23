@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: userservice
 spec:
-  type: NodePort
+  type: ClusterIP #NodePort
   selector:
     app: userservice
   ports:
@@ -11,4 +11,4 @@ spec:
     protocol: TCP
     port: 8082 #8086       # External port for HTTP
     targetPort: 8080 # Internal container port (application listening port)
-    nodePort: 30082 #30086  # Optional: Specify a custom NodePort
+    # nodePort: 30082 #30086  # Optional: Specify a custom NodePort

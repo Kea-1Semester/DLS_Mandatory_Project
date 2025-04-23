@@ -3,7 +3,8 @@ kind: Service
 metadata:
   name: authservice
 spec:
-  type: NodePort
+  # type: NodePort
+  type: ClusterIP
   selector:
     app: authservice
   ports:
@@ -11,7 +12,7 @@ spec:
     protocol: TCP
     port: 8084       # External port for HTTP
     targetPort: 8080 # Internal container port (application listening port)
-    nodePort: 30084  # Optional: Specify a custom NodePort
+    # nodePort: 30084  # Optional: Specify a custom NodePort
 
 
 

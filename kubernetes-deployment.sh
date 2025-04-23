@@ -11,6 +11,16 @@
 # To delete all deployments and port forwarding processes, run:
 # bash kubernetes-deployment.sh --delete
 
+# #Create a configmap from the .env file in k8s directory
+  # kubectl create configmap k8s-env --from-env-file=.env  
+# Read the configmap to verify it was created successfully
+  # kubectl get configmap k8s-env -o yaml 
+
+## to check the status of all pods, run:
+# kubectl get pods
+# kubectl get svc -A
+# kubectl get svc
+# kubectl get deployments -A
 ###############################
 
 # Function to wait for a pod to be ready

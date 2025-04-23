@@ -9,7 +9,7 @@
   },
   "Routes": [
     {
-      "UpstreamPathTemplate": "/",
+      "UpstreamPathTemplate": "/user",
       "UpstreamHttpMethod": [ "GET" ],
       "DownstreamPathTemplate": "/Placeholder/getstringFromUserService",
       "DownstreamScheme": "http",
@@ -17,6 +17,23 @@
         {
           "Host": "userservice",
           "Port": 8082
+        }
+      ],
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "1m",
+        "Limit": 5
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/auth",
+      "UpstreamHttpMethod": [ "GET" ],
+      "DownstreamPathTemplate": "/Placeholder/getstringFromAuthService",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "authservice",
+          "Port": 8084
         }
       ],
       "RateLimitOptions": {
