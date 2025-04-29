@@ -1,5 +1,7 @@
 using ChatService;
 using Microsoft.AspNetCore.Http.Connections;
+using StackExchange.Redis;
+using System.Net;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +15,10 @@ builder.Services.AddSignalR(hubOptions =>
 {
     hubOptions.EnableDetailedErrors = true;
     hubOptions.KeepAliveInterval = TimeSpan.FromMinutes(1);
+})
+.AddStackExchangeRedis(builder.Configuration.GetConnectionString("redis-backplane")!, options =>
+{
+    options.Configuration.ChannelPrefix = RedisChannel.Literal("ChatApp");
 });
 
 builder.Services.AddCors(policy =>

@@ -14,7 +14,11 @@ namespace DLS_Mandatory_Project.Client.Clients
         public ChatClient()
         {
             _hubConnection = new HubConnectionBuilder()
-                .WithUrl("https://localhost:30001/ChatHub")
+                .WithUrl("http://localhost/ChatHub", options =>
+                {
+                    options.Transports = HttpTransportType.WebSockets;
+                    options.SkipNegotiation = true;
+                })
                 .WithKeepAliveInterval(TimeSpan.FromMinutes(5))
                 .WithAutomaticReconnect()
                 .Build();
