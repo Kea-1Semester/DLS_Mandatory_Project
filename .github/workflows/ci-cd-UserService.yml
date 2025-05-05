@@ -32,13 +32,15 @@ jobs:
       # Run unit tests for UserService microservice
       - name: Run unit tests for UserService microservice
         run: |
-          cd ../../UnitTest
+          pushd ../../UnitTest
           docker run --rm -v ${{ github.workspace }}:/app -w /app mcr.microsoft.com/dotnet/sdk:6.0 dotnet test UserService.Tests/UserService.Tests.csproj --no-restore --verbosity normal
+          popd
 
       # Build and push Docker image for UserService microservice
       - name: Build and push Docker image for UserService microservice
         run: |
-          cd ../../UserService
+          pushd ../../UserService
           docker build -t rashox/userservice:latest ./UserService
           docker push rashox/userservice:latest
+          popd
  
