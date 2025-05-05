@@ -29,8 +29,8 @@ jobs:
         with:
           dotnet-version: '8.0.x' # eller 7.0.x, afhængigt af din løsning
 
-      - name: Restore dependencies
-        run: dotnet restore
+      # - name: Restore dependencies
+      #   run: dotnet restore
 
       - name: Build solution
         run: dotnet build --no-restore
