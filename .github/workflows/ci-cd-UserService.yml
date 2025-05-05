@@ -5,7 +5,7 @@ on:
     branches:
       - Shero
     paths:
-      - "UserService/**" # Trigger if files in UserService/ folder change
+      - "UserService/" # Trigger if files in UserService/ folder change
   workflow_dispatch: # Allows you to manually run the workflow from the Actions tab
     inputs:
       docker_username:
@@ -19,7 +19,7 @@ jobs:
   test:
     name: Run Unit Tests
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -36,10 +36,13 @@ jobs:
         run: dotnet build --no-restore
 
       - name: Run tests
-        run: dotnet test UnitTest/UnitTest.csproj --no-build --verbosity normal
+        run: dotnet test UnitTest --no-build --verbosity normal
 
   build-and-push:
+    name: Build and Push Docker Image
+    needs: test # Ensure the test job is completed before this job starts
     runs-on: ubuntu-latest
+
 
     steps:
       - name: Checkout code
