@@ -188,6 +188,7 @@ public class UserController : ControllerBase
     //[ValidateAntiForgeryToken]
     public async Task<IActionResult> DeleteConfirmed(Guid guid)
     {
+
         try
         {
             var userId = await _userQueries.GetUser(guid);
