@@ -190,7 +190,6 @@ public class UserController : ControllerBase
     {
         try
         {
-
             var userId = await _userQueries.GetUser(guid);
             await _userCommands.DeleteUser(userId.Guid);
             return Ok(new { message = "User deleted successfully" });

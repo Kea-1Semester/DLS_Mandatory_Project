@@ -5,7 +5,7 @@ on:
     branches:
       - Shero
     paths:
-      - "UserService/" # Trigger if files in UserService/ folder change
+      - "UserService/**" # Trigger if files in UserService/ folder change
   workflow_dispatch: # Allows you to manually run the workflow from the Actions tab
     inputs:
       docker_username:
