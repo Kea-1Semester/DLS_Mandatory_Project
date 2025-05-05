@@ -18,6 +18,8 @@ on:
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
+    env:
+      WORKING_DIRECTORY: UnitTest # Path to the directory containing the unit tests.
 
     steps:
       - name: Checkout code
@@ -29,9 +31,14 @@ jobs:
           username: ${{ github.event.inputs.docker_username || secrets.DOCKER_USERNAME }} # Store your Docker Hub username in GitHub Secrets
           password: ${{ github.event.inputs.docker_password || secrets.DOCKER_PASSWORD }} # Store your Docker Hub password/token in GitHub Secrets
 
+      # Run unit tests for UserService microservice
+      - name: Run unit tests for UserService microservice
+        run: dotnet test "${{ env.WORKING_DIRECTORY }}" --no-build
+
       # Build and push Docker image for UserService microservice
       - name: Build and push Docker image for UserService microservice
         run: |
+          cd ..
           docker build -t rashox/userservice:latest ./UserService
           docker push rashox/userservice:latest
  

@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
 using UserService.Interface;
 
@@ -10,6 +11,7 @@ namespace UserService.Models
         [Required]
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [JsonIgnore]
         public int Id { get; set; }
 
         public string FirstName { get; set; }
@@ -17,7 +19,18 @@ namespace UserService.Models
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
         public string UserName { get; set; }
+
+        //TODO: Add hashing to password
         public string Password { get; set; }
+        //[JsonIgnore]
+        public string RoleCsv { get; private set; } = UserRole.User.ToString();
+        //[NotMapped]
+        //[JsonIgnore]
+        //public UserRole UserRole
+        //{
+        //    get => Enum.TryParse<UserRole>(RoleCsv, out var role) ? role : UserRole.User;
+        //    set => RoleCsv = value.ToString();
+        //}
 
         private Regex _regex;
 
@@ -39,8 +52,12 @@ namespace UserService.Models
 
         public UserModel()
         {
-            DANISH_NAMES = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "DanishName\\danishNames.txt"); ;
+            DANISH_NAMES = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "DanishName\\danishNames.txt");
+            // Ensure RoleCsv is always "User"
+            RoleCsv = UserRole.User.ToString();
+
         }
+
 
 
         public override bool Equals(object? obj)
@@ -68,11 +85,11 @@ namespace UserService.Models
         {
             if (string.IsNullOrEmpty(FirstName) || string.IsNullOrWhiteSpace(FirstName))
             {
-                throw new ArgumentNullException(nameof(Password), "First name is required.");
+                throw new ArgumentNullException(nameof(FirstName), "First name is required.");
             }
             if (FirstName.Length < 2)
             {
-                throw new ArgumentNullException(nameof(Password), "First name must be at least 2 characters long.");
+                throw new ArgumentNullException(nameof(FirstName), "First name must be at least 2 characters long.");
             }
 
         }
@@ -80,11 +97,11 @@ namespace UserService.Models
         {
             if (string.IsNullOrEmpty(LastName) || string.IsNullOrWhiteSpace(LastName))
             {
-                throw new ArgumentNullException(nameof(Password), "Last name is required.");
+                throw new ArgumentNullException(nameof(LastName), "Last name is required.");
             }
             if (LastName.Length < 2)
             {
-                throw new ArgumentNullException(nameof(Password), "Last name must be at least 2 characters long.");
+                throw new ArgumentNullException(nameof(LastName), "Last name must be at least 2 characters long.");
             }
         }
 
@@ -92,11 +109,11 @@ namespace UserService.Models
         {
             if (string.IsNullOrEmpty(Email) || string.IsNullOrWhiteSpace(Email))
             {
-                throw new ArgumentNullException(nameof(Password), "Email is required.");
+                throw new ArgumentNullException(nameof(Email), "Email is required.");
             }
             if (!Regex.IsMatch(Email, EmailPattern))
             {
-                throw new ArgumentNullException(nameof(Password), "Invalid email format.");
+                throw new ArgumentNullException(nameof(Email), "Invalid email format.");
             }
         }
 
@@ -104,11 +121,11 @@ namespace UserService.Models
         {
             if (string.IsNullOrEmpty(PhoneNumber) || string.IsNullOrWhiteSpace(PhoneNumber))
             {
-                throw new ArgumentNullException(nameof(Password), "Phone number is required.");
+                throw new ArgumentNullException(nameof(PhoneNumber), "Phone number is required.");
             }
             if (!Regex.IsMatch(PhoneNumber, PHONE_PATTERN))
             {
-                throw new ArgumentNullException(nameof(Password), "Invalid phone number format.");
+                throw new ArgumentNullException(nameof(PhoneNumber), "Invalid phone number format.");
             }
         }
 
@@ -116,11 +133,11 @@ namespace UserService.Models
         {
             if (string.IsNullOrEmpty(UserName) || string.IsNullOrWhiteSpace(UserName))
             {
-                throw new ArgumentNullException(nameof(Password), "User name is required.");
+                throw new ArgumentNullException(nameof(UserName), "User name is required.");
             }
             if (UserName.Length < 2)
             {
-                throw new ArgumentNullException(nameof(Password), "User name must be at least 2 characters long.");
+                throw new ArgumentNullException(nameof(UserName), "User name must be at least 2 characters long.");
             }
         }
 
@@ -149,6 +166,7 @@ namespace UserService.Models
 
             try
             {
+                //C:\Users\shero\source\repos\DLS_Mandatory_Project\UserService\DanishName\danishNames.txt
                 if (File.Exists(DANISH_NAMES))
                 {
                     //read alle names from the file
@@ -196,7 +214,19 @@ namespace UserService.Models
 
         public virtual void Validate()
         {
-            throw new NotImplementedException();
+            ValidateFirstName();
+            ValidateLastName();
+            ValidateEmail();
+            ValidatePassword();
+            ValidatePhoneNumber();
+            ValidateUserName();
+            
         }
     }
+}
+
+
+public enum UserRole
+{
+    User
 }

@@ -1,7 +1,7 @@
 ﻿using System.Xml.Linq;
 using UserService.Models;
 
-namespace UnitTest
+namespace UnitTest.UserServiceUnitTest
 {
     [TestClass]
     public sealed class User

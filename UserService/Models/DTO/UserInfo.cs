@@ -1,4 +1,4 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.Text.Json.Serialization;
 
 namespace UserService.Models.DTO
 {
@@ -6,7 +6,7 @@ namespace UserService.Models.DTO
     {
         public Guid Guid { get; set; }
         public long LastModifiedTicks { get; set; }
-        public UserRole Role { get; set; }
+     
 
 
         public UserInfo()
@@ -15,7 +15,10 @@ namespace UserService.Models.DTO
         }
     }
 }
-public enum UserRole
+
+public record UserUpdat 
 {
-    User
+
 }
+
+

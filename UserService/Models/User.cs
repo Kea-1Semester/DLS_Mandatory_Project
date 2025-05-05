@@ -5,6 +5,7 @@ using UserService.Models.CQRS;
 
 namespace UserService.Models
 {
+    ///
     public class User
     {
         [Required]

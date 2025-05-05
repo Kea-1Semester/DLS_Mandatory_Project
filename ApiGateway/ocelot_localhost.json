@@ -10,8 +10,8 @@
   "Routes": [
     {
       "UpstreamPathTemplate": "/user",
-      "UpstreamHttpMethod": [ "GET" ],
-      "DownstreamPathTemplate": "/Placeholder/getstringFromUserService",
+      "UpstreamHttpMethod": [ "GET", "POST" ],
+      "DownstreamPathTemplate": "/User",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -25,6 +25,59 @@
         "Limit": 5
       }
     },
+    {
+      "UpstreamPathTemplate": "/user/{userGuid}",
+      "UpstreamHttpMethod": [ "GET" ],
+      "DownstreamPathTemplate": "/User/{userGuid}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "userservice",
+          "Port": 8082
+        }
+      ],
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "1m",
+        "Limit": 5
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/user/Delete/{guid}",
+      "UpstreamHttpMethod": [ "POST" ],
+      "DownstreamPathTemplate": "/User/Delete/{guid}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "userservice",
+          "Port": 8082
+        }
+      ],
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "1m",
+        "Limit": 5
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/user/CreateGuid",
+      "UpstreamHttpMethod": [ "GET" ],
+      "DownstreamPathTemplate": "/User/CreateGuid",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "userservice",
+          "Port": 8082
+        }
+      ],
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "1m",
+        "Limit": 5
+      }
+    },
+
+    // Auth-Service
     {
       "UpstreamPathTemplate": "/auth",
       "UpstreamHttpMethod": [ "GET" ],
