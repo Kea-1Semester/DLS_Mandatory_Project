@@ -30,10 +30,10 @@ jobs:
           dotnet-version: '8.0.x' # eller 7.0.x, afhængigt af din løsning
 
       - name: Restore dependencies
-        run: dotnet restore UserService/UserService.sln # Specify the solution file
+        run: dotnet restore UserService # Specify the solution file
 
       - name: Build solution
-        run: dotnet build UserService/UserService.sln --no-restore # Specify the solution file
+        run: dotnet build UserService --no-restore # Specify the solution file
 
       - name: Run tests
         run: dotnet test UnitTest --no-build --verbosity normal
