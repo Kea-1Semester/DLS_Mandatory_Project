@@ -1,12 +1,15 @@
-using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
 using UserService.Models.DTO;
 using UserService.Service;
 
 namespace UserService.Controllers;
-
+/// <summary>
+/// Controller for managing user-related operations.
+/// </summary>
 [ApiController]
+[Authorize(Roles = "User")]
 [Route("[controller]")]
 public class UserController : ControllerBase
 {
@@ -27,6 +30,10 @@ public class UserController : ControllerBase
     /// Returns an HTTP 404 Not Found response if no users exist in the database.
     /// </returns>
     [HttpGet]
+    //[Route("GetAllUsers")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+
     public async Task<ActionResult<IEnumerable<UserInfo>>> Get()
     {
         var users = await _userQueries.GetUsers();
@@ -34,7 +41,13 @@ public class UserController : ControllerBase
         {
             return Ok(users);
         }
-        return NotFound("No users found");
+        // No users found
+        if (users == null)
+        {
+            return NotFound("No users found");
+        }
+        //Not Authorizeed
+        return Unauthorized("You are not authorized to access this resource.");
     }
 
     /// <summary>
@@ -50,6 +63,7 @@ public class UserController : ControllerBase
     [HttpGet("{userGuid}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
+
     public async Task<ActionResult<UserInfo>> Get(Guid userGuid)
     {
         var user = await _userQueries.GetUser(userGuid);
@@ -77,9 +91,10 @@ public class UserController : ControllerBase
     /// </returns>
     // POST api/<UsersV2Controller>
     [HttpPost]
-    //[Route("post")]
+    //[Route("CreateUser/{guid}")]
     [ProducesResponseType(StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [AllowAnonymous]
     public async Task<IActionResult> Post(Guid guid, [FromBody] UserInfo user)
     {
         if (user == null)
@@ -110,7 +125,7 @@ public class UserController : ControllerBase
     ////Get: entity/post/guid e.g. entity/post/1234-asasd-21312   
     [HttpGet]
     [Route("CreateGuid")]
-
+    [AllowAnonymous]
     public IActionResult CreateGuid(Guid? guid)
     {
         // Generate a new Guid if none is provided
@@ -155,15 +170,17 @@ public class UserController : ControllerBase
     [HttpPost]
     [Route("Edit/{id}")]
     //[ValidateAntiForgeryToken]
+    //TODO: Create a DTO for the user info to avoid using JsonElement and to make the code cleaner
+    // use constructor to create a userInfo with specific properties to validate the input throw the user info methods
     public async Task<IActionResult> Edit(Guid id, [FromBody] JsonElement userInfo)
     {
         var userLastModifiedTicks = await _userQueries.GetUser(id);
 
-        var firstName = userInfo.GetProperty("FirstName").GetString();
-        var lastName = userInfo.GetProperty("LastName").GetString();
-        var email = userInfo.GetProperty("Email").GetString();
-        var phoneNumber = userInfo.GetProperty("PhoneNumber").GetString();
-        var userName = userInfo.GetProperty("UserName").GetString();
+        var firstName = userInfo.GetProperty("FirstName").GetString()!;
+        var lastName = userInfo.GetProperty("LastName").GetString()!;
+        var email = userInfo.GetProperty("Email").GetString()!;
+        var phoneNumber = userInfo.GetProperty("PhoneNumber").GetString()!;
+        var userName = userInfo.GetProperty("UserName").GetString()!;
 
         var user = new UserInfo
         {
@@ -179,7 +196,7 @@ public class UserController : ControllerBase
         // Save the user to the database
         await _userCommands.SaveUser(user);
         // Return a success response
-        return Ok(new { message = "User updated successfully" });  
+        return Ok(new { message = "User updated successfully" });
 
     }
 
@@ -199,17 +216,5 @@ public class UserController : ControllerBase
             return BadRequest(new { message = $"Error deleting user: {ex.Message}" });
         }
 
-    }
-
-
-
-
-
-    //[HttpGet("getstringFromUserService")]
-    [HttpGet("getstringFromUserService")]
-
-    public string GetString()
-    {
-        return "This is a string response from user";
     }
 }

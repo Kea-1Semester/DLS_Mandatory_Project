@@ -55,6 +55,35 @@ namespace UserService.Service
             return result == null ? null : MapUser(result.Guid, result.UserDescription);
         }
 
+        public async Task<object> GetUserByEmail(string email)
+        {
+            var result = await _repo.Users
+                .Where(user => user.UserDescriptions
+                    .Any(description => description.Email == email) &&
+                               !user.UserRemoved.Any())
+                .Select(user => new
+                {
+                    user.Guid,
+                    UserDescription = user.UserDescriptions
+                        .OrderByDescending(d => d.ModifiedDate)
+                        .FirstOrDefault()
+                })
+                .SingleOrDefaultAsync();
+
+            if (result == null)
+            {
+                return null;
+            }
+
+            return new
+            {
+                Guid = result.Guid,
+                Email = result.UserDescription!.Email,
+                HashPassword = result.UserDescription.Password,
+                UserRoleCsv = result.UserDescription.RoleCsv,
+            };
+        }
+
         private UserInfo MapUser(Guid userGuid, UserDescription description)
         {
             return new UserInfo

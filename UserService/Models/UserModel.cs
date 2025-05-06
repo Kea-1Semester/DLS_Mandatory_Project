@@ -58,6 +58,19 @@ namespace UserService.Models
 
         }
 
+        /// <summary>
+        /// This constructor is used for creating a new user with email and password only i.e. login
+        /// </summary>
+        /// <param name="email">Given email the existing email</param>
+        /// <param name="password">Given existing password</param>
+        public UserModel(string email, string password)
+        {
+            Email = email;
+            Password = password;
+            // Ensure RoleCsv is always "User"
+            RoleCsv = UserRole.User.ToString();
+        }
+
 
 
         public override bool Equals(object? obj)
@@ -157,8 +170,11 @@ namespace UserService.Models
             }
 
             // Ensure that the password won't contain the user name, first name or last name
-            if (Password.ToLower().Contains(UserName.ToLower()) ||
+            if (!string.IsNullOrEmpty(UserName) &&
+                Password.ToLower().Contains(UserName.ToLower()) ||
+                !string.IsNullOrEmpty(FirstName) &&
                 Password.ToLower().Contains(FirstName.ToLower()) ||
+                !string.IsNullOrEmpty(LastName) &&
                 Password.ToLower().Contains(LastName.ToLower()))
             {
                 throw new ArgumentException("Password cannot contain the user name, first name or last name.");

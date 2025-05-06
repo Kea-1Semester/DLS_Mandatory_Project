@@ -5,6 +5,10 @@
       "ClientIdHeader": "ClientId",
       "QuotaExceededMessage": "Too many requests, please try again later.",
       "HttpStatusCode": 429
+    },
+    "AuthenticationOptions": {
+      "AuthenticationProviderKey": "Bearer",
+      "AllowedScopes": []
     }
   },
   "Routes": [
@@ -19,6 +23,9 @@
           "Port": 8082
         }
       ],
+      "RouteClaimsRequirement": {
+        "Role": "User"
+      },
       "RateLimitOptions": {
         "EnableRateLimiting": true,
         "Period": "1m",
@@ -77,11 +84,11 @@
       }
     },
 
-    // Auth-Service
+    // Auth-Service,
     {
-      "UpstreamPathTemplate": "/auth",
-      "UpstreamHttpMethod": [ "GET" ],
-      "DownstreamPathTemplate": "/Placeholder/getstringFromAuthService",
+      "UpstreamPathTemplate": "/Auth/Login",
+      "UpstreamHttpMethod": [ "POST" ],
+      "DownstreamPathTemplate": "/Auth/login",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {

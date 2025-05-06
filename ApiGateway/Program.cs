@@ -1,16 +1,61 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-#region ocelot Configuration to point to the endpoint API Gateway
-// Add Ocelot
-builder.Configuration.AddJsonFile("ocelot_localhost.json", optional: false, reloadOnChange: true);
-builder.Services.AddOcelot(builder.Configuration);
+
+var configuration = builder.Configuration;
+var jwt = configuration.GetSection("JWT");
+
+# region Jwt Configuration
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer("Bearer", options =>
+    {
+        //options.Authority = jwt["Authority"]; // e.g. authService http://..
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            ValidIssuer = jwt["Issuer"],
+            ValidAudience = jwt["Audience"],
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwt["Token"]!)),
+            RequireExpirationTime = false, //TODO: Set to true for production
+        };
+    });
+
+#endregion
+
+// CORS
+#region CORS Configuration
+var allowAll = "AllowAll";
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: allowAll, policy =>
+    {
+        policy.AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod();
+    });
+});
 #endregion
 
 
+#region ocelot Configuration to point to the endpoint API Gateway
+
+builder.Configuration
+      .SetBasePath(builder.Environment.ContentRootPath)
+      .AddOcelot(); // single ocelot.json file in read-only mode
+builder.Services
+    .AddOcelot(builder.Configuration);
+
+#endregion
+
+
+#region TLS self-signed certificate
 builder.WebHost.ConfigureKestrel(options =>
 {
     options.ConfigureHttpsDefaults(httpsOptions =>
@@ -18,6 +63,8 @@ builder.WebHost.ConfigureKestrel(options =>
         httpsOptions.AllowAnyClientCertificate(); // Trust self-signed certificates
     });
 });
+
+#endregion
 
 // Add services to the container.
 
@@ -31,6 +78,7 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
+    builder.Logging.AddConsole();
 }
 
 // Redirect HTTP to HTTPS
@@ -43,4 +91,5 @@ app.MapControllers();
 // Use Ocelot middleware
 app.UseOcelot().Wait();
 
-app.Run();
+//app.Run();
+await app.RunAsync();

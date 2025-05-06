@@ -38,6 +38,7 @@ services:
       dockerfile: Dockerfile
     environment:
       DATABASE_URL: mysql://${MYSQL_USER}:${MYSQL_PASSWORD}@mysql:3306/${MYSQL_DB}
+      UserServiceClient__PROD_BASE_URL: http://userservice:8082/LoginData/
     depends_on:
       - mysql
     # networks:
