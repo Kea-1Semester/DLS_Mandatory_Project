@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
 using System.Text.Json;
 using UserService.Models.DTO;
 using UserService.Service;
@@ -95,13 +96,17 @@ public class UserController : ControllerBase
     [ProducesResponseType(StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [AllowAnonymous]
-    public async Task<IActionResult> Post(Guid guid, [FromBody] UserInfo user)
+    public async Task<IActionResult> Post([FromQuery, Required] Guid? guid, [FromBody] UserInfo user)
     {
+        if (!guid.HasValue || guid == Guid.Empty)
+        {
+            return BadRequest("Guid is required and cannot be empty.");
+        }
         if (user == null)
         {
             return BadRequest("User is null");
         }
-        user.Guid = guid;
+        user.Guid = (Guid)guid;
         await _userCommands.SaveUser(user);
         //await Task.Delay(3000); // Simulate a long-running task so test if obj will be save as dublicate
         return CreatedAtAction(nameof(Post), new { guid = user.Guid }, user);

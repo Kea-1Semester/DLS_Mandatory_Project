@@ -15,6 +15,8 @@ var jwt = configuration.GetSection("JWT");
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer("Bearer", options =>
     {
+        //TODO: options.Authority = jwt["Authority"]; // e.g. authService http://..
+
         options.TokenValidationParameters = new TokenValidationParameters
         {
             ValidateIssuer = true,
