@@ -65,7 +65,7 @@ When implementing authorization in your controllers, you can use the `[Authorize
    }
    ```
 
-   2. **Restrict Access to Specific Roles**:
+2. **Restrict Access to Specific Roles**:
    ```csharp
    [Authorize(Roles = "Admin")]
    public async Task<IActionResult> DeleteUser(Guid userId)
