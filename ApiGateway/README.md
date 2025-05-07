@@ -12,7 +12,7 @@ This API Gateway serves as a single entry point to route requests to the appropr
    - Run the following command to start the API Gateway along with other services:
 
 ```bash
-docker-compose up --build
+$ docker-compose up --build
 ```
 
 
@@ -28,7 +28,7 @@ The API Gateway routes requests to the appropriate downstream services based on 
   - **Example**:
 
 ```bash
-    curl -X GET http://localhost:8087/user/CreateGuid
+$ curl -X GET http://localhost:8087/user/CreateGuid
 ```
 
 - **Create User**:
@@ -37,7 +37,7 @@ The API Gateway routes requests to the appropriate downstream services based on 
   - **Example**:
 
 ```bash
-    curl -X POST https://localhost:7289/User?guid=asdsad-asd231-asdad-21321sad
+$ curl -X POST https://localhost:7289/User?guid=asdsad-asd231-asdad-21321sad
 ```
 
 ### Auth Service Routes
@@ -48,7 +48,7 @@ The API Gateway routes requests to the appropriate downstream services based on 
     - **Example**:
 
 ```bash
-    curl -X POST http://localhost:8087/Auth/Login -H \ "Content-Type: application/json" -d \
+$ curl -X POST http://localhost:8087/Auth/Login -H \ "Content-Type: application/json" -d \
     '{
         "email":"example@outlook.com",
         "password":"pass"
@@ -65,7 +65,7 @@ Swagger documentation is provided to enhance the developer experience. You can a
 - Use the following command to start the API Gateway and other services:
 
 ```bash
-docker-compose up -d --build
+$ docker-compose up -d --build
 ```
 
 - **Auth Service Swagger**: [authserviceSwagger](http://localhost:8087/authserviceSwagger)
