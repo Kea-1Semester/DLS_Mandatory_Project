@@ -50,3 +50,42 @@ For development purposes, you can add the following configuration to your `appse
 - Avoid hardcoding sensitive information in your codebase. Use environment variables or secret management tools for production.
 
 By including this configuration in your `appsettings.json`, you can easily test token validation during development.
+
+### Authorization in Controllers
+When implementing authorization in your controllers, you can use the `[Authorize]` attribute to restrict access to authenticated users. Additionally, you can specify roles using `[Authorize(Roles = "...")]` to restrict access to users with specific roles.
+
+#### Examples:
+
+1. **Restrict Access to Authenticated Users**:
+   ```csharp
+   [Authorize]
+   public async Task<IActionResult> GetUserData()
+   {
+       // Logic for authenticated users
+   }
+   ```
+
+   2. **Restrict Access to Specific Roles**:
+   ```csharp
+   [Authorize(Roles = "Admin")]
+   public async Task<IActionResult> DeleteUser(Guid userId)
+   {
+       // Logic for admin users
+   }
+   ```
+
+3. **Allow Anonymous Access**:
+   For actions that should be accessible without authentication, use `[AllowAnonymous]`:
+   ```csharp
+   [AllowAnonymous]
+   public IActionResult PublicEndpoint()
+   {
+       // Logic for public access
+   }
+   ```
+
+#### Notes:
+- Use `[Authorize]` at the controller level if all actions require authentication.
+- Apply `[Authorize(Roles = "...")]` to specific actions if role-based access is needed.
+- Ensure your role names match the roles defined in your authentication system.
+- For development, you can test with simplified roles, but ensure proper role management in production.
