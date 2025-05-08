@@ -6,13 +6,12 @@ services:
       dockerfile: DLS_Mandatory_Project/DLS_Mandatory_Project/Dockerfile
     networks:
       - chatnet
-  
       
   RabbitMQ:
     image: rabbitmq:4.0-management    
 
-
-  chatservice:
+  chatservice-1:
+    container_name: chatservice-1
     image: ${DOCKER_REGISTRY-}chatservice
     build:
       context: .
@@ -21,17 +20,25 @@ services:
       - Redis-Backplane
     networks:
       - chatnet
-    deploy:
-          replicas: 2
-    
+
+  chatservice-2:
+    container_name: chatservice-2
+    image: ${DOCKER_REGISTRY-}chatservice
+    build:
+      context: .
+      dockerfile: DLS_Mandatory_Project/ChatService/Dockerfile
+    depends_on:
+      - Redis-Backplane
+    networks:
+      - chatnet    
 
   nginx-loadbalancer:
     image: nginx:latest    
     depends_on:
-      - chatservice
+      - chatservice-1
+      - chatservice-2
     networks:
       - chatnet
-
 
   Redis-Backplane:
     image: redis:latest

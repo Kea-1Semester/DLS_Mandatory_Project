@@ -3,13 +3,14 @@
     "Docker Compose": {
       "commandName": "DockerCompose",
       "commandVersion": "1.0",
-        "serviceActions": {
-            "MudBlazor-Frontend": "StartDebugging",
-            "RabbitMQ": "StartWithoutDebugging",
-            "chatservice": "StartDebugging",
-            "Redis-Backplane": "StartWithoutDebugging",
-            "nginx-loadbalancer": "StartWithoutDebugging"
-        }
+      "serviceActions": {
+        "MudBlazor-Frontend": "StartDebugging",
+        "RabbitMQ": "StartWithoutDebugging",
+        "chatservice-1": "StartDebugging",
+        "Redis-Backplane": "StartWithoutDebugging",
+        "nginx-loadbalancer": "StartWithoutDebugging",
+        "chatservice-2": "StartDebugging"
+      }
     }
   }
 }
