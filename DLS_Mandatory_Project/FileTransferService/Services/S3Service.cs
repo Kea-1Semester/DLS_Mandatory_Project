@@ -1,5 +1,7 @@
 ﻿
 using Amazon.S3;
+using Amazon.S3.Model;
+using Amazon.S3.Transfer;
 
 namespace FileTransferService.Services
 {
@@ -19,14 +21,34 @@ namespace FileTransferService.Services
                 Amazon.RegionEndpoint.GetBySystemName(aws["Region"]));
         }
 
-        Task<string> IS3Service.UploadFileAsync(IFormFile file)
+        async Task<string> IS3Service.UploadFileAsync(IFormFile file)
         {
-            throw new NotImplementedException();
+            var fileKey = Guid.NewGuid() + Path.GetExtension(file.FileName);
+
+            var uploadRequest = new TransferUtilityUploadRequest
+            {
+                InputStream = file.OpenReadStream(),
+                Key = fileKey,
+                BucketName = _bucketName,
+                ContentType = file.ContentType
+            };
+
+            var transferUtility = new TransferUtility(_s3Client);
+            await transferUtility.UploadAsync(uploadRequest);
+
+            return fileKey;
         }
 
-        Task<Stream> IS3Service.GetFileAsync(string key)
+        async Task<Stream> IS3Service.GetFileAsync(string key)
         {
-            throw new NotImplementedException();
+            var request = new GetObjectRequest
+            {
+                BucketName = _bucketName,
+                Key = key
+            };
+
+            var response = await _s3Client.GetObjectAsync(request);
+            return response.ResponseStream;
         }
     }
 }
