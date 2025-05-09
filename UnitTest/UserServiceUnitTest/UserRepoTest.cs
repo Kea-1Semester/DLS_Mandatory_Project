@@ -59,6 +59,32 @@ namespace UnitTest.UserServiceUnitTest
         }
 
         [TestMethod]
+        public async Task WhenUserModifyEmail_UserNewEmailIsReturned()
+        {
+            // Arrange
+            var user1 = "john.doe@example.com";
+            _user.Email = user1;
+
+            // Act  
+            await _userCommands.SaveUser(_user);
+            var userFromDb = await _userQueries.GetUser(_user.Guid);
+
+            // Arrange
+            _user.Email = "john.doeV2@example.com";
+            _user.LastModifiedTicks = userFromDb.LastModifiedTicks;
+            
+            // Act
+            await _userCommands.SaveUser(_user);
+            var userFromDb2 = await _userQueries.GetUser(_user.Guid);
+
+            // Assert
+            Assert.AreNotEqual(user1, userFromDb2.Email); // new email should be different
+
+            Assert.AreEqual(_user.Email, userFromDb2.Email); // new email should be the same
+
+        }
+
+        [TestMethod]
         public async Task WhenSetUserDescription_UserDescriptionIsReturned()
         {
 

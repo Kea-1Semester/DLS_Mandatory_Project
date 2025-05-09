@@ -11,8 +11,7 @@ namespace UserService.Models.CQRS
         {
 
         }
-      
-
+        
         #region Navigation Properties
         //public User User { get; set; }
 

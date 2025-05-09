@@ -15,34 +15,33 @@ namespace UserService.Service
 
         public async Task SaveUser(UserInfo userModel)
         {
-          
-               
-                var user = await _repo.GetOrInsertUser(userModel.Guid);
+            //validate the user model
+            userModel.Validate();
 
-                // we need to get the last user description to update it
-                var lastUserDescribtion = user.UserDescriptions
-                    .OrderByDescending(description => description.ModifiedDate)
-                    .FirstOrDefault();
+            var user = await _repo.GetOrInsertUser(userModel.Guid);
+
+            // we need to get the last user description to update it
+            var userDescription = user.UserDescriptions
+                .OrderByDescending(description => description.ModifiedDate)
+                .FirstOrDefault();
 
             try 
             { 
-                if (lastUserDescribtion is null ||
-                   lastUserDescribtion.FirstName != userModel.FirstName ||
-                   lastUserDescribtion.LastName != userModel.LastName ||
-                   lastUserDescribtion.Email != userModel.Email ||
-                   lastUserDescribtion.PhoneNumber != userModel.PhoneNumber ||
-                   lastUserDescribtion.UserName != userModel.UserName)
+                if (userDescription is null ||
+                   userDescription.FirstName != userModel.FirstName ||
+                   userDescription.LastName != userModel.LastName ||
+                   userDescription.Email != userModel.Email ||
+                   userDescription.PhoneNumber != userModel.PhoneNumber ||
+                   userDescription.UserName != userModel.UserName)
                 {
                     // we need to check if the user has been modified by another user in the meantime
-                    var modifiedTicks = lastUserDescribtion?.ModifiedDate.Ticks / 10000 * 10000 ?? 0;
+                    var modifiedTicks = userDescription?.ModifiedDate.Ticks / 10000 * 10000 ?? 0;
                     if (modifiedTicks != userModel.LastModifiedTicks)
                     {
                         throw new Exception("A new update has occurred since you loaded the page. Please refresh and try again.");
                     }
 
-                    //validate the user model
-
-                    userModel.Validate();
+                   
 
                     // Using BCrypt to hash the password
                     // We are using a work factor of 13 to make the hashing process slower and more secure, check if 13 is the best value for our case.
