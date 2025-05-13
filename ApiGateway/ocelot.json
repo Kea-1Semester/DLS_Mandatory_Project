@@ -14,7 +14,7 @@
   "Routes": [
     {
       "UpstreamPathTemplate": "/user",
-      "UpstreamHttpMethod": [ "GET", "POST" ],
+      "UpstreamHttpMethod": [ "GET" ],
       "DownstreamPathTemplate": "/User",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
@@ -26,6 +26,23 @@
       "RouteClaimsRequirement": {
         "Role": "User"
       },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "1m",
+        "Limit": 5
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/user",
+      "UpstreamHttpMethod": [ "POST" ],
+      "DownstreamPathTemplate": "/User",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "userservice",
+          "Port": 8082
+        }
+      ],
       "RateLimitOptions": {
         "EnableRateLimiting": true,
         "Period": "1m",
@@ -101,6 +118,43 @@
         "Period": "1m",
         "Limit": 5
       }
+    },
+    {
+      "UpstreamPathTemplate": "/auth/login-google",
+      "UpstreamHttpMethod": [ "GET" ],
+      "DownstreamPathTemplate": "/api/account/login-google",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          //"Host": "localhost",
+          //"Port": 7046
+          "Host": "rasho.loca.lt"
+
+        }
+      ],
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "1m",
+        "Limit": 5
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/Auth/google-callback",
+      "UpstreamHttpMethod": [ "GET" ],
+      "DownstreamPathTemplate": "/api/account/google-callback",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8084
+        }
+      ],
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "1m",
+        "Limit": 5
+      }
     }
   ]
 }
+

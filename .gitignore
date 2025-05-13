@@ -9,6 +9,7 @@
 *.user
 *.userosscache
 *.sln.docstates
+*.idea
 
 docker-compose-withnetwork.yml
 # User-specific files (MonoDevelop/Xamarin Studio)

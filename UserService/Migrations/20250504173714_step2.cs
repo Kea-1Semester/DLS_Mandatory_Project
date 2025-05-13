@@ -28,13 +28,17 @@ namespace UserService.Migrations
                 });
 
             // Seed data for UserDescription table
+            // Password: "Password123#"
             migrationBuilder.InsertData(
                 table: "UserDescription",
-                columns: new[] { "Id", "ModifiedDate", "UserId", "FirstName", "LastName", "Email", "PhoneNumber", "UserName", "Password", "RoleCsv" },
+                columns: new[] { "Id", "ModifiedDate", "UserId", "FirstName", "LastName",
+                 "Email", "PhoneNumber", "UserName", "Password", "RoleCsv" },
                 values: new object[,]
                 {
-                    { 1, DateTime.UtcNow, 1, "John", "Doe", "john.doe@example.com", "1234567890", "johndoe", "password123", "User" },
-                    { 2, DateTime.UtcNow, 2, "Jane", "Smith", "jane.smith@example.com", "0987654321", "janesmith", "password456", "User" }
+                    { 1, DateTime.UtcNow, 1, "John", "Doe", "john.doe@example.com", "1234567890",
+                     "johndoe", "$2a$13$srpMBw0KivtkRgeSRiSNl.ug.vwkJYSDKvno3QjFnDjjGdWmWr7xa", "User" },
+                    { 2, DateTime.UtcNow, 2, "Jane", "Smith", "jane.smith@example.com", "0987654321",
+                     "janesmith", "$2a$13$srpMBw0KivtkRgeSRiSNl.ug.vwkJYSDKvno3QjFnDjjGdWmWr7xa", "User" }
                 });
         }
 
