@@ -10,7 +10,8 @@ namespace UserService.Controllers;
 /// Controller for managing user-related operations.
 /// </summary>
 [ApiController]
-[Authorize(Roles = "User")]
+//[Authorize(Roles = "User")]
+[Authorize]
 [Route("[controller]")]
 public class UserController : ControllerBase
 {
@@ -31,6 +32,7 @@ public class UserController : ControllerBase
     /// Returns an HTTP 404 Not Found response if no users exist in the database.
     /// </returns>
     [HttpGet]
+    [Authorize(Roles = nameof(UserRole.Admin))]
     //[Route("GetAllUsers")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -64,7 +66,6 @@ public class UserController : ControllerBase
     [HttpGet("{userGuid}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-
     public async Task<ActionResult<UserInfo>> Get(Guid userGuid)
     {
         var user = await _userQueries.GetUser(userGuid);
@@ -173,6 +174,7 @@ public class UserController : ControllerBase
     /// }
     /// </remarks>
     [HttpPost]
+    [Authorize(Roles = nameof(UserRole.Admin))]
     [Route("Edit/{id}")]
     //[ValidateAntiForgeryToken]
     //TODO: Create a DTO for the user info to avoid using JsonElement and to make the code cleaner
@@ -206,6 +208,7 @@ public class UserController : ControllerBase
     }
 
     [HttpPost]
+    [Authorize(Roles = nameof(UserRole.Admin))]
     [Route("Delete/{guid}")]
     //[ValidateAntiForgeryToken]
     public async Task<IActionResult> DeleteConfirmed(Guid guid)

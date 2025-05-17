@@ -95,6 +95,7 @@ namespace UserService.Service
                 PhoneNumber = description.PhoneNumber,
                 LastModifiedTicks = description?.ModifiedDate.Ticks / 10000 * 10000 ?? 0,
                 UserName = description.UserName,
+                RoleCsv = description.RoleCsv,
 
             };
         }

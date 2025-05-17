@@ -23,14 +23,14 @@ namespace UserService.Models
         //TODO: Add hashing to password
         public string Password { get; set; }
         //[JsonIgnore]
-        public string RoleCsv { get; private set; } = UserRole.User.ToString();
-        //[NotMapped]
-        //[JsonIgnore]
-        //public UserRole UserRole
-        //{
-        //    get => Enum.TryParse<UserRole>(RoleCsv, out var role) ? role : UserRole.User;
-        //    set => RoleCsv = value.ToString();
-        //}
+        public string RoleCsv { get;  set; } = UserRole.User.ToString();
+        [NotMapped]
+        [JsonIgnore]
+        public List<UserRole> EventTypes
+        {
+            get => RoleCsv?.Split(',').Select(e => Enum.Parse<UserRole>(e)).ToList() ?? new();
+            set => RoleCsv = string.Join(",", value.Select(v => v.ToString()));
+        }
 
         private Regex _regex;
 
@@ -244,5 +244,6 @@ namespace UserService.Models
 
 public enum UserRole
 {
-    User
+    User,
+    Admin
 }

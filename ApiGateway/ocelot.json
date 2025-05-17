@@ -24,12 +24,14 @@
         }
       ],
       "RouteClaimsRequirement": {
-        "Role": "User"
+        "Role": "Admin"
       },
       "RateLimitOptions": {
+        "ClientWhitelist": [],
         "EnableRateLimiting": true,
+        "Limit": 5,
         "Period": "1m",
-        "Limit": 5
+        "PeriodTimespan": 10
       }
     },
     {
@@ -44,9 +46,11 @@
         }
       ],
       "RateLimitOptions": {
+        "ClientWhitelist": [],
         "EnableRateLimiting": true,
+        "Limit": 5,
         "Period": "1m",
-        "Limit": 5
+        "PeriodTimespan": 10
       }
     },
     {
@@ -60,10 +64,15 @@
           "Port": 8082
         }
       ],
+      "RouteClaimsRequirement": {
+        "Role": "Admin"
+      },
       "RateLimitOptions": {
+        "ClientWhitelist": [],
         "EnableRateLimiting": true,
+        "Limit": 5,
         "Period": "1m",
-        "Limit": 5
+        "PeriodTimespan": 10
       }
     },
     {
@@ -77,10 +86,15 @@
           "Port": 8082
         }
       ],
+      "RouteClaimsRequirement": {
+        "Role": "Admin"
+      },
       "RateLimitOptions": {
+        "ClientWhitelist": [],
         "EnableRateLimiting": true,
+        "Limit": 5,
         "Period": "1m",
-        "Limit": 5
+        "PeriodTimespan": 10
       }
     },
     {
@@ -95,9 +109,11 @@
         }
       ],
       "RateLimitOptions": {
+        "ClientWhitelist": [],
         "EnableRateLimiting": true,
+        "Limit": 5,
         "Period": "1m",
-        "Limit": 5
+        "PeriodTimespan": 10
       }
     },
 
@@ -114,9 +130,11 @@
         }
       ],
       "RateLimitOptions": {
+        "ClientWhitelist": [], 
         "EnableRateLimiting": true,
-        "Period": "1m",
-        "Limit": 5
+        "Limit": 5,
+        "Period": "1m", 
+        "PeriodTimespan": 10
       }
     },
     {
@@ -133,9 +151,11 @@
         }
       ],
       "RateLimitOptions": {
+        "ClientWhitelist": [],
         "EnableRateLimiting": true,
+        "Limit": 5,
         "Period": "1m",
-        "Limit": 5
+        "PeriodTimespan": 10
       }
     },
     {
@@ -150,9 +170,11 @@
         }
       ],
       "RateLimitOptions": {
+        "ClientWhitelist": [],
         "EnableRateLimiting": true,
+        "Limit": 5,
         "Period": "1m",
-        "Limit": 5
+        "PeriodTimespan": 10
       }
     }
   ]

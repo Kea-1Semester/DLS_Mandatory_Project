@@ -24,7 +24,9 @@ namespace UserService.Migrations
                 values: new object[,]
                 {
                   { 1, Guid.NewGuid() },
-                  { 2, Guid.NewGuid() }
+                  { 2, Guid.NewGuid() },
+                  { 3, Guid.NewGuid() }
+
                 });
 
             // Seed data for UserDescription table
@@ -38,7 +40,9 @@ namespace UserService.Migrations
                     { 1, DateTime.UtcNow, 1, "John", "Doe", "john.doe@example.com", "1234567890",
                      "johndoe", "$2a$13$srpMBw0KivtkRgeSRiSNl.ug.vwkJYSDKvno3QjFnDjjGdWmWr7xa", "User" },
                     { 2, DateTime.UtcNow, 2, "Jane", "Smith", "jane.smith@example.com", "0987654321",
-                     "janesmith", "$2a$13$srpMBw0KivtkRgeSRiSNl.ug.vwkJYSDKvno3QjFnDjjGdWmWr7xa", "User" }
+                     "janesmith", "$2a$13$srpMBw0KivtkRgeSRiSNl.ug.vwkJYSDKvno3QjFnDjjGdWmWr7xa", "User" },
+                    { 3, DateTime.UtcNow, 3, "admin", "admin", "admin@example.com", "0987654321",
+                        "admin", "$2a$13$srpMBw0KivtkRgeSRiSNl.ug.vwkJYSDKvno3QjFnDjjGdWmWr7xa", "Admin" }
                 });
         }
 
