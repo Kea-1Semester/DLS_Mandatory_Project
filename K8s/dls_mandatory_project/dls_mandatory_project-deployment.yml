@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dlsmandatoryproject
+  labels:
+    app: dlsmandatoryproject
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dlsmandatoryproject
+  template:
+    metadata:
+      labels:
+        app: dlsmandatoryproject
+    spec:
+      containers:
+      - name: dlsmandatoryproject
+        image: rashox/dls_mandatory_project:latest # Docker Hub image name
+        imagePullPolicy: Always     # Pull the image from Docker Hub every time the pod is created
+        ports:
+        - containerPort: 8080
+        - containerPort: 8081

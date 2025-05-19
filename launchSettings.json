@@ -6,6 +6,9 @@
       "serviceActions": {
         "MudBlazor-Frontend": "StartDebugging",
         "RabbitMQ": "StartWithoutDebugging",
+        "userservice": "StartDebugging",
+        "authservice": "StartDebugging",
+        "apigateway": "StartDebugging"
         "chatservice-1": "StartDebugging",
         "Redis-Backplane": "StartWithoutDebugging",
         "nginx-loadbalancer": "StartWithoutDebugging",

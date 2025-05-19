@@ -1,0 +1,160 @@
+{
+  "GlobalConfiguration": {
+    "BaseUrl": "http://localhost:8087",
+    "RateLimitOptions": {
+      "ClientIdHeader": "ClientId",
+      "QuotaExceededMessage": "Too many requests, please try again later.",
+      "HttpStatusCode": 429
+    },
+    "AuthenticationOptions": {
+      "AuthenticationProviderKey": "Bearer",
+      "AllowedScopes": []
+    }
+  },
+  "Routes": [
+    {
+      "UpstreamPathTemplate": "/user",
+      "UpstreamHttpMethod": [ "GET" ],
+      "DownstreamPathTemplate": "/User",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "userservice",
+          "Port": 8082
+        }
+      ],
+      "RouteClaimsRequirement": {
+        "Role": "User"
+      },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "1m",
+        "Limit": 5
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/user",
+      "UpstreamHttpMethod": [ "POST" ],
+      "DownstreamPathTemplate": "/User",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "userservice",
+          "Port": 8082
+        }
+      ],
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "1m",
+        "Limit": 5
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/user/{userGuid}",
+      "UpstreamHttpMethod": [ "GET" ],
+      "DownstreamPathTemplate": "/User/{userGuid}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "userservice",
+          "Port": 8082
+        }
+      ],
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "1m",
+        "Limit": 5
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/user/Delete/{guid}",
+      "UpstreamHttpMethod": [ "POST" ],
+      "DownstreamPathTemplate": "/User/Delete/{guid}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "userservice",
+          "Port": 8082
+        }
+      ],
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "1m",
+        "Limit": 5
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/user/CreateGuid",
+      "UpstreamHttpMethod": [ "GET" ],
+      "DownstreamPathTemplate": "/User/CreateGuid",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "userservice",
+          "Port": 8082
+        }
+      ],
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "1m",
+        "Limit": 5
+      }
+    },
+
+    // Auth-Service,
+    {
+      "UpstreamPathTemplate": "/Auth/Login",
+      "UpstreamHttpMethod": [ "POST" ],
+      "DownstreamPathTemplate": "/Auth/login",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "authservice",
+          "Port": 8084
+        }
+      ],
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "1m",
+        "Limit": 5
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/auth/login-google",
+      "UpstreamHttpMethod": [ "GET" ],
+      "DownstreamPathTemplate": "/api/account/login-google",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          //"Host": "localhost",
+          //"Port": 7046
+          "Host": "rasho.loca.lt"
+
+        }
+      ],
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "1m",
+        "Limit": 5
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/Auth/google-callback",
+      "UpstreamHttpMethod": [ "GET" ],
+      "DownstreamPathTemplate": "/api/account/google-callback",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8084
+        }
+      ],
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "1m",
+        "Limit": 5
+      }
+    }
+  ]
+}
+
