@@ -12,6 +12,8 @@ services:
     build:
       context: .
       dockerfile: DLS_Mandatory_Project/DLS_Mandatory_Project/Dockerfile
+    networks:
+      - chatnet
 
   RabbitMQ:
     image: rabbitmq:3.12-management  
@@ -84,3 +86,42 @@ services:
     depends_on:
       - userservice
       - authservice
+
+  chatservice-1:
+    container_name: chatservice-1
+    image: ${DOCKER_REGISTRY-}chatservice
+    build:
+      context: .
+      dockerfile: DLS_Mandatory_Project/ChatService/Dockerfile
+    depends_on:
+      - Redis-Backplane
+    networks:
+      - chatnet
+
+  chatservice-2:
+    container_name: chatservice-2
+    image: ${DOCKER_REGISTRY-}chatservice
+    build:
+      context: .
+      dockerfile: DLS_Mandatory_Project/ChatService/Dockerfile
+    depends_on:
+      - Redis-Backplane
+    networks:
+      - chatnet    
+
+  nginx-loadbalancer:
+    image: nginx:latest    
+    depends_on:
+      - chatservice-1
+      - chatservice-2
+    networks:
+      - chatnet
+
+  Redis-Backplane:
+    image: redis:latest
+    networks:
+      - chatnet
+
+networks:
+  chatnet:
+    driver: bridge

@@ -1,3 +1,4 @@
+using DLS_Mandatory_Project.Client.Clients;
 using DLS_Mandatory_Project.Client.Pages;
 using DLS_Mandatory_Project.Components;
 using MudBlazor.Services;
@@ -10,6 +11,12 @@ namespace DLS_Mandatory_Project
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            if (builder.Environment.IsDevelopment())
+            {
+                builder.Logging.AddFilter("Microsoft.AspNetCore.SignalR.Client", LogLevel.Debug);
+                builder.Logging.AddFilter("Microsoft.AspNetCore.Http.Connections", LogLevel.Debug);
+            }
+
             // Add MudBlazor services
             builder.Services.AddMudServices();
 
@@ -17,6 +24,7 @@ namespace DLS_Mandatory_Project
             builder.Services.AddRazorComponents()
                 .AddInteractiveWebAssemblyComponents();
 
+            builder.Services.AddSingleton<IChatClient, ChatClient>();
 
             var app = builder.Build();
 

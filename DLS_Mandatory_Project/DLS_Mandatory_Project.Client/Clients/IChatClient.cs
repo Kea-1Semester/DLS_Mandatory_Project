@@ -1,0 +1,14 @@
+﻿using Microsoft.AspNetCore.SignalR.Client;
+
+namespace DLS_Mandatory_Project.Client.Clients
+{
+    public interface IChatClient
+    {
+        event Action<string> OnMessageReceived;
+        event Action<HubConnectionState> OnStateChanged;
+        HubConnectionState State { get; }
+
+        Task SendBroadcastMessage(string? user, string? message);
+        Task StartAsync();
+    }
+}
