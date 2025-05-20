@@ -39,7 +39,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy(name: allowAll, policy =>
     {
         policy.WithHeaders("Authorization", "Content-Type")
-            .WithOrigins("https://localhost:5500")
+            .WithOrigins("http://127.0.0.1:5500")
             .AllowAnyMethod();
             //.WithMethods("GET", "POST", "OPTIONS");
     }); 

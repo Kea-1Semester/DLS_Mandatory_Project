@@ -9,8 +9,8 @@
   <div id="user-info">Loading user...</div>
 
   <script>
-    const userId = '123e4567-e89b-12d3-a456-426614174011';
-    fetch(`http://localhost:5014/User/${userId}`)
+    const userId = '123e4567-e89b-12d3-a456-426614174010';
+    fetch(`http://localhost:8086/User/${userId}`)
       .then(response => response.json())
       .then(user => {
         // 🚨 VULNERABLE: innerHTML renders raw HTML/JS — XSS risk

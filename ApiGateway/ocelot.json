@@ -82,10 +82,12 @@
           "Host": "userservice",
           "Port": 8082
         }
-      ],
-      "RouteClaimsRequirement": {
-        "Role": "Admin"
-      },
+      ]
+      // ,
+      // "RouteClaimsRequirement": {
+      //   "Role": "Admin"
+      // }
+      ,
       "RateLimitOptions": {
         "ClientWhitelist": [],
         "EnableRateLimiting": true,
