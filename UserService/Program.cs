@@ -97,6 +97,8 @@ builder.Services.AddSwaggerGen(c =>
     c.IncludeXmlComments(xmlPath);
 });
 
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -108,12 +110,21 @@ if (app.Environment.IsDevelopment())
     {
         c.SwaggerEndpoint("/swagger/v1/swagger.json", "User Service API v1");
         c.RoutePrefix = string.Empty; // Serve Swagger UI at the app's root
+
     });
+
+    app.UseCors(builder =>
+        builder.WithOrigins("http://127.0.0.1:5500")
+            .AllowAnyMethod()
+            .AllowAnyHeader());
 }
 // Redirect HTTP to HTTPS
 // app.UseHttpsRedirection();
 
+
+
 app.UseAuthorization();
+app.UseAuthentication();
 
 app.MapControllers();
 

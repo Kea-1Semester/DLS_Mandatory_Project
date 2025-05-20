@@ -1,6 +1,6 @@
 {
   "GlobalConfiguration": {
-    "BaseUrl": "http://localhost:8087",
+    "BaseUrl": "http://localhost:8086",
     "RateLimitOptions": {
       "ClientIdHeader": "ClientId",
       "QuotaExceededMessage": "Too many requests, please try again later.",
@@ -38,6 +38,25 @@
       "UpstreamPathTemplate": "/user",
       "UpstreamHttpMethod": [ "POST" ],
       "DownstreamPathTemplate": "/User",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "userservice",
+          "Port": 8082
+        }
+      ],
+      "RateLimitOptions": {
+        "ClientWhitelist": [],
+        "EnableRateLimiting": true,
+        "Limit": 5,
+        "Period": "1m",
+        "PeriodTimespan": 10
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/user/CreateGuid",
+      "UpstreamHttpMethod": [ "GET" ],
+      "DownstreamPathTemplate": "/User/CreateGuid",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -98,27 +117,6 @@
       }
     },
     {
-      "UpstreamPathTemplate": "/user/CreateGuid",
-      "UpstreamHttpMethod": [ "GET" ],
-      "DownstreamPathTemplate": "/User/CreateGuid",
-      "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "userservice",
-          "Port": 8082
-        }
-      ],
-      "RateLimitOptions": {
-        "ClientWhitelist": [],
-        "EnableRateLimiting": true,
-        "Limit": 5,
-        "Period": "1m",
-        "PeriodTimespan": 10
-      }
-    },
-
-    // Auth-Service,
-    {
       "UpstreamPathTemplate": "/Auth/Login",
       "UpstreamHttpMethod": [ "POST" ],
       "DownstreamPathTemplate": "/Auth/login",
@@ -144,10 +142,7 @@
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
-          //"Host": "localhost",
-          //"Port": 7046
           "Host": "rasho.loca.lt"
-
         }
       ],
       "RateLimitOptions": {

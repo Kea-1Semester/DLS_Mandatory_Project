@@ -11,7 +11,7 @@ namespace UserService.Controllers;
 /// </summary>
 [ApiController]
 //[Authorize(Roles = "User")]
-[Authorize]
+// [Authorize]
 [Route("[controller]")]
 public class UserController : ControllerBase
 {
@@ -66,6 +66,7 @@ public class UserController : ControllerBase
     [HttpGet("{userGuid}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
+    //[Authorize(Roles = nameof(UserRole.Admin))]
     public async Task<ActionResult<UserInfo>> Get(Guid userGuid)
     {
         var user = await _userQueries.GetUser(userGuid);
@@ -84,7 +85,7 @@ public class UserController : ControllerBase
     /// A unique identifier (Guid) provided by the client. This is used to ensure that the user
     /// is not duplicated in the database.
     /// </param>
-    /// <param name="user">
+    /// <param name="userReg">
     /// The user information to be saved. This includes details such as name, email, and other user-specific data.
     /// </param>
     /// <returns>
@@ -97,8 +98,18 @@ public class UserController : ControllerBase
     [ProducesResponseType(StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [AllowAnonymous]
-    public async Task<IActionResult> Post([FromQuery, Required] Guid? guid, [FromBody] UserInfo user)
+    public async Task<IActionResult> Post([FromQuery, Required] Guid? guid, [FromBody] UserRegisterInfo userReg)
     {
+        var user = new UserInfo(
+            userReg.FirstName,
+            userReg.LastName,
+            userReg.Email,
+            userReg.PhoneNumber,
+            userReg.UserName,
+            userReg.Password,
+            lastModifiedTicks: 0
+            );
+
         if (!guid.HasValue || guid == Guid.Empty)
         {
             return BadRequest("Guid is required and cannot be empty.");
@@ -130,8 +141,8 @@ public class UserController : ControllerBase
     ////Get: entity/post
     ////Get: entity/post/guid e.g. entity/post/1234-asasd-21312   
     [HttpGet]
-    [Route("CreateGuid")]
     [AllowAnonymous]
+    [Route("CreateGuid")]
     public IActionResult CreateGuid(Guid? guid)
     {
         // Generate a new Guid if none is provided

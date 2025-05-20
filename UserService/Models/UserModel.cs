@@ -23,7 +23,7 @@ namespace UserService.Models
         //TODO: Add hashing to password
         public string Password { get; set; }
         //[JsonIgnore]
-        public string RoleCsv { get;  set; } = UserRole.User.ToString();
+        public string RoleCsv { get;  set; } //= UserRole.User.ToString();
         [NotMapped]
         [JsonIgnore]
         public List<UserRole> EventTypes
@@ -54,7 +54,7 @@ namespace UserService.Models
         {
             DANISH_NAMES = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "DanishName\\danishNames.txt");
             // Ensure RoleCsv is always "User"
-            RoleCsv = UserRole.User.ToString();
+            RoleCsv = nameof(UserRole.User);
 
         }
 
@@ -68,7 +68,19 @@ namespace UserService.Models
             Email = email;
             Password = password;
             // Ensure RoleCsv is always "User"
-            RoleCsv = UserRole.User.ToString();
+            RoleCsv = nameof(UserRole.User);
+        }
+
+        public UserModel(string firstName, string lastName, string email, string phoneNumber, string userName, string password)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+            Email = email;
+            PhoneNumber = phoneNumber;
+            UserName = userName;
+            Password = password;
+            // Ensure RoleCsv is always "User"
+            RoleCsv = nameof(UserRole.User);
         }
 
 

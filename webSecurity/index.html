@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.8/dist/purify.min.js"></script>
+    <title>XSS Test Form</title>
+</head>
+<body>
+    <h2>Test XSS on /User?guid= Endpoint</h2>
+    <form id="xssForm">
+        <!--<iframe src="javascript:alert(Got you system body)">
+            "><iframe src=javascript:alert(1)>
+            <iframe src="javascript:alert('XSS!')"></iframe>
+            "><iframe src='https://fakebank.example.com/login' style='position:fixed;top:0;left:0;width:100%;height:100%;z-index:9999'></iframe>
+
+
+         -->
+        <label>First Name:</label>
+        <input type="text" name="firstName" value='"><iframe src="https://fakebank.example.com/login" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:9999"></iframe>'><br>
+        <label>Last Name:</label>
+        <input type="text" name="lastName" value="Hacker"><br>
+        <label>Email:</label>
+        <input type="email" name="email" value="attacker@example.com"><br>
+        <label>Phone Number:</label>
+        <input type="text" name="phoneNumber" value="12345678"><br>
+        <label>User Name:</label>
+        <input type="text" name="userName" value="badguy"><br>
+        <label>Password:</label>
+        <input type="password" name="password" value="SSO#1509ss"><br>
+        <label>Last Modified Ticks:</label>
+        <input type="number" name="lastModifiedTicks" value="0"><br>
+        <button type="submit">Send XSS Payload</button>
+    </form>
+
+    <script>
+        function sanitizeInput(input) {
+            return DOMPurify.sanitize(input);
+        }
+    //prevent XSS
+        document.getElementById('xssForm').onsubmit = async function(e) {
+        e.preventDefault();
+        const data = {
+            firstName: sanitizeInput(document.querySelector('[name="firstName"]').value),
+            lastName: sanitizeInput(document.querySelector('[name="lastName"]').value),
+            email: sanitizeInput(document.querySelector('[name="email"]').value),
+            phoneNumber: sanitizeInput(document.querySelector('[name="phoneNumber"]').value),
+            userName: sanitizeInput(document.querySelector('[name="userName"]').value),
+            password: sanitizeInput(document.querySelector('[name="password"]').value),
+            lastModifiedTicks: Number(sanitizeInput(document.querySelector('[name="lastModifiedTicks"]').value))
+        };
+        const guid = '123e4567-e89b-12d3-a456-426614174011';
+        const response = await fetch('http://localhost:5014/User?guid=' + guid, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+        alert('Request sent! Check your application for XSS.');
+    };
+
+    // Vulnerable to XSS
+    // document.getElementById('xssForm').onsubmit = async function(e) {
+    //     e.preventDefault();
+    //     const data = {
+    //         firstName: document.querySelector('[name="firstName"]').value,
+    //         lastName: document.querySelector('[name="lastName"]').value,
+    //         email: document.querySelector('[name="email"]').value,
+    //         phoneNumber: document.querySelector('[name="phoneNumber"]').value,
+    //         userName: document.querySelector('[name="userName"]').value,
+    //         password: document.querySelector('[name="password"]').value,
+    //         lastModifiedTicks: Number(document.querySelector('[name="lastModifiedTicks"]').value)
+    //     };
+    //     const guid = '123e4567-e89b-12d3-a456-426614174010'; 
+    //     const response = await fetch('http://localhost:5014/User?guid=' + guid, {
+    //         method: 'POST',
+    //         headers: {
+    //             'Content-Type': 'application/json'
+    //         },
+    //         body: JSON.stringify(data)
+    //     });
+    //     alert('Request sent! Check your application for XSS.');
+    // };
+    </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.8/dist/purify.min.js"></script>
+  <meta charset="UTF-8">
+  <title>Finance Tool - User View</title>
+</head>
+<body>
+  <h1>View User</h1>
+  <div id="user-info">Loading user...</div>
+
+  <script>
+    /**
+     * Sanitizes user input by removing potentially malicious code 
+     * such as <script> tags, event handlers (e.g. onerror), and 
+     * javascript: URLs to prevent Cross-Site Scripting (XSS) attacks.
+     *
+     * This function should be used both:
+     * - Before sending data to the API (to avoid storing unsafe content)
+     * - When displaying data from the API (to prevent executing malicious code)
+     *
+     * @param {string} input - Raw user input
+     * @return {string} - Cleaned and safe input
+     */
+    function sanitizeInput(input) {
+        return DOMPurify.sanitize(input);
+    }
+
+    const userId = '123e4567-e89b-12d3-a456-426614174010';
+    fetch(`http://localhost:5014/User/${userId}`)
+      .then(response => response.json())
+      .then(user => {
+        const container = document.getElementById("user-info")
+
+        // Use the sanitizeInput function to sanitize user data before inserting it into the DOM
+        const sanitizedUserName = sanitizeInput(user.userName);
+        const sanitizedEmail = sanitizeInput(user.email);
+        const sanitizedFirstName = sanitizeInput(user.firstName);
+        container.innerHTML = `
+          <p><strong>Name:</strong> ${sanitizedUserName}</p>
+          <p><strong>Email:</strong> ${sanitizedEmail}</p>
+          <p><strong>FirstName:</strong> ${sanitizedFirstName}</p>
+        `;
+        
+      })
+      .catch(error => {
+        document.getElementById("user-info").textContent = "Error loading user.";
+        console.error(error);
+      });
+  </script>
+</body>
+</html>

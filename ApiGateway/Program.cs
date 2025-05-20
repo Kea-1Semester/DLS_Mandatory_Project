@@ -38,19 +38,19 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy(name: allowAll, policy =>
     {
-        policy.AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod();
-    });
+        policy.WithHeaders("Authorization", "Content-Type")
+            .WithOrigins("https://localhost:5500")
+            .AllowAnyMethod();
+            //.WithMethods("GET", "POST", "OPTIONS");
+    }); 
 });
 #endregion
 
 
 #region ocelot Configuration to point to the endpoint API Gateway
 
-builder.Configuration
-      .SetBasePath(builder.Environment.ContentRootPath)
-      .AddOcelot(); // single ocelot.json file in read-only mode
-builder.Services
-    .AddOcelot(builder.Configuration);
+builder.Configuration.SetBasePath(builder.Environment.ContentRootPath).AddOcelot(); // single ocelot.json file in read-only mode
+builder.Services.AddOcelot(builder.Configuration);
 
 #endregion
 
@@ -83,6 +83,8 @@ if (app.Environment.IsDevelopment())
 
 // Redirect HTTP to HTTPS
 // app.UseHttpsRedirection();
+
+app.UseCors("AllowAll");
 
 app.UseAuthorization();
 
