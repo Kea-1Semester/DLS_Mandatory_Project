@@ -1,5 +1,5 @@
 ﻿using System.Xml.Linq;
-using UserService.Models;
+using UserClassLibrary;
 
 namespace UnitTest.UserServiceUnitTest
 {

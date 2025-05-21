@@ -1,7 +1,12 @@
-﻿
-<MudNavMenu>
-    <MudNavLink Href="" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.Home">Home</MudNavLink>
-    <MudNavLink Href="/chat" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.Chat">Chat</MudNavLink>
+﻿<MudNavMenu>    
+    <AuthorizeView>
+        <Authorized>
+            <MudNavLink Href="" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.Home">Lobby</MudNavLink>
+            <MudNavLink Href="Chat" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Chat">Chat</MudNavLink>
+        </Authorized>
+        <NotAuthorized>
+            <MudNavLink Href="Login" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Login">Login</MudNavLink>
+        </NotAuthorized>
+    </AuthorizeView>
+
 </MudNavMenu>
-
-

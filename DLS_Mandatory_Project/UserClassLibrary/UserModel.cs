@@ -1,10 +1,14 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
 using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
-using UserService.Interface;
+using System.Threading.Tasks;
 
-namespace UserService.Models
+namespace UserClassLibrary
 {
     public class UserModel : IGenericObject
     {
@@ -236,13 +240,7 @@ namespace UserService.Models
             ValidatePassword();
             ValidatePhoneNumber();
             ValidateUserName();
-            
+
         }
     }
-}
-
-
-public enum UserRole
-{
-    User
 }

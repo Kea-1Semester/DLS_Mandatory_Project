@@ -8,11 +8,13 @@
         "RabbitMQ": "StartWithoutDebugging",
         "userservice": "StartDebugging",
         "authservice": "StartDebugging",
-        "apigateway": "StartDebugging"
+        "apigateway": "StartDebugging",
         "chatservice-1": "StartDebugging",
+        "chatservice-2": "StartDebugging",
         "Redis-Backplane": "StartWithoutDebugging",
         "nginx-loadbalancer": "StartWithoutDebugging",
-        "chatservice-2": "StartDebugging"
+        "mysql": "StartWithoutDebugging",
+        "postgres": "StartWithoutDebugging"
       }
     }
   }

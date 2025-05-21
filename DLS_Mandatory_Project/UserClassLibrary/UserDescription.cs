@@ -1,9 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text.RegularExpressions;
-using UserService.Interface;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace UserService.Models.CQRS
+namespace UserClassLibrary
 {
     public class UserDescription : UserModel
     {
@@ -11,7 +13,7 @@ namespace UserService.Models.CQRS
         {
 
         }
-        
+
         #region Navigation Properties
         //public User User { get; set; }
 
@@ -25,4 +27,3 @@ namespace UserService.Models.CQRS
 
     }
 }
-

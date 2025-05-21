@@ -1,14 +1,18 @@
-﻿using System.Text.Json.Serialization;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace UserService.Models.DTO
+namespace UserClassLibrary
 {
     public class UserInfo : UserModel
     {
         public Guid Guid { get; set; }
         public long LastModifiedTicks { get; set; }
 
-    
-    
+
+
         public UserInfo()
         {
 
@@ -19,12 +23,3 @@ namespace UserService.Models.DTO
         }
     }
 }
-
-public record UserLoginInfo 
-{
-    public string Email { get; set; }
-    public string Password { get; set; }
-
-}
-
-
