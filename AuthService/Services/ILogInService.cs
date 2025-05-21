@@ -1,4 +1,4 @@
-﻿using AuthClassLibrary;
+using AuthClassLibrary;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AuthService.Services
