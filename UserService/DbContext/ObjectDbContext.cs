@@ -1,6 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using System;
-using UserService.Models;
+using UserClassLibrary;
 
 namespace UserService.DbContext
 {

@@ -1,5 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using UserService.Models.DTO;
+using Microsoft.AspNetCore.Mvc;
+using UserClassLibrary;
 using UserService.Service;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860

@@ -1,4 +1,4 @@
-﻿@page "/Chat"
+﻿@page "/"
 @using DLS_Mandatory_Project.Client.Clients
 @using Microsoft.AspNetCore.Authorization
 @using Microsoft.AspNetCore.SignalR.Client
@@ -6,7 +6,7 @@
 
 @attribute [Authorize]
 
-<PageTitle>Chat</PageTitle>
+<PageTitle>Lobby</PageTitle>
 
 <AuthorizeView>
     <Authorized>
@@ -37,6 +37,7 @@
         You are not authorized!
     </NotAuthorized>
 </AuthorizeView>
+
 
 @code {
     private List<string> messages = [];

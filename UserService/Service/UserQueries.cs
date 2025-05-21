@@ -1,7 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
+using UserClassLibrary;
 using UserService.DbContext;
-using UserService.Models.CQRS;
-using UserService.Models.DTO;
 
 namespace UserService.Service
 {

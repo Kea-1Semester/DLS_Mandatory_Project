@@ -1,6 +1,5 @@
-﻿using UserService.DbContext;
-using UserService.Models.CQRS;
-using UserService.Models.DTO;
+using UserClassLibrary;
+using UserService.DbContext;
 
 namespace UserService.Service
 {

@@ -28,4 +28,7 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\DLS_Mandatory_Project\UserClassLibrary\UserClassLibrary.csproj" />
+  </ItemGroup>
 </Project>

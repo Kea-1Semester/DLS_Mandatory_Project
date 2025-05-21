@@ -1,6 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
+using UserClassLibrary;
 using UserService.DbContext;
-using UserService.Models.DTO;
 using UserService.Service;
 
 namespace UnitTest.UserServiceUnitTest

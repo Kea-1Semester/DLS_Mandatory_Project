@@ -13,7 +13,9 @@ services:
       context: .
       dockerfile: DLS_Mandatory_Project/DLS_Mandatory_Project/Dockerfile
     networks:
-      - chatnet
+      - chat-loadbalance-net
+      - auth-gateway-net
+
 
   RabbitMQ:
     image: rabbitmq:3.12-management  
@@ -29,8 +31,8 @@ services:
       CONNECTION_STRING: Host=postgres;Port=5432;Database=${POSTGRES_DB};Username=${POSTGRES_USER};Password=${POSTGRES_PASSWORD};
     depends_on:
       - postgres
-    # networks:
-    #   - backend
+    networks:
+      - user-service-net
 
   authservice:
     container_name: authservice
@@ -43,9 +45,8 @@ services:
       UserServiceClient__PROD_BASE_URL: http://userservice:8082/LoginData/
     depends_on:
       - mysql
-    # networks:
-    #   - backend
-  
+    networks:
+      - auth-service-net
   
   postgres:
     image: postgres:17.4
@@ -57,10 +58,11 @@ services:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       POSTGRES_HOST: ${POSTGRES_HOST}
+    networks:
+      - user-service-net
     # We can use volumes to persist data in PostgreSQL, but it's not necessary for this example.
     # volumes:
-    #   - postgres_data:/var/lib/postgresql/data 
-
+    #   - postgres_data:/var/lib/postgresql/data
 
   mysql:
     image: mysql:latest
@@ -86,6 +88,10 @@ services:
     depends_on:
       - userservice
       - authservice
+    networks:
+      - auth-gateway-net
+      - auth-service-net
+      - user-service-net
 
   chatservice-1:
     container_name: chatservice-1
@@ -96,7 +102,8 @@ services:
     depends_on:
       - Redis-Backplane
     networks:
-      - chatnet
+      - chat-service-net
+      - chat-backplane-net
 
   chatservice-2:
     container_name: chatservice-2
@@ -107,7 +114,8 @@ services:
     depends_on:
       - Redis-Backplane
     networks:
-      - chatnet    
+      - chat-service-net
+      - chat-backplane-net
 
   nginx-loadbalancer:
     image: nginx:latest    
@@ -115,13 +123,24 @@ services:
       - chatservice-1
       - chatservice-2
     networks:
-      - chatnet
+      - chat-service-net
+      - chat-loadbalance-net
 
   Redis-Backplane:
     image: redis:latest
     networks:
-      - chatnet
+      - chat-backplane-net
 
 networks:
-  chatnet:
+  chat-backplane-net:
+    driver: bridge
+  chat-service-net:
+    driver: bridge
+  chat-loadbalance-net:
+    driver: bridge
+  auth-gateway-net:
+    driver: bridge
+  auth-service-net:
+    driver: bridge
+  user-service-net:
     driver: bridge
