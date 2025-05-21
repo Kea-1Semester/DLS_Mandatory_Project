@@ -10,4 +10,7 @@ services:
     build:
       context: .
       dockerfile: DLS_Mandatory_Project/FileTransferService/Dockerfile
+  
+  RabbitMQ:
+    image: rabbitmq:3.12-management
 
