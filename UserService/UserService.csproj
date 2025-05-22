@@ -30,5 +30,4 @@
   <ItemGroup>
     <ProjectReference Include="..\DLS_Mandatory_Project\UserClassLibrary\UserClassLibrary.csproj" />
   </ItemGroup>
-
 </Project>

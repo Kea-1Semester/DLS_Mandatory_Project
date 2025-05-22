@@ -1,4 +1,4 @@
-﻿using UserClassLibrary;
+using UserClassLibrary;
 using UserService.DbContext;
 
 namespace UserService.Service

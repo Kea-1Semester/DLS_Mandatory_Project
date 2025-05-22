@@ -16,6 +16,7 @@ services:
       - chat-loadbalance-net
       - auth-gateway-net
 
+
   RabbitMQ:
     image: rabbitmq:3.12-management  
     
@@ -48,7 +49,6 @@ services:
       - auth-service-net
       - user-service-net
   
-  
   postgres:
     image: postgres:17.4
     container_name: postgres_user_service_container
@@ -64,7 +64,6 @@ services:
     # We can use volumes to persist data in PostgreSQL, but it's not necessary for this example.
     # volumes:
     #   - postgres_data:/var/lib/postgresql/data
-
 
   mysql:
     image: mysql:latest
