@@ -130,6 +130,19 @@ builder.Services.Configure<ForwardedHeadersOptions>(options =>
     options.KnownProxies.Clear();
 });
 
+if (builder.Environment.IsDevelopment())
+{
+    builder.Services.AddCors(options =>
+    {
+        options.AddPolicy(name: "AllowAll",
+            policy =>
+            {
+                policy.AllowAnyOrigin();
+                policy.AllowAnyHeader();
+                policy.AllowAnyMethod();
+            });
+    });
+}
 
 var app = builder.Build();
 
@@ -213,6 +226,8 @@ if (app.Environment.IsDevelopment())
         c.SwaggerEndpoint("/swagger/v1/swagger.json", "Auth Service API v1");
         c.RoutePrefix = string.Empty; // Serve Swagger UI at the app's root
     });
+
+    app.UseCors("AllowAll");
 }
 
 // Redirect HTTP to HTTPS

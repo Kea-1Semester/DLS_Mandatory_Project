@@ -79,6 +79,7 @@ if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
     builder.Logging.AddConsole();
+    app.UseCors("AllowAll");
 }
 
 // Redirect HTTP to HTTPS

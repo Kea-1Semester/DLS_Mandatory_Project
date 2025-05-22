@@ -116,7 +116,7 @@
       "RateLimitOptions": {
         "EnableRateLimiting": true,
         "Period": "1m",
-        "Limit": 5
+        "Limit": 100
       }
     },
     {

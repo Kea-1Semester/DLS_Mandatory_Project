@@ -46,6 +46,7 @@ services:
       - mysql
     networks:
       - auth-service-net
+      - user-service-net
   
   
   postgres:

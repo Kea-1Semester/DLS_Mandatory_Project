@@ -1,3 +1,6 @@
+######building the docker #############
+# docker build -t rashox/dls_mandatory_project:latest -f DLS_Mandatory_Project/DLS_Mandatory_Project/Dockerfile .
+###################
 # See https://aka.ms/customizecontainer to learn how to customize your debug container and how Visual Studio uses this Dockerfile to build your images for faster debugging.
 
 # This stage is used when running from VS in fast mode (Default for Debug configuration)
@@ -14,8 +17,6 @@ ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["DLS_Mandatory_Project/DLS_Mandatory_Project/DLS_Mandatory_Project.csproj", "DLS_Mandatory_Project/DLS_Mandatory_Project/"]
 COPY ["DLS_Mandatory_Project/DLS_Mandatory_Project.Client/DLS_Mandatory_Project.Client.csproj", "DLS_Mandatory_Project/DLS_Mandatory_Project.Client/"]
-COPY ["DLS_Mandatory_Project/AuthClassLibrary/AuthClassLibrary.csproj", "DLS_Mandatory_Project/AuthClassLibrary/"]
-COPY ["DLS_Mandatory_Project/UserClassLibrary/UserClassLibrary.csproj", "DLS_Mandatory_Project/UserClassLibrary/"]
 RUN dotnet restore "./DLS_Mandatory_Project/DLS_Mandatory_Project/DLS_Mandatory_Project.csproj"
 COPY . .
 WORKDIR "/src/DLS_Mandatory_Project/DLS_Mandatory_Project"

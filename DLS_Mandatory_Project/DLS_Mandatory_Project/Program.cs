@@ -1,14 +1,11 @@
 using Blazored.LocalStorage;
 using DLS_Mandatory_Project.Components;
-using DLS_Mandatory_Project.Components.Account;
-using Microsoft.AspNetCore.Components.Server;
 using Microsoft.AspNetCore.Components.Authorization;
 using MudBlazor.Services;
 using DLS_Mandatory_Project.Client.Clients;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
+using DLS_Mandatory_Project.Client.Services;
+using DLS_Mandatory_Project.Client;
+using DLS_Mandatory_Project.Components.Account;
 
 namespace DLS_Mandatory_Project
 {
@@ -30,30 +27,32 @@ namespace DLS_Mandatory_Project
 
             // Add services to the container.
             builder.Services.AddRazorComponents()
-                .AddInteractiveWebAssemblyComponents();
+                .AddInteractiveWebAssemblyComponents()
+                .AddAuthenticationStateSerialization();
 
+            builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("http://localhost:8086") });
             builder.Services.AddScoped<IChatClient, ChatClient>();
+            builder.Services.AddScoped<AuthService>();
             builder.Services.AddScoped<AuthenticationStateProvider, CustomServerAuthStateProvider>();
-            builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-                .AddJwtBearer();
+
+            builder.Services.AddAuthentication();
             //builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-            //.AddJwtBearer("Bearer", options =>
-            //{
-            //    options.RequireHttpsMetadata = false;
-            //    options.TokenValidationParameters = new TokenValidationParameters
-            //    {
-            //        ValidateIssuer = true,
-            //        ValidateAudience = true,
-            //        ValidateLifetime = true,
-            //        ValidateIssuerSigningKey = true,
+                //.AddJwtBearer(options =>
+                //{
+                //    options.TokenValidationParameters = new TokenValidationParameters
+                //    {
+                //        ValidateIssuer = true,
+                //        ValidateAudience = true,
+                //        ValidateLifetime = true,
+                //        ValidateIssuerSigningKey = true,
+                //        ValidIssuer = builder.Configuration.GetSection("JWT")["Issuer"],
+                //        ValidAudience = builder.Configuration.GetSection("JWT")["Audience"],
+                //        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration.GetSection("JWT")["Token"]!)),
+                //    };
+                //});
 
-            //        ValidIssuer = builder.Configuration["AuthGateway"],
-            //        ValidAudience = builder.Configuration.GetSection("JWT")["Audience"],
-            //        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration.GetSection("JWT")["Token"]!)),
-            //    };
-            //});
             builder.Services.AddAuthorization();
-
+            
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -76,9 +75,6 @@ namespace DLS_Mandatory_Project
             app.MapRazorComponents<App>()
                 .AddInteractiveWebAssemblyRenderMode()
                 .AddAdditionalAssemblies(typeof(Client._Imports).Assembly);
-
-            app.UseAuthentication();
-            app.UseAuthorization();
 
             app.Run();
         }

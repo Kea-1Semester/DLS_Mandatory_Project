@@ -1,10 +1,11 @@
 ﻿@page "/Login"
 @using AuthClassLibrary
-@* @inject CustomClientAuthStateProvider authStateProvider *@
+@using DLS_Mandatory_Project.Client.Services
 @inject NavigationManager NavigationManager
+@inject AuthService AuthService
 
 <h3>Login</h3>
-<EditForm OnInvalidSubmit="OnSubmit" Model="LogIn">
+<EditForm OnSubmit="OnSubmit" Model="LogIn">
     <DataAnnotationsValidator />
 
     <label>Email</label>
@@ -29,7 +30,9 @@
         error = string.Empty;
         try
         {
-            NavigationManager.NavigateTo("");
+            bool loggedIn = await AuthService.Login(LogIn);
+            if (loggedIn)
+                NavigationManager.NavigateTo("/");
         }
         catch (Exception ex)
         {
