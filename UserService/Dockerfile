@@ -13,7 +13,7 @@ FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["UserService/UserService.csproj", "UserService/"]
-COPY ["../DLS_Mandatory_Project/UserClassLibrary/UserClassLibrary.csproj", "DLS_Mandatory_Project/UserClassLibrary/"]
+COPY ["../DLS_Mandatory_Project/UserClassLibrary/UserClassLibrary.csproj", "../DLS_Mandatory_Project/UserClassLibrary/"]
 RUN dotnet restore "./UserService/UserService.csproj"
 COPY . .
 WORKDIR "/src/UserService"

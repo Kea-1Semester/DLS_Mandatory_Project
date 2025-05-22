@@ -13,7 +13,7 @@ FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["AuthService/AuthService.csproj", "AuthService/"]
-COPY ["../DLS_Mandatory_Project/AuthClassLibrary/AuthClassLibrary.csproj", "DLS_Mandatory_Project/AuthClassLibrary/"]
+COPY ["../DLS_Mandatory_Project/AuthClassLibrary/AuthClassLibrary.csproj", "../DLS_Mandatory_Project/AuthClassLibrary/"]
 RUN dotnet restore "./AuthService/AuthService.csproj"
 COPY . .
 WORKDIR "/src/AuthService"
