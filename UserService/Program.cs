@@ -17,6 +17,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     {
         //TODO: options.Authority = jwt["Authority"]; // e.g. authService http://..
 
+
         options.TokenValidationParameters = new TokenValidationParameters
         {
             ValidateIssuer = true,

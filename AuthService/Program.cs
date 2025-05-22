@@ -20,7 +20,6 @@ var jwt = configuration.GetSection("JWT");
 //var userService = configuration.GetSection("UserServiceClient");
 var googleUserInfoUrl = configuration.GetSection("Authorization:Google");
 
-
 // Get BASE_URL from environment variables from docker-compose
 var userService = Environment.GetEnvironmentVariable("UserServiceClient__PROD_BASE_URL")
                        ?? builder.Configuration.GetSection("UserServiceClient")["DEV_BASE_URL"];
