@@ -35,7 +35,9 @@
         function sanitizeInput(input) {
             return DOMPurify.sanitize(input);
         }
-    // //prevent XSS
+    /***********prevent XSS***********
+    **********************************/
+
     //     document.getElementById('xssForm').onsubmit = async function(e) {
     //     e.preventDefault();
     //     const data = {
@@ -58,7 +60,8 @@
     //     alert('Request sent! Check your application for XSS.');
     // };
 
-    // Vulnerable to XSS
+    /***********Vulnerable to XSS***********
+    **********************************/
     document.getElementById('xssForm').onsubmit = async function(e) {
         e.preventDefault();
         const data = {

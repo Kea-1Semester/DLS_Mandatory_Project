@@ -1,0 +1,243 @@
+{
+	"info": {
+		"_postman_id": "0af402db-1701-4eab-aeff-f9a904e6d8dc",
+		"name": "Security in web development",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29833335"
+	},
+	"item": [
+		{
+			"name": "Login endpoint",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "ClientId",
+						"value": "test-client-1",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n{\r\n  // Test to show comments \r\n  \"email\": \"jane.smith@example.com\",\r\n  \"password\": \"Password123#\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8086/Auth/Login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8086",
+					"path": [
+						"Auth",
+						"Login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all users",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8086/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8086",
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create guid - idempotent",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8086/user/CreateGuid",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8086",
+					"path": [
+						"user",
+						"CreateGuid"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create user",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"firstName\": \"Rasho\",\r\n  \"lastName\": \"Rasho\",\r\n  \"email\": \"Rasho@outlook.dk\",\r\n  \"phoneNumber\": \"21122312\",\r\n  \"userName\": \"Rasho\",\r\n  \"password\": \"SSO#1509ss\",\r\n  \"lastModifiedTicks\": 0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8086/User?guid=a3c5ab04-89b8-44a3-8a22-97cbba0cbfb5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8086",
+					"path": [
+						"User"
+					],
+					"query": [
+						{
+							"key": "guid",
+							"value": "a3c5ab04-89b8-44a3-8a22-97cbba0cbfb5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get the user by guid",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8086/user/123e4567-e89b-12d3-a456-426614174010",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8086",
+					"path": [
+						"user",
+						"123e4567-e89b-12d3-a456-426614174010"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login with google",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8086/Auth/login-google",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8086",
+					"path": [
+						"Auth",
+						"login-google"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Testing the cors",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "OPTIONS",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"firstName\": \"Rasho\",\r\n  \"lastName\": \"Rasho\",\r\n  \"email\": \"Rasho@outlook.dk\",\r\n  \"phoneNumber\": \"21122312\",\r\n  \"userName\": \"Rasho\",\r\n  \"password\": \"SSO#1509ss\",\r\n  \"lastModifiedTicks\": 0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7289/User?guid=a3c5ab04-89b8-44a3-8a22-97cbba0cbfb5",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7289",
+					"path": [
+						"User"
+					],
+					"query": [
+						{
+							"key": "guid",
+							"value": "a3c5ab04-89b8-44a3-8a22-97cbba0cbfb5"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
