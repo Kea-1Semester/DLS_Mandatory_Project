@@ -30,6 +30,9 @@ services:
       # DATABASE_URL: postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
       CONNECTION_STRING: Host=postgres;Port=5432;Database=${POSTGRES_DB};Username=${POSTGRES_USER};Password=${POSTGRES_PASSWORD};
       ASPNETCORE_URLS: http://+:8082
+    volumes:
+        - ./logs/userservice:/logs/userservice
+       # - ./logs:/logs/auth
     depends_on:
       - postgres
     networks:
@@ -46,6 +49,9 @@ services:
       # UserServiceClient__PROD_BASE_URL: http://userservice:8082/LoginData/
       UserServiceClient__PROD_BASE_URL: http://host.docker.internal:8082/LoginData/
       ASPNETCORE_URLS: http://+:8084
+    volumes:
+      # - ./logs:/logs
+      - ./logs/authservice:/logs/authservice
     depends_on:
       - mysql
     networks:
@@ -135,6 +141,48 @@ services:
     image: redis:latest
     networks:
       - chat-backplane-net
+
+
+  loki:
+    image: grafana/loki:latest
+    container_name: loki
+    ports:
+      - "3100:3100"
+    volumes:
+      - ./docker-compose-config-yaml/loki-config.yaml:/etc/loki/local-config.yaml
+      - ./loki-data:/loki
+    environment:
+      - LOKI_CONFIG_FILE=/etc/loki/local-config.yaml
+    command: -config.file=/etc/loki/local-config.yaml
+    restart: unless-stopped
+
+  promtail:
+    image: grafana/promtail:2.9.1
+    container_name: promtail
+    volumes:
+      - ./logs/userservice:/var/log/userservice
+      - ./logs/chatservice:/var/log/chatservice
+      - ./logs/authservice:/var/log/authservice
+      - ./logs/apigateway:/var/log/apigateway
+      # - ./logs:/var/log
+      - ./docker-compose-config-yaml/promtail-config.yaml:/etc/promtail/config.yaml
+    command: -config.file=/etc/promtail/config.yaml
+
+  grafana:
+    image: grafana/grafana:10.1.0
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    volumes:
+      - grafana-data:/var/lib/grafana # Mount volume for persistent storage
+
+volumes:
+  loki-data:
+  grafana-data:
+  var-log:
 
 networks:
   chat-backplane-net:

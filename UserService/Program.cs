@@ -4,12 +4,29 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
 using System.Text;
+using Serilog;
 using UserService.DbContext;
 using UserService.Service;
+
+string logPath = "../logs/userservice/UserService.log";
+
+Log.Logger = new LoggerConfiguration()
+    .MinimumLevel.Information() 
+    .MinimumLevel.Override("Microsoft", Serilog.Events.LogEventLevel.Warning)
+    .MinimumLevel.Override("System", Serilog.Events.LogEventLevel.Warning)    
+    .WriteTo.File(path: logPath,
+        rollingInterval: RollingInterval.Day,
+        rollOnFileSizeLimit: true,
+        fileSizeLimitBytes: 524288000,
+        retainedFileCountLimit: 21
+        )
+    .CreateLogger();
+
 
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
 var jwt = configuration.GetSection("JWT");
+
 
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -96,6 +113,11 @@ builder.Services.AddSwaggerGen(c =>
     var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
     c.IncludeXmlComments(xmlPath);
 });
+
+
+
+builder.Host.UseSerilog();
+
 
 var app = builder.Build();
 

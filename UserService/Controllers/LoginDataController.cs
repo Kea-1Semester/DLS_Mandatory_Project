@@ -1,4 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
+using Serilog;
+using Serilog.Core;
 using UserClassLibrary;
 using UserService.Service;
 
@@ -14,14 +16,18 @@ namespace UserService.Controllers
     public class LoginDataController : ControllerBase
     {
         private readonly UserQueries _userQueries;
+        private readonly ILogger<LoginDataController> _logger;
+
+
 
         /// <summary>
         /// Constructor for LoginDataController.
         /// </summary>
         /// <param name="userQueries">The UserQueries service for database operations.</param>
-        public LoginDataController(UserQueries userQueries)
+        public LoginDataController(UserQueries userQueries, ILogger<LoginDataController> logger)
         {
             _userQueries = userQueries;
+            _logger = logger;
         }
 
 
@@ -41,15 +47,16 @@ namespace UserService.Controllers
             try
             {
                 UserInfo userlogin = new(email: userLogin.Email, password: userLogin.Password);
+                    
                 userlogin.ValidateEmail();
                 userlogin.ValidatePassword();
+                
 
                 // Retrieve the user by email
                 dynamic userData = await _userQueries.GetUserByEmail(userlogin.Email);
                 if (userData == null)
                 {
-                    System.Diagnostics.Debug.WriteLine("User not found");
-
+                    System.Diagnostics.Debug.WriteLine("User not found");            
                     return NotFound(new { error = "Invalid email or password, please try again" });
                 }
 
@@ -57,8 +64,12 @@ namespace UserService.Controllers
                 // Check if the password is correct
                 if (!BCrypt.Net.BCrypt.Verify(userlogin.Password, userData.HashPassword))
                 {
+                    _logger.LogWarning("Invalid password attempt for email: {Email}", userlogin.Email);
+
                     return Unauthorized(new { error = "Invalid email or password, please try again" });
                 }
+
+                _logger.LogInformation("User login attempt with email: {Email}", userlogin.Email);
 
                 // Return the user's login data
                 return Ok(new
