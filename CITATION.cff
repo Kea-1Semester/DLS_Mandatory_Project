@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+title: AAI Exam
+message: Please cite this software using these metadata.
+type: software
+authors:
+  - given-names: Oliver
+    family-names: Bresson
+  - given-names: Rasmus
+    family-names: K. Ahlstrand
+url: "https://github.com/Kea-1Semester/AAI_Exam"
