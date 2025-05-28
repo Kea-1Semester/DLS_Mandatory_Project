@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-title: AAI Exam
+title: DLS_Mandatory_Project
 message: Please cite this software using these metadata.
 type: software
 authors:
@@ -7,4 +7,6 @@ authors:
     family-names: Bresson
   - given-names: Rasmus
     family-names: K. Ahlstrand
-url: "https://github.com/Kea-1Semester/AAI_Exam"
+  - given-names: Shero
+    family-names: Shvan
+url: "https://github.com/Kea-1Semester/DLS_Mandatory_Project"
