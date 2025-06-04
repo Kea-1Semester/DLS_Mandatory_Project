@@ -1,7 +1,7 @@
 # Your GitHub workflow file under .github/workflows/
 # Trigger the action on push to main
 on: 
-  [created, pull_request, push]:
+  [created, pull_request, push, edited]:
     branches:
       - main
 
