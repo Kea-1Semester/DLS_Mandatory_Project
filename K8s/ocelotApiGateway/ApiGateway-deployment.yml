@@ -1,0 +1,23 @@
+apiVersion: apps/v1  
+kind: Deployment
+metadata:
+  name: apigateway
+  labels:
+    app: apigateway
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: apigateway
+  template:
+    metadata:
+      labels:
+        app: apigateway
+    spec:
+      containers:
+      - name: apigateway
+        image: rashox/apigateway:latest # Docker Hub image name
+        imagePullPolicy: Always     # Pull the image from Docker Hub every time the pod is created
+        ports:
+        - containerPort: 8086
+        - containerPort: 8087

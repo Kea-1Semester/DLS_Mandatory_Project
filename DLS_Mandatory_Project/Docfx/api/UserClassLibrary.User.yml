@@ -1,0 +1,663 @@
+### YamlMime:ManagedReference
+items:
+- uid: UserClassLibrary.User
+  commentId: T:UserClassLibrary.User
+  id: User
+  parent: UserClassLibrary
+  children:
+  - UserClassLibrary.User.#ctor
+  - UserClassLibrary.User.Guid
+  - UserClassLibrary.User.Id
+  - UserClassLibrary.User.UserDescriptions
+  - UserClassLibrary.User.UserRemoved
+  langs:
+  - csharp
+  - vb
+  name: User
+  nameWithType: User
+  fullName: UserClassLibrary.User
+  type: Class
+  source:
+    remote:
+      path: DLS_Mandatory_Project/UserClassLibrary/User.cs
+      branch: Oliver
+      repo: https://github.com/Kea-1Semester/DLS_Mandatory_Project
+    id: User
+    path: ../UserClassLibrary/User.cs
+    startLine: 11
+  assemblies:
+  - UserClassLibrary
+  namespace: UserClassLibrary
+  syntax:
+    content: public class User
+    content.vb: Public Class User
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: UserClassLibrary.User.Guid
+  commentId: P:UserClassLibrary.User.Guid
+  id: Guid
+  parent: UserClassLibrary.User
+  langs:
+  - csharp
+  - vb
+  name: Guid
+  nameWithType: User.Guid
+  fullName: UserClassLibrary.User.Guid
+  type: Property
+  source:
+    remote:
+      path: DLS_Mandatory_Project/UserClassLibrary/User.cs
+      branch: Oliver
+      repo: https://github.com/Kea-1Semester/DLS_Mandatory_Project
+    id: Guid
+    path: ../UserClassLibrary/User.cs
+    startLine: 13
+  assemblies:
+  - UserClassLibrary
+  namespace: UserClassLibrary
+  syntax:
+    content: >-
+      [Required]
+
+      public Guid Guid { get; set; }
+    parameters: []
+    return:
+      type: System.Guid
+    content.vb: >-
+      <Required>
+
+      Public Property Guid As Guid
+  overload: UserClassLibrary.User.Guid*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.RequiredAttribute
+    ctor: System.ComponentModel.DataAnnotations.RequiredAttribute.#ctor
+    arguments: []
+- uid: UserClassLibrary.User.Id
+  commentId: P:UserClassLibrary.User.Id
+  id: Id
+  parent: UserClassLibrary.User
+  langs:
+  - csharp
+  - vb
+  name: Id
+  nameWithType: User.Id
+  fullName: UserClassLibrary.User.Id
+  type: Property
+  source:
+    remote:
+      path: DLS_Mandatory_Project/UserClassLibrary/User.cs
+      branch: Oliver
+      repo: https://github.com/Kea-1Semester/DLS_Mandatory_Project
+    id: Id
+    path: ../UserClassLibrary/User.cs
+    startLine: 16
+  assemblies:
+  - UserClassLibrary
+  namespace: UserClassLibrary
+  syntax:
+    content: >-
+      [Required]
+
+      [Key]
+
+      [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+
+      public int Id { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: >-
+      <Required>
+
+      <Key>
+
+      <DatabaseGenerated(DatabaseGeneratedOption.Identity)>
+
+      Public Property Id As Integer
+  overload: UserClassLibrary.User.Id*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.RequiredAttribute
+    ctor: System.ComponentModel.DataAnnotations.RequiredAttribute.#ctor
+    arguments: []
+  - type: System.ComponentModel.DataAnnotations.KeyAttribute
+    ctor: System.ComponentModel.DataAnnotations.KeyAttribute.#ctor
+    arguments: []
+  - type: System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedAttribute
+    ctor: System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedAttribute.#ctor(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption)
+    arguments:
+    - type: System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption
+      value: 1
+- uid: UserClassLibrary.User.#ctor
+  commentId: M:UserClassLibrary.User.#ctor
+  id: '#ctor'
+  parent: UserClassLibrary.User
+  langs:
+  - csharp
+  - vb
+  name: User()
+  nameWithType: User.User()
+  fullName: UserClassLibrary.User.User()
+  type: Constructor
+  source:
+    remote:
+      path: DLS_Mandatory_Project/UserClassLibrary/User.cs
+      branch: Oliver
+      repo: https://github.com/Kea-1Semester/DLS_Mandatory_Project
+    id: .ctor
+    path: ../UserClassLibrary/User.cs
+    startLine: 21
+  assemblies:
+  - UserClassLibrary
+  namespace: UserClassLibrary
+  syntax:
+    content: public User()
+    content.vb: Public Sub New()
+  overload: UserClassLibrary.User.#ctor*
+  nameWithType.vb: User.New()
+  fullName.vb: UserClassLibrary.User.New()
+  name.vb: New()
+- uid: UserClassLibrary.User.UserDescriptions
+  commentId: P:UserClassLibrary.User.UserDescriptions
+  id: UserDescriptions
+  parent: UserClassLibrary.User
+  langs:
+  - csharp
+  - vb
+  name: UserDescriptions
+  nameWithType: User.UserDescriptions
+  fullName: UserClassLibrary.User.UserDescriptions
+  type: Property
+  source:
+    remote:
+      path: DLS_Mandatory_Project/UserClassLibrary/User.cs
+      branch: Oliver
+      repo: https://github.com/Kea-1Semester/DLS_Mandatory_Project
+    id: UserDescriptions
+    path: ../UserClassLibrary/User.cs
+    startLine: 31
+  assemblies:
+  - UserClassLibrary
+  namespace: UserClassLibrary
+  summary: These properties are used to create a relationship with Person class (1 to many relationship)
+  example: []
+  syntax:
+    content: public ICollection<UserDescription> UserDescriptions { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.ICollection{UserClassLibrary.UserDescription}
+    content.vb: Public Property UserDescriptions As ICollection(Of UserDescription)
+  overload: UserClassLibrary.User.UserDescriptions*
+- uid: UserClassLibrary.User.UserRemoved
+  commentId: P:UserClassLibrary.User.UserRemoved
+  id: UserRemoved
+  parent: UserClassLibrary.User
+  langs:
+  - csharp
+  - vb
+  name: UserRemoved
+  nameWithType: User.UserRemoved
+  fullName: UserClassLibrary.User.UserRemoved
+  type: Property
+  source:
+    remote:
+      path: DLS_Mandatory_Project/UserClassLibrary/User.cs
+      branch: Oliver
+      repo: https://github.com/Kea-1Semester/DLS_Mandatory_Project
+    id: UserRemoved
+    path: ../UserClassLibrary/User.cs
+    startLine: 32
+  assemblies:
+  - UserClassLibrary
+  namespace: UserClassLibrary
+  syntax:
+    content: >-
+      [JsonIgnore]
+
+      public ICollection<UserRemoved> UserRemoved { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.ICollection{UserClassLibrary.UserRemoved}
+    content.vb: >-
+      <JsonIgnore>
+
+      Public Property UserRemoved As ICollection(Of UserRemoved)
+  overload: UserClassLibrary.User.UserRemoved*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonIgnoreAttribute
+    ctor: System.Text.Json.Serialization.JsonIgnoreAttribute.#ctor
+    arguments: []
+references:
+- uid: UserClassLibrary
+  commentId: N:UserClassLibrary
+  href: UserClassLibrary.html
+  name: UserClassLibrary
+  nameWithType: UserClassLibrary
+  fullName: UserClassLibrary
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: UserClassLibrary.User.Guid*
+  commentId: Overload:UserClassLibrary.User.Guid
+  href: UserClassLibrary.User.html#UserClassLibrary_User_Guid
+  name: Guid
+  nameWithType: User.Guid
+  fullName: UserClassLibrary.User.Guid
+- uid: System.Guid
+  commentId: T:System.Guid
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.guid
+  name: Guid
+  nameWithType: Guid
+  fullName: System.Guid
+- uid: UserClassLibrary.User.Id*
+  commentId: Overload:UserClassLibrary.User.Id
+  href: UserClassLibrary.User.html#UserClassLibrary_User_Id
+  name: Id
+  nameWithType: User.Id
+  fullName: UserClassLibrary.User.Id
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: UserClassLibrary.User.#ctor*
+  commentId: Overload:UserClassLibrary.User.#ctor
+  href: UserClassLibrary.User.html#UserClassLibrary_User__ctor
+  name: User
+  nameWithType: User.User
+  fullName: UserClassLibrary.User.User
+  nameWithType.vb: User.New
+  fullName.vb: UserClassLibrary.User.New
+  name.vb: New
+- uid: UserClassLibrary.User.UserDescriptions*
+  commentId: Overload:UserClassLibrary.User.UserDescriptions
+  href: UserClassLibrary.User.html#UserClassLibrary_User_UserDescriptions
+  name: UserDescriptions
+  nameWithType: User.UserDescriptions
+  fullName: UserClassLibrary.User.UserDescriptions
+- uid: System.Collections.Generic.ICollection{UserClassLibrary.UserDescription}
+  commentId: T:System.Collections.Generic.ICollection{UserClassLibrary.UserDescription}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.ICollection`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  name: ICollection<UserDescription>
+  nameWithType: ICollection<UserDescription>
+  fullName: System.Collections.Generic.ICollection<UserClassLibrary.UserDescription>
+  nameWithType.vb: ICollection(Of UserDescription)
+  fullName.vb: System.Collections.Generic.ICollection(Of UserClassLibrary.UserDescription)
+  name.vb: ICollection(Of UserDescription)
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: <
+  - uid: UserClassLibrary.UserDescription
+    name: UserDescription
+    href: UserClassLibrary.UserDescription.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: UserClassLibrary.UserDescription
+    name: UserDescription
+    href: UserClassLibrary.UserDescription.html
+  - name: )
+- uid: System.Collections.Generic.ICollection`1
+  commentId: T:System.Collections.Generic.ICollection`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  name: ICollection<T>
+  nameWithType: ICollection<T>
+  fullName: System.Collections.Generic.ICollection<T>
+  nameWithType.vb: ICollection(Of T)
+  fullName.vb: System.Collections.Generic.ICollection(Of T)
+  name.vb: ICollection(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: UserClassLibrary.User.UserRemoved*
+  commentId: Overload:UserClassLibrary.User.UserRemoved
+  href: UserClassLibrary.User.html#UserClassLibrary_User_UserRemoved
+  name: UserRemoved
+  nameWithType: User.UserRemoved
+  fullName: UserClassLibrary.User.UserRemoved
+- uid: System.Collections.Generic.ICollection{UserClassLibrary.UserRemoved}
+  commentId: T:System.Collections.Generic.ICollection{UserClassLibrary.UserRemoved}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.ICollection`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  name: ICollection<UserRemoved>
+  nameWithType: ICollection<UserRemoved>
+  fullName: System.Collections.Generic.ICollection<UserClassLibrary.UserRemoved>
+  nameWithType.vb: ICollection(Of UserRemoved)
+  fullName.vb: System.Collections.Generic.ICollection(Of UserClassLibrary.UserRemoved)
+  name.vb: ICollection(Of UserRemoved)
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: <
+  - uid: UserClassLibrary.UserRemoved
+    name: UserRemoved
+    href: UserClassLibrary.UserRemoved.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: UserClassLibrary.UserRemoved
+    name: UserRemoved
+    href: UserClassLibrary.UserRemoved.html
+  - name: )

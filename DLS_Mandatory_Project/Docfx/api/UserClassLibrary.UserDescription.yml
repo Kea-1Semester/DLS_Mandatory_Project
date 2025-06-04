@@ -1,0 +1,636 @@
+### YamlMime:ManagedReference
+items:
+- uid: UserClassLibrary.UserDescription
+  commentId: T:UserClassLibrary.UserDescription
+  id: UserDescription
+  parent: UserClassLibrary
+  children:
+  - UserClassLibrary.UserDescription.#ctor
+  - UserClassLibrary.UserDescription.ModifiedDate
+  - UserClassLibrary.UserDescription.UserId
+  langs:
+  - csharp
+  - vb
+  name: UserDescription
+  nameWithType: UserDescription
+  fullName: UserClassLibrary.UserDescription
+  type: Class
+  source:
+    remote:
+      path: DLS_Mandatory_Project/UserClassLibrary/UserDescription.cs
+      branch: Oliver
+      repo: https://github.com/Kea-1Semester/DLS_Mandatory_Project
+    id: UserDescription
+    path: ../UserClassLibrary/UserDescription.cs
+    startLine: 9
+  assemblies:
+  - UserClassLibrary
+  namespace: UserClassLibrary
+  syntax:
+    content: 'public class UserDescription : UserModel, IGenericObject'
+    content.vb: Public Class UserDescription Inherits UserModel Implements IGenericObject
+  inheritance:
+  - System.Object
+  - UserClassLibrary.UserModel
+  implements:
+  - UserClassLibrary.IGenericObject
+  inheritedMembers:
+  - UserClassLibrary.UserModel.Id
+  - UserClassLibrary.UserModel.FirstName
+  - UserClassLibrary.UserModel.LastName
+  - UserClassLibrary.UserModel.Email
+  - UserClassLibrary.UserModel.PhoneNumber
+  - UserClassLibrary.UserModel.UserName
+  - UserClassLibrary.UserModel.Password
+  - UserClassLibrary.UserModel.RoleCsv
+  - UserClassLibrary.UserModel.Equals(System.Object)
+  - UserClassLibrary.UserModel.GetHashCode
+  - UserClassLibrary.UserModel.ToString
+  - UserClassLibrary.UserModel.ValidateFirstName
+  - UserClassLibrary.UserModel.ValidateLastName
+  - UserClassLibrary.UserModel.ValidateEmail
+  - UserClassLibrary.UserModel.ValidatePhoneNumber
+  - UserClassLibrary.UserModel.ValidateUserName
+  - UserClassLibrary.UserModel.ValidatePassword
+  - UserClassLibrary.UserModel.Validate
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+- uid: UserClassLibrary.UserDescription.#ctor
+  commentId: M:UserClassLibrary.UserDescription.#ctor
+  id: '#ctor'
+  parent: UserClassLibrary.UserDescription
+  langs:
+  - csharp
+  - vb
+  name: UserDescription()
+  nameWithType: UserDescription.UserDescription()
+  fullName: UserClassLibrary.UserDescription.UserDescription()
+  type: Constructor
+  source:
+    remote:
+      path: DLS_Mandatory_Project/UserClassLibrary/UserDescription.cs
+      branch: Oliver
+      repo: https://github.com/Kea-1Semester/DLS_Mandatory_Project
+    id: .ctor
+    path: ../UserClassLibrary/UserDescription.cs
+    startLine: 11
+  assemblies:
+  - UserClassLibrary
+  namespace: UserClassLibrary
+  syntax:
+    content: public UserDescription()
+    content.vb: Public Sub New()
+  overload: UserClassLibrary.UserDescription.#ctor*
+  nameWithType.vb: UserDescription.New()
+  fullName.vb: UserClassLibrary.UserDescription.New()
+  name.vb: New()
+- uid: UserClassLibrary.UserDescription.ModifiedDate
+  commentId: P:UserClassLibrary.UserDescription.ModifiedDate
+  id: ModifiedDate
+  parent: UserClassLibrary.UserDescription
+  langs:
+  - csharp
+  - vb
+  name: ModifiedDate
+  nameWithType: UserDescription.ModifiedDate
+  fullName: UserClassLibrary.UserDescription.ModifiedDate
+  type: Property
+  source:
+    remote:
+      path: DLS_Mandatory_Project/UserClassLibrary/UserDescription.cs
+      branch: Oliver
+      repo: https://github.com/Kea-1Semester/DLS_Mandatory_Project
+    id: ModifiedDate
+    path: ../UserClassLibrary/UserDescription.cs
+    startLine: 20
+  assemblies:
+  - UserClassLibrary
+  namespace: UserClassLibrary
+  syntax:
+    content: public DateTime ModifiedDate { get; set; }
+    parameters: []
+    return:
+      type: System.DateTime
+    content.vb: Public Property ModifiedDate As Date
+  overload: UserClassLibrary.UserDescription.ModifiedDate*
+- uid: UserClassLibrary.UserDescription.UserId
+  commentId: P:UserClassLibrary.UserDescription.UserId
+  id: UserId
+  parent: UserClassLibrary.UserDescription
+  langs:
+  - csharp
+  - vb
+  name: UserId
+  nameWithType: UserDescription.UserId
+  fullName: UserClassLibrary.UserDescription.UserId
+  type: Property
+  source:
+    remote:
+      path: DLS_Mandatory_Project/UserClassLibrary/UserDescription.cs
+      branch: Oliver
+      repo: https://github.com/Kea-1Semester/DLS_Mandatory_Project
+    id: UserId
+    path: ../UserClassLibrary/UserDescription.cs
+    startLine: 21
+  assemblies:
+  - UserClassLibrary
+  namespace: UserClassLibrary
+  syntax:
+    content: >-
+      [ForeignKey("User")]
+
+      public int UserId { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: >-
+      <ForeignKey("User")>
+
+      Public Property UserId As Integer
+  overload: UserClassLibrary.UserDescription.UserId*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.Schema.ForeignKeyAttribute
+    ctor: System.ComponentModel.DataAnnotations.Schema.ForeignKeyAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: User
+references:
+- uid: UserClassLibrary
+  commentId: N:UserClassLibrary
+  href: UserClassLibrary.html
+  name: UserClassLibrary
+  nameWithType: UserClassLibrary
+  fullName: UserClassLibrary
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: UserClassLibrary.UserModel
+  commentId: T:UserClassLibrary.UserModel
+  parent: UserClassLibrary
+  href: UserClassLibrary.UserModel.html
+  name: UserModel
+  nameWithType: UserModel
+  fullName: UserClassLibrary.UserModel
+- uid: UserClassLibrary.IGenericObject
+  commentId: T:UserClassLibrary.IGenericObject
+  parent: UserClassLibrary
+  href: UserClassLibrary.IGenericObject.html
+  name: IGenericObject
+  nameWithType: IGenericObject
+  fullName: UserClassLibrary.IGenericObject
+- uid: UserClassLibrary.UserModel.Id
+  commentId: P:UserClassLibrary.UserModel.Id
+  parent: UserClassLibrary.UserModel
+  href: UserClassLibrary.UserModel.html#UserClassLibrary_UserModel_Id
+  name: Id
+  nameWithType: UserModel.Id
+  fullName: UserClassLibrary.UserModel.Id
+- uid: UserClassLibrary.UserModel.FirstName
+  commentId: P:UserClassLibrary.UserModel.FirstName
+  parent: UserClassLibrary.UserModel
+  href: UserClassLibrary.UserModel.html#UserClassLibrary_UserModel_FirstName
+  name: FirstName
+  nameWithType: UserModel.FirstName
+  fullName: UserClassLibrary.UserModel.FirstName
+- uid: UserClassLibrary.UserModel.LastName
+  commentId: P:UserClassLibrary.UserModel.LastName
+  parent: UserClassLibrary.UserModel
+  href: UserClassLibrary.UserModel.html#UserClassLibrary_UserModel_LastName
+  name: LastName
+  nameWithType: UserModel.LastName
+  fullName: UserClassLibrary.UserModel.LastName
+- uid: UserClassLibrary.UserModel.Email
+  commentId: P:UserClassLibrary.UserModel.Email
+  parent: UserClassLibrary.UserModel
+  href: UserClassLibrary.UserModel.html#UserClassLibrary_UserModel_Email
+  name: Email
+  nameWithType: UserModel.Email
+  fullName: UserClassLibrary.UserModel.Email
+- uid: UserClassLibrary.UserModel.PhoneNumber
+  commentId: P:UserClassLibrary.UserModel.PhoneNumber
+  parent: UserClassLibrary.UserModel
+  href: UserClassLibrary.UserModel.html#UserClassLibrary_UserModel_PhoneNumber
+  name: PhoneNumber
+  nameWithType: UserModel.PhoneNumber
+  fullName: UserClassLibrary.UserModel.PhoneNumber
+- uid: UserClassLibrary.UserModel.UserName
+  commentId: P:UserClassLibrary.UserModel.UserName
+  parent: UserClassLibrary.UserModel
+  href: UserClassLibrary.UserModel.html#UserClassLibrary_UserModel_UserName
+  name: UserName
+  nameWithType: UserModel.UserName
+  fullName: UserClassLibrary.UserModel.UserName
+- uid: UserClassLibrary.UserModel.Password
+  commentId: P:UserClassLibrary.UserModel.Password
+  parent: UserClassLibrary.UserModel
+  href: UserClassLibrary.UserModel.html#UserClassLibrary_UserModel_Password
+  name: Password
+  nameWithType: UserModel.Password
+  fullName: UserClassLibrary.UserModel.Password
+- uid: UserClassLibrary.UserModel.RoleCsv
+  commentId: P:UserClassLibrary.UserModel.RoleCsv
+  parent: UserClassLibrary.UserModel
+  href: UserClassLibrary.UserModel.html#UserClassLibrary_UserModel_RoleCsv
+  name: RoleCsv
+  nameWithType: UserModel.RoleCsv
+  fullName: UserClassLibrary.UserModel.RoleCsv
+- uid: UserClassLibrary.UserModel.Equals(System.Object)
+  commentId: M:UserClassLibrary.UserModel.Equals(System.Object)
+  parent: UserClassLibrary.UserModel
+  isExternal: true
+  href: UserClassLibrary.UserModel.html#UserClassLibrary_UserModel_Equals_System_Object_
+  name: Equals(object)
+  nameWithType: UserModel.Equals(object)
+  fullName: UserClassLibrary.UserModel.Equals(object)
+  nameWithType.vb: UserModel.Equals(Object)
+  fullName.vb: UserClassLibrary.UserModel.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: UserClassLibrary.UserModel.Equals(System.Object)
+    name: Equals
+    href: UserClassLibrary.UserModel.html#UserClassLibrary_UserModel_Equals_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: UserClassLibrary.UserModel.Equals(System.Object)
+    name: Equals
+    href: UserClassLibrary.UserModel.html#UserClassLibrary_UserModel_Equals_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: UserClassLibrary.UserModel.GetHashCode
+  commentId: M:UserClassLibrary.UserModel.GetHashCode
+  parent: UserClassLibrary.UserModel
+  href: UserClassLibrary.UserModel.html#UserClassLibrary_UserModel_GetHashCode
+  name: GetHashCode()
+  nameWithType: UserModel.GetHashCode()
+  fullName: UserClassLibrary.UserModel.GetHashCode()
+  spec.csharp:
+  - uid: UserClassLibrary.UserModel.GetHashCode
+    name: GetHashCode
+    href: UserClassLibrary.UserModel.html#UserClassLibrary_UserModel_GetHashCode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: UserClassLibrary.UserModel.GetHashCode
+    name: GetHashCode
+    href: UserClassLibrary.UserModel.html#UserClassLibrary_UserModel_GetHashCode
+  - name: (
+  - name: )
+- uid: UserClassLibrary.UserModel.ToString
+  commentId: M:UserClassLibrary.UserModel.ToString
+  parent: UserClassLibrary.UserModel
+  href: UserClassLibrary.UserModel.html#UserClassLibrary_UserModel_ToString
+  name: ToString()
+  nameWithType: UserModel.ToString()
+  fullName: UserClassLibrary.UserModel.ToString()
+  spec.csharp:
+  - uid: UserClassLibrary.UserModel.ToString
+    name: ToString
+    href: UserClassLibrary.UserModel.html#UserClassLibrary_UserModel_ToString
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: UserClassLibrary.UserModel.ToString
+    name: ToString
+    href: UserClassLibrary.UserModel.html#UserClassLibrary_UserModel_ToString
+  - name: (
+  - name: )
+- uid: UserClassLibrary.UserModel.ValidateFirstName
+  commentId: M:UserClassLibrary.UserModel.ValidateFirstName
+  parent: UserClassLibrary.UserModel
+  href: UserClassLibrary.UserModel.html#UserClassLibrary_UserModel_ValidateFirstName
+  name: ValidateFirstName()
+  nameWithType: UserModel.ValidateFirstName()
+  fullName: UserClassLibrary.UserModel.ValidateFirstName()
+  spec.csharp:
+  - uid: UserClassLibrary.UserModel.ValidateFirstName
+    name: ValidateFirstName
+    href: UserClassLibrary.UserModel.html#UserClassLibrary_UserModel_ValidateFirstName
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: UserClassLibrary.UserModel.ValidateFirstName
+    name: ValidateFirstName
+    href: UserClassLibrary.UserModel.html#UserClassLibrary_UserModel_ValidateFirstName
+  - name: (
+  - name: )
+- uid: UserClassLibrary.UserModel.ValidateLastName
+  commentId: M:UserClassLibrary.UserModel.ValidateLastName
+  parent: UserClassLibrary.UserModel
+  href: UserClassLibrary.UserModel.html#UserClassLibrary_UserModel_ValidateLastName
+  name: ValidateLastName()
+  nameWithType: UserModel.ValidateLastName()
+  fullName: UserClassLibrary.UserModel.ValidateLastName()
+  spec.csharp:
+  - uid: UserClassLibrary.UserModel.ValidateLastName
+    name: ValidateLastName
+    href: UserClassLibrary.UserModel.html#UserClassLibrary_UserModel_ValidateLastName
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: UserClassLibrary.UserModel.ValidateLastName
+    name: ValidateLastName
+    href: UserClassLibrary.UserModel.html#UserClassLibrary_UserModel_ValidateLastName
+  - name: (
+  - name: )
+- uid: UserClassLibrary.UserModel.ValidateEmail
+  commentId: M:UserClassLibrary.UserModel.ValidateEmail
+  parent: UserClassLibrary.UserModel
+  href: UserClassLibrary.UserModel.html#UserClassLibrary_UserModel_ValidateEmail
+  name: ValidateEmail()
+  nameWithType: UserModel.ValidateEmail()
+  fullName: UserClassLibrary.UserModel.ValidateEmail()
+  spec.csharp:
+  - uid: UserClassLibrary.UserModel.ValidateEmail
+    name: ValidateEmail
+    href: UserClassLibrary.UserModel.html#UserClassLibrary_UserModel_ValidateEmail
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: UserClassLibrary.UserModel.ValidateEmail
+    name: ValidateEmail
+    href: UserClassLibrary.UserModel.html#UserClassLibrary_UserModel_ValidateEmail
+  - name: (
+  - name: )
+- uid: UserClassLibrary.UserModel.ValidatePhoneNumber
+  commentId: M:UserClassLibrary.UserModel.ValidatePhoneNumber
+  parent: UserClassLibrary.UserModel
+  href: UserClassLibrary.UserModel.html#UserClassLibrary_UserModel_ValidatePhoneNumber
+  name: ValidatePhoneNumber()
+  nameWithType: UserModel.ValidatePhoneNumber()
+  fullName: UserClassLibrary.UserModel.ValidatePhoneNumber()
+  spec.csharp:
+  - uid: UserClassLibrary.UserModel.ValidatePhoneNumber
+    name: ValidatePhoneNumber
+    href: UserClassLibrary.UserModel.html#UserClassLibrary_UserModel_ValidatePhoneNumber
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: UserClassLibrary.UserModel.ValidatePhoneNumber
+    name: ValidatePhoneNumber
+    href: UserClassLibrary.UserModel.html#UserClassLibrary_UserModel_ValidatePhoneNumber
+  - name: (
+  - name: )
+- uid: UserClassLibrary.UserModel.ValidateUserName
+  commentId: M:UserClassLibrary.UserModel.ValidateUserName
+  parent: UserClassLibrary.UserModel
+  href: UserClassLibrary.UserModel.html#UserClassLibrary_UserModel_ValidateUserName
+  name: ValidateUserName()
+  nameWithType: UserModel.ValidateUserName()
+  fullName: UserClassLibrary.UserModel.ValidateUserName()
+  spec.csharp:
+  - uid: UserClassLibrary.UserModel.ValidateUserName
+    name: ValidateUserName
+    href: UserClassLibrary.UserModel.html#UserClassLibrary_UserModel_ValidateUserName
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: UserClassLibrary.UserModel.ValidateUserName
+    name: ValidateUserName
+    href: UserClassLibrary.UserModel.html#UserClassLibrary_UserModel_ValidateUserName
+  - name: (
+  - name: )
+- uid: UserClassLibrary.UserModel.ValidatePassword
+  commentId: M:UserClassLibrary.UserModel.ValidatePassword
+  parent: UserClassLibrary.UserModel
+  href: UserClassLibrary.UserModel.html#UserClassLibrary_UserModel_ValidatePassword
+  name: ValidatePassword()
+  nameWithType: UserModel.ValidatePassword()
+  fullName: UserClassLibrary.UserModel.ValidatePassword()
+  spec.csharp:
+  - uid: UserClassLibrary.UserModel.ValidatePassword
+    name: ValidatePassword
+    href: UserClassLibrary.UserModel.html#UserClassLibrary_UserModel_ValidatePassword
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: UserClassLibrary.UserModel.ValidatePassword
+    name: ValidatePassword
+    href: UserClassLibrary.UserModel.html#UserClassLibrary_UserModel_ValidatePassword
+  - name: (
+  - name: )
+- uid: UserClassLibrary.UserModel.Validate
+  commentId: M:UserClassLibrary.UserModel.Validate
+  parent: UserClassLibrary.UserModel
+  href: UserClassLibrary.UserModel.html#UserClassLibrary_UserModel_Validate
+  name: Validate()
+  nameWithType: UserModel.Validate()
+  fullName: UserClassLibrary.UserModel.Validate()
+  spec.csharp:
+  - uid: UserClassLibrary.UserModel.Validate
+    name: Validate
+    href: UserClassLibrary.UserModel.html#UserClassLibrary_UserModel_Validate
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: UserClassLibrary.UserModel.Validate
+    name: Validate
+    href: UserClassLibrary.UserModel.html#UserClassLibrary_UserModel_Validate
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: UserClassLibrary.UserDescription.#ctor*
+  commentId: Overload:UserClassLibrary.UserDescription.#ctor
+  href: UserClassLibrary.UserDescription.html#UserClassLibrary_UserDescription__ctor
+  name: UserDescription
+  nameWithType: UserDescription.UserDescription
+  fullName: UserClassLibrary.UserDescription.UserDescription
+  nameWithType.vb: UserDescription.New
+  fullName.vb: UserClassLibrary.UserDescription.New
+  name.vb: New
+- uid: UserClassLibrary.UserDescription.ModifiedDate*
+  commentId: Overload:UserClassLibrary.UserDescription.ModifiedDate
+  href: UserClassLibrary.UserDescription.html#UserClassLibrary_UserDescription_ModifiedDate
+  name: ModifiedDate
+  nameWithType: UserDescription.ModifiedDate
+  fullName: UserClassLibrary.UserDescription.ModifiedDate
+- uid: System.DateTime
+  commentId: T:System.DateTime
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.datetime
+  name: DateTime
+  nameWithType: DateTime
+  fullName: System.DateTime
+  nameWithType.vb: Date
+  fullName.vb: Date
+  name.vb: Date
+- uid: UserClassLibrary.UserDescription.UserId*
+  commentId: Overload:UserClassLibrary.UserDescription.UserId
+  href: UserClassLibrary.UserDescription.html#UserClassLibrary_UserDescription_UserId
+  name: UserId
+  nameWithType: UserDescription.UserId
+  fullName: UserClassLibrary.UserDescription.UserId
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer

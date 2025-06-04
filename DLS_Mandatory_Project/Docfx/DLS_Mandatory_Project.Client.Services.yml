@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: DLS_Mandatory_Project.Client.Services
+  commentId: N:DLS_Mandatory_Project.Client.Services
+  id: DLS_Mandatory_Project.Client.Services
+  children:
+  - DLS_Mandatory_Project.Client.Services.AuthService
+  langs:
+  - csharp
+  - vb
+  name: DLS_Mandatory_Project.Client.Services
+  nameWithType: DLS_Mandatory_Project.Client.Services
+  fullName: DLS_Mandatory_Project.Client.Services
+  type: Namespace
+  assemblies:
+  - DLS_Mandatory_Project.Client
+references:
+- uid: DLS_Mandatory_Project.Client.Services.AuthService
+  commentId: T:DLS_Mandatory_Project.Client.Services.AuthService
+  href: DLS_Mandatory_Project.Client.Services.AuthService.html
+  name: AuthService
+  nameWithType: AuthService
+  fullName: DLS_Mandatory_Project.Client.Services.AuthService

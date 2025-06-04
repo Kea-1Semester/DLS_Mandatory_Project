@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: DLS_Mandatory_Project.Components.Account
+  commentId: N:DLS_Mandatory_Project.Components.Account
+  id: DLS_Mandatory_Project.Components.Account
+  children:
+  - DLS_Mandatory_Project.Components.Account.CustomServerAuthStateProvider
+  langs:
+  - csharp
+  - vb
+  name: DLS_Mandatory_Project.Components.Account
+  nameWithType: DLS_Mandatory_Project.Components.Account
+  fullName: DLS_Mandatory_Project.Components.Account
+  type: Namespace
+  assemblies:
+  - DLS_Mandatory_Project
+references:
+- uid: DLS_Mandatory_Project.Components.Account.CustomServerAuthStateProvider
+  commentId: T:DLS_Mandatory_Project.Components.Account.CustomServerAuthStateProvider
+  href: DLS_Mandatory_Project.Components.Account.CustomServerAuthStateProvider.html
+  name: CustomServerAuthStateProvider
+  nameWithType: CustomServerAuthStateProvider
+  fullName: DLS_Mandatory_Project.Components.Account.CustomServerAuthStateProvider

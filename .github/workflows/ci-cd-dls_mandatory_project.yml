@@ -1,0 +1,31 @@
+name: Auth Service Microservice - Build, Test, Push image to Docker Hub
+
+on:
+  push:
+    branches:
+      - Shero
+    paths:
+       - "DLS_Mandatory_Project/**" # Trigger if files in DLS_Mandatory_Project/ folder change
+
+  workflow_dispatch: # Allows you to manually run the workflow from the Actions tab
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }} # Store your Docker Hub username in GitHub Secrets
+          password: ${{ secrets.DOCKER_PASSWORD }} # Store your Docker Hub password/token in GitHub Secrets
+
+      # Build and push Docker image for DLS_Mandatory_Project microservice
+      # Given the hull path, the Dockerfile is located at DLS_Mandatory_Project/DLS_Mandatory_Project/Dockerfile
+      - name: Build and push Docker image for DLS Mandatory Project microservice
+        run: |
+          docker build -t rashox/dls_mandatory_project:latest -f DLS_Mandatory_Project/DLS_Mandatory_Project/Dockerfile .
+          docker push rashox/dls_mandatory_project:latest 

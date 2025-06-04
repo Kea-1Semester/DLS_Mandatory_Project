@@ -14,6 +14,8 @@ ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["DLS_Mandatory_Project/DLS_Mandatory_Project/DLS_Mandatory_Project.csproj", "DLS_Mandatory_Project/DLS_Mandatory_Project/"]
 COPY ["DLS_Mandatory_Project/DLS_Mandatory_Project.Client/DLS_Mandatory_Project.Client.csproj", "DLS_Mandatory_Project/DLS_Mandatory_Project.Client/"]
+COPY ["DLS_Mandatory_Project/AuthClassLibrary/AuthClassLibrary.csproj", "DLS_Mandatory_Project/AuthClassLibrary/"]
+COPY ["DLS_Mandatory_Project/UserClassLibrary/UserClassLibrary.csproj", "DLS_Mandatory_Project/UserClassLibrary/"]
 RUN dotnet restore "./DLS_Mandatory_Project/DLS_Mandatory_Project/DLS_Mandatory_Project.csproj"
 COPY . .
 WORKDIR "/src/DLS_Mandatory_Project/DLS_Mandatory_Project"

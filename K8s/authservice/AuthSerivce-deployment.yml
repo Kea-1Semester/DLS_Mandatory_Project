@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: authservice
+  labels:
+    app: authservice
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: authservice
+  template:
+    metadata:
+      labels:
+        app: authservice
+    spec:
+      containers:
+      - name: authservice
+        image: rashox/authservice:latest # Docker Hub image name
+        imagePullPolicy: Always     # Pull the image from Docker Hub every time the pod is created
+        ports:
+        - containerPort: 8084
+        - containerPort: 8085
