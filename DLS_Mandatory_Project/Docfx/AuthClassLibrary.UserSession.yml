@@ -1,0 +1,485 @@
+### YamlMime:ManagedReference
+items:
+- uid: AuthClassLibrary.UserSession
+  commentId: T:AuthClassLibrary.UserSession
+  id: UserSession
+  parent: AuthClassLibrary
+  children:
+  - AuthClassLibrary.UserSession.#ctor(System.String,System.String,System.String,System.String)
+  - AuthClassLibrary.UserSession.Email
+  - AuthClassLibrary.UserSession.Id
+  - AuthClassLibrary.UserSession.Name
+  - AuthClassLibrary.UserSession.Role
+  langs:
+  - csharp
+  - vb
+  name: UserSession
+  nameWithType: UserSession
+  fullName: AuthClassLibrary.UserSession
+  type: Class
+  source:
+    remote:
+      path: DLS_Mandatory_Project/AuthClassLibrary/UserSession.cs
+      branch: Oliver
+      repo: https://github.com/Kea-1Semester/DLS_Mandatory_Project
+    id: UserSession
+    path: ../AuthClassLibrary/UserSession.cs
+    startLine: 8
+  assemblies:
+  - AuthClassLibrary
+  namespace: AuthClassLibrary
+  syntax:
+    content: public class UserSession
+    content.vb: Public Class UserSession
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: AuthClassLibrary.UserSession.Id
+  commentId: P:AuthClassLibrary.UserSession.Id
+  id: Id
+  parent: AuthClassLibrary.UserSession
+  langs:
+  - csharp
+  - vb
+  name: Id
+  nameWithType: UserSession.Id
+  fullName: AuthClassLibrary.UserSession.Id
+  type: Property
+  source:
+    remote:
+      path: DLS_Mandatory_Project/AuthClassLibrary/UserSession.cs
+      branch: Oliver
+      repo: https://github.com/Kea-1Semester/DLS_Mandatory_Project
+    id: Id
+    path: ../AuthClassLibrary/UserSession.cs
+    startLine: 10
+  assemblies:
+  - AuthClassLibrary
+  namespace: AuthClassLibrary
+  syntax:
+    content: public string Id { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Id As String
+  overload: AuthClassLibrary.UserSession.Id*
+- uid: AuthClassLibrary.UserSession.Name
+  commentId: P:AuthClassLibrary.UserSession.Name
+  id: Name
+  parent: AuthClassLibrary.UserSession
+  langs:
+  - csharp
+  - vb
+  name: Name
+  nameWithType: UserSession.Name
+  fullName: AuthClassLibrary.UserSession.Name
+  type: Property
+  source:
+    remote:
+      path: DLS_Mandatory_Project/AuthClassLibrary/UserSession.cs
+      branch: Oliver
+      repo: https://github.com/Kea-1Semester/DLS_Mandatory_Project
+    id: Name
+    path: ../AuthClassLibrary/UserSession.cs
+    startLine: 11
+  assemblies:
+  - AuthClassLibrary
+  namespace: AuthClassLibrary
+  syntax:
+    content: public string Name { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Name As String
+  overload: AuthClassLibrary.UserSession.Name*
+- uid: AuthClassLibrary.UserSession.Email
+  commentId: P:AuthClassLibrary.UserSession.Email
+  id: Email
+  parent: AuthClassLibrary.UserSession
+  langs:
+  - csharp
+  - vb
+  name: Email
+  nameWithType: UserSession.Email
+  fullName: AuthClassLibrary.UserSession.Email
+  type: Property
+  source:
+    remote:
+      path: DLS_Mandatory_Project/AuthClassLibrary/UserSession.cs
+      branch: Oliver
+      repo: https://github.com/Kea-1Semester/DLS_Mandatory_Project
+    id: Email
+    path: ../AuthClassLibrary/UserSession.cs
+    startLine: 12
+  assemblies:
+  - AuthClassLibrary
+  namespace: AuthClassLibrary
+  syntax:
+    content: public string Email { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Email As String
+  overload: AuthClassLibrary.UserSession.Email*
+- uid: AuthClassLibrary.UserSession.Role
+  commentId: P:AuthClassLibrary.UserSession.Role
+  id: Role
+  parent: AuthClassLibrary.UserSession
+  langs:
+  - csharp
+  - vb
+  name: Role
+  nameWithType: UserSession.Role
+  fullName: AuthClassLibrary.UserSession.Role
+  type: Property
+  source:
+    remote:
+      path: DLS_Mandatory_Project/AuthClassLibrary/UserSession.cs
+      branch: Oliver
+      repo: https://github.com/Kea-1Semester/DLS_Mandatory_Project
+    id: Role
+    path: ../AuthClassLibrary/UserSession.cs
+    startLine: 13
+  assemblies:
+  - AuthClassLibrary
+  namespace: AuthClassLibrary
+  syntax:
+    content: public string Role { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Role As String
+  overload: AuthClassLibrary.UserSession.Role*
+- uid: AuthClassLibrary.UserSession.#ctor(System.String,System.String,System.String,System.String)
+  commentId: M:AuthClassLibrary.UserSession.#ctor(System.String,System.String,System.String,System.String)
+  id: '#ctor(System.String,System.String,System.String,System.String)'
+  parent: AuthClassLibrary.UserSession
+  langs:
+  - csharp
+  - vb
+  name: UserSession(string, string, string, string)
+  nameWithType: UserSession.UserSession(string, string, string, string)
+  fullName: AuthClassLibrary.UserSession.UserSession(string, string, string, string)
+  type: Constructor
+  source:
+    remote:
+      path: DLS_Mandatory_Project/AuthClassLibrary/UserSession.cs
+      branch: Oliver
+      repo: https://github.com/Kea-1Semester/DLS_Mandatory_Project
+    id: .ctor
+    path: ../AuthClassLibrary/UserSession.cs
+    startLine: 15
+  assemblies:
+  - AuthClassLibrary
+  namespace: AuthClassLibrary
+  syntax:
+    content: public UserSession(string id, string name, string email, string role)
+    parameters:
+    - id: id
+      type: System.String
+    - id: name
+      type: System.String
+    - id: email
+      type: System.String
+    - id: role
+      type: System.String
+    content.vb: Public Sub New(id As String, name As String, email As String, role As String)
+  overload: AuthClassLibrary.UserSession.#ctor*
+  nameWithType.vb: UserSession.New(String, String, String, String)
+  fullName.vb: AuthClassLibrary.UserSession.New(String, String, String, String)
+  name.vb: New(String, String, String, String)
+references:
+- uid: AuthClassLibrary
+  commentId: N:AuthClassLibrary
+  href: AuthClassLibrary.html
+  name: AuthClassLibrary
+  nameWithType: AuthClassLibrary
+  fullName: AuthClassLibrary
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: AuthClassLibrary.UserSession.Id*
+  commentId: Overload:AuthClassLibrary.UserSession.Id
+  href: AuthClassLibrary.UserSession.html#AuthClassLibrary_UserSession_Id
+  name: Id
+  nameWithType: UserSession.Id
+  fullName: AuthClassLibrary.UserSession.Id
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: AuthClassLibrary.UserSession.Name*
+  commentId: Overload:AuthClassLibrary.UserSession.Name
+  href: AuthClassLibrary.UserSession.html#AuthClassLibrary_UserSession_Name
+  name: Name
+  nameWithType: UserSession.Name
+  fullName: AuthClassLibrary.UserSession.Name
+- uid: AuthClassLibrary.UserSession.Email*
+  commentId: Overload:AuthClassLibrary.UserSession.Email
+  href: AuthClassLibrary.UserSession.html#AuthClassLibrary_UserSession_Email
+  name: Email
+  nameWithType: UserSession.Email
+  fullName: AuthClassLibrary.UserSession.Email
+- uid: AuthClassLibrary.UserSession.Role*
+  commentId: Overload:AuthClassLibrary.UserSession.Role
+  href: AuthClassLibrary.UserSession.html#AuthClassLibrary_UserSession_Role
+  name: Role
+  nameWithType: UserSession.Role
+  fullName: AuthClassLibrary.UserSession.Role
+- uid: AuthClassLibrary.UserSession.#ctor*
+  commentId: Overload:AuthClassLibrary.UserSession.#ctor
+  href: AuthClassLibrary.UserSession.html#AuthClassLibrary_UserSession__ctor_System_String_System_String_System_String_System_String_
+  name: UserSession
+  nameWithType: UserSession.UserSession
+  fullName: AuthClassLibrary.UserSession.UserSession
+  nameWithType.vb: UserSession.New
+  fullName.vb: AuthClassLibrary.UserSession.New
+  name.vb: New

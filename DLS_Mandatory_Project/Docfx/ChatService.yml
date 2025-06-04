@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: ChatService
+  commentId: N:ChatService
+  id: ChatService
+  children:
+  - ChatService.ChatHub
+  langs:
+  - csharp
+  - vb
+  name: ChatService
+  nameWithType: ChatService
+  fullName: ChatService
+  type: Namespace
+  assemblies:
+  - ChatService
+references:
+- uid: ChatService.ChatHub
+  commentId: T:ChatService.ChatHub
+  href: ChatService.ChatHub.html
+  name: ChatHub
+  nameWithType: ChatHub
+  fullName: ChatService.ChatHub

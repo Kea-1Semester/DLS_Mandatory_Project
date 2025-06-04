@@ -1,0 +1,69 @@
+### YamlMime:ManagedReference
+items:
+- uid: UserClassLibrary.UserRole
+  commentId: T:UserClassLibrary.UserRole
+  id: UserRole
+  parent: UserClassLibrary
+  children:
+  - UserClassLibrary.UserRole.User
+  langs:
+  - csharp
+  - vb
+  name: UserRole
+  nameWithType: UserRole
+  fullName: UserClassLibrary.UserRole
+  type: Enum
+  source:
+    remote:
+      path: DLS_Mandatory_Project/UserClassLibrary/UserRole.cs
+      branch: Oliver
+      repo: https://github.com/Kea-1Semester/DLS_Mandatory_Project
+    id: UserRole
+    path: ../UserClassLibrary/UserRole.cs
+    startLine: 8
+  assemblies:
+  - UserClassLibrary
+  namespace: UserClassLibrary
+  syntax:
+    content: public enum UserRole
+    content.vb: Public Enum UserRole
+- uid: UserClassLibrary.UserRole.User
+  commentId: F:UserClassLibrary.UserRole.User
+  id: User
+  parent: UserClassLibrary.UserRole
+  langs:
+  - csharp
+  - vb
+  name: User
+  nameWithType: UserRole.User
+  fullName: UserClassLibrary.UserRole.User
+  type: Field
+  source:
+    remote:
+      path: DLS_Mandatory_Project/UserClassLibrary/UserRole.cs
+      branch: Oliver
+      repo: https://github.com/Kea-1Semester/DLS_Mandatory_Project
+    id: User
+    path: ../UserClassLibrary/UserRole.cs
+    startLine: 10
+  assemblies:
+  - UserClassLibrary
+  namespace: UserClassLibrary
+  syntax:
+    content: User = 0
+    return:
+      type: UserClassLibrary.UserRole
+references:
+- uid: UserClassLibrary
+  commentId: N:UserClassLibrary
+  href: UserClassLibrary.html
+  name: UserClassLibrary
+  nameWithType: UserClassLibrary
+  fullName: UserClassLibrary
+- uid: UserClassLibrary.UserRole
+  commentId: T:UserClassLibrary.UserRole
+  parent: UserClassLibrary
+  href: UserClassLibrary.UserRole.html
+  name: UserRole
+  nameWithType: UserRole
+  fullName: UserClassLibrary.UserRole

@@ -1,0 +1,95 @@
+### YamlMime:TableOfContent
+items:
+- uid: AuthClassLibrary
+  name: AuthClassLibrary
+  type: Namespace
+  items:
+  - uid: AuthClassLibrary.AuthResult
+    name: AuthResult
+    type: Class
+  - uid: AuthClassLibrary.AuthUserInfo
+    name: AuthUserInfo
+    type: Class
+  - uid: AuthClassLibrary.LogIn
+    name: LogIn
+    type: Class
+  - uid: AuthClassLibrary.User
+    name: User
+    type: Class
+  - uid: AuthClassLibrary.UserSession
+    name: UserSession
+    type: Class
+- uid: ChatService
+  name: ChatService
+  type: Namespace
+  items:
+  - uid: ChatService.ChatHub
+    name: ChatHub
+    type: Class
+- uid: DLS_Mandatory_Project
+  name: DLS_Mandatory_Project
+  type: Namespace
+  items:
+  - uid: DLS_Mandatory_Project.Program
+    name: Program
+    type: Class
+- uid: DLS_Mandatory_Project.Client
+  name: DLS_Mandatory_Project.Client
+  type: Namespace
+  items:
+  - uid: DLS_Mandatory_Project.Client.CustomClientAuthStateProvider
+    name: CustomClientAuthStateProvider
+    type: Class
+- uid: DLS_Mandatory_Project.Client.Clients
+  name: DLS_Mandatory_Project.Client.Clients
+  type: Namespace
+  items:
+  - uid: DLS_Mandatory_Project.Client.Clients.ChatClient
+    name: ChatClient
+    type: Class
+  - uid: DLS_Mandatory_Project.Client.Clients.IChatClient
+    name: IChatClient
+    type: Interface
+- uid: DLS_Mandatory_Project.Client.Services
+  name: DLS_Mandatory_Project.Client.Services
+  type: Namespace
+  items:
+  - uid: DLS_Mandatory_Project.Client.Services.AuthService
+    name: AuthService
+    type: Class
+- uid: DLS_Mandatory_Project.Components.Account
+  name: DLS_Mandatory_Project.Components.Account
+  type: Namespace
+  items:
+  - uid: DLS_Mandatory_Project.Components.Account.CustomServerAuthStateProvider
+    name: CustomServerAuthStateProvider
+    type: Class
+- uid: UserClassLibrary
+  name: UserClassLibrary
+  type: Namespace
+  items:
+  - uid: UserClassLibrary.IGenericObject
+    name: IGenericObject
+    type: Interface
+  - uid: UserClassLibrary.User
+    name: User
+    type: Class
+  - uid: UserClassLibrary.UserDescription
+    name: UserDescription
+    type: Class
+  - uid: UserClassLibrary.UserInfo
+    name: UserInfo
+    type: Class
+  - uid: UserClassLibrary.UserLoginInfo
+    name: UserLoginInfo
+    type: Class
+  - uid: UserClassLibrary.UserModel
+    name: UserModel
+    type: Class
+  - uid: UserClassLibrary.UserRemoved
+    name: UserRemoved
+    type: Class
+  - uid: UserClassLibrary.UserRole
+    name: UserRole
+    type: Enum
+memberLayout: SamePage

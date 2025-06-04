@@ -1,0 +1,831 @@
+### YamlMime:ManagedReference
+items:
+- uid: DLS_Mandatory_Project.Client.Clients.ChatClient
+  commentId: T:DLS_Mandatory_Project.Client.Clients.ChatClient
+  id: ChatClient
+  parent: DLS_Mandatory_Project.Client.Clients
+  children:
+  - DLS_Mandatory_Project.Client.Clients.ChatClient.#ctor
+  - DLS_Mandatory_Project.Client.Clients.ChatClient.OnMessageReceived
+  - DLS_Mandatory_Project.Client.Clients.ChatClient.OnStateChanged
+  - DLS_Mandatory_Project.Client.Clients.ChatClient.SendBroadcastMessage(System.String,System.String)
+  - DLS_Mandatory_Project.Client.Clients.ChatClient.StartAsync
+  - DLS_Mandatory_Project.Client.Clients.ChatClient.State
+  langs:
+  - csharp
+  - vb
+  name: ChatClient
+  nameWithType: ChatClient
+  fullName: DLS_Mandatory_Project.Client.Clients.ChatClient
+  type: Class
+  source:
+    remote:
+      path: DLS_Mandatory_Project/DLS_Mandatory_Project.Client/Services/ChatClient.cs
+      branch: Oliver
+      repo: https://github.com/Kea-1Semester/DLS_Mandatory_Project
+    id: ChatClient
+    path: ../DLS_Mandatory_Project.Client/Services/ChatClient.cs
+    startLine: 6
+  assemblies:
+  - DLS_Mandatory_Project.Client
+  namespace: DLS_Mandatory_Project.Client.Clients
+  syntax:
+    content: 'public class ChatClient : IChatClient'
+    content.vb: Public Class ChatClient Implements IChatClient
+  inheritance:
+  - System.Object
+  implements:
+  - DLS_Mandatory_Project.Client.Clients.IChatClient
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: DLS_Mandatory_Project.Client.Clients.ChatClient.OnMessageReceived
+  commentId: E:DLS_Mandatory_Project.Client.Clients.ChatClient.OnMessageReceived
+  id: OnMessageReceived
+  parent: DLS_Mandatory_Project.Client.Clients.ChatClient
+  langs:
+  - csharp
+  - vb
+  name: OnMessageReceived
+  nameWithType: ChatClient.OnMessageReceived
+  fullName: DLS_Mandatory_Project.Client.Clients.ChatClient.OnMessageReceived
+  type: Event
+  source:
+    remote:
+      path: DLS_Mandatory_Project/DLS_Mandatory_Project.Client/Services/ChatClient.cs
+      branch: Oliver
+      repo: https://github.com/Kea-1Semester/DLS_Mandatory_Project
+    id: OnMessageReceived
+    path: ../DLS_Mandatory_Project.Client/Services/ChatClient.cs
+    startLine: 9
+  assemblies:
+  - DLS_Mandatory_Project.Client
+  namespace: DLS_Mandatory_Project.Client.Clients
+  example: []
+  syntax:
+    content: public event Action<string>? OnMessageReceived
+    return:
+      type: System.Action{System.String}
+    content.vb: Public Event OnMessageReceived As Action(Of String)
+  implements:
+  - DLS_Mandatory_Project.Client.Clients.IChatClient.OnMessageReceived
+- uid: DLS_Mandatory_Project.Client.Clients.ChatClient.OnStateChanged
+  commentId: E:DLS_Mandatory_Project.Client.Clients.ChatClient.OnStateChanged
+  id: OnStateChanged
+  parent: DLS_Mandatory_Project.Client.Clients.ChatClient
+  langs:
+  - csharp
+  - vb
+  name: OnStateChanged
+  nameWithType: ChatClient.OnStateChanged
+  fullName: DLS_Mandatory_Project.Client.Clients.ChatClient.OnStateChanged
+  type: Event
+  source:
+    remote:
+      path: DLS_Mandatory_Project/DLS_Mandatory_Project.Client/Services/ChatClient.cs
+      branch: Oliver
+      repo: https://github.com/Kea-1Semester/DLS_Mandatory_Project
+    id: OnStateChanged
+    path: ../DLS_Mandatory_Project.Client/Services/ChatClient.cs
+    startLine: 10
+  assemblies:
+  - DLS_Mandatory_Project.Client
+  namespace: DLS_Mandatory_Project.Client.Clients
+  example: []
+  syntax:
+    content: public event Action<HubConnectionState>? OnStateChanged
+    return:
+      type: System.Action{Microsoft.AspNetCore.SignalR.Client.HubConnectionState}
+    content.vb: Public Event OnStateChanged As Action(Of HubConnectionState)
+  implements:
+  - DLS_Mandatory_Project.Client.Clients.IChatClient.OnStateChanged
+- uid: DLS_Mandatory_Project.Client.Clients.ChatClient.State
+  commentId: P:DLS_Mandatory_Project.Client.Clients.ChatClient.State
+  id: State
+  parent: DLS_Mandatory_Project.Client.Clients.ChatClient
+  langs:
+  - csharp
+  - vb
+  name: State
+  nameWithType: ChatClient.State
+  fullName: DLS_Mandatory_Project.Client.Clients.ChatClient.State
+  type: Property
+  source:
+    remote:
+      path: DLS_Mandatory_Project/DLS_Mandatory_Project.Client/Services/ChatClient.cs
+      branch: Oliver
+      repo: https://github.com/Kea-1Semester/DLS_Mandatory_Project
+    id: State
+    path: ../DLS_Mandatory_Project.Client/Services/ChatClient.cs
+    startLine: 11
+  assemblies:
+  - DLS_Mandatory_Project.Client
+  namespace: DLS_Mandatory_Project.Client.Clients
+  example: []
+  syntax:
+    content: public HubConnectionState State { get; }
+    parameters: []
+    return:
+      type: Microsoft.AspNetCore.SignalR.Client.HubConnectionState
+    content.vb: Public ReadOnly Property State As HubConnectionState
+  overload: DLS_Mandatory_Project.Client.Clients.ChatClient.State*
+  implements:
+  - DLS_Mandatory_Project.Client.Clients.IChatClient.State
+- uid: DLS_Mandatory_Project.Client.Clients.ChatClient.#ctor
+  commentId: M:DLS_Mandatory_Project.Client.Clients.ChatClient.#ctor
+  id: '#ctor'
+  parent: DLS_Mandatory_Project.Client.Clients.ChatClient
+  langs:
+  - csharp
+  - vb
+  name: ChatClient()
+  nameWithType: ChatClient.ChatClient()
+  fullName: DLS_Mandatory_Project.Client.Clients.ChatClient.ChatClient()
+  type: Constructor
+  source:
+    remote:
+      path: DLS_Mandatory_Project/DLS_Mandatory_Project.Client/Services/ChatClient.cs
+      branch: Oliver
+      repo: https://github.com/Kea-1Semester/DLS_Mandatory_Project
+    id: .ctor
+    path: ../DLS_Mandatory_Project.Client/Services/ChatClient.cs
+    startLine: 13
+  assemblies:
+  - DLS_Mandatory_Project.Client
+  namespace: DLS_Mandatory_Project.Client.Clients
+  syntax:
+    content: public ChatClient()
+    content.vb: Public Sub New()
+  overload: DLS_Mandatory_Project.Client.Clients.ChatClient.#ctor*
+  nameWithType.vb: ChatClient.New()
+  fullName.vb: DLS_Mandatory_Project.Client.Clients.ChatClient.New()
+  name.vb: New()
+- uid: DLS_Mandatory_Project.Client.Clients.ChatClient.StartAsync
+  commentId: M:DLS_Mandatory_Project.Client.Clients.ChatClient.StartAsync
+  id: StartAsync
+  parent: DLS_Mandatory_Project.Client.Clients.ChatClient
+  langs:
+  - csharp
+  - vb
+  name: StartAsync()
+  nameWithType: ChatClient.StartAsync()
+  fullName: DLS_Mandatory_Project.Client.Clients.ChatClient.StartAsync()
+  type: Method
+  source:
+    remote:
+      path: DLS_Mandatory_Project/DLS_Mandatory_Project.Client/Services/ChatClient.cs
+      branch: Oliver
+      repo: https://github.com/Kea-1Semester/DLS_Mandatory_Project
+    id: StartAsync
+    path: ../DLS_Mandatory_Project.Client/Services/ChatClient.cs
+    startLine: 59
+  assemblies:
+  - DLS_Mandatory_Project.Client
+  namespace: DLS_Mandatory_Project.Client.Clients
+  example: []
+  syntax:
+    content: public Task StartAsync()
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Function StartAsync() As Task
+  overload: DLS_Mandatory_Project.Client.Clients.ChatClient.StartAsync*
+  implements:
+  - DLS_Mandatory_Project.Client.Clients.IChatClient.StartAsync
+- uid: DLS_Mandatory_Project.Client.Clients.ChatClient.SendBroadcastMessage(System.String,System.String)
+  commentId: M:DLS_Mandatory_Project.Client.Clients.ChatClient.SendBroadcastMessage(System.String,System.String)
+  id: SendBroadcastMessage(System.String,System.String)
+  parent: DLS_Mandatory_Project.Client.Clients.ChatClient
+  langs:
+  - csharp
+  - vb
+  name: SendBroadcastMessage(string?, string?)
+  nameWithType: ChatClient.SendBroadcastMessage(string?, string?)
+  fullName: DLS_Mandatory_Project.Client.Clients.ChatClient.SendBroadcastMessage(string?, string?)
+  type: Method
+  source:
+    remote:
+      path: DLS_Mandatory_Project/DLS_Mandatory_Project.Client/Services/ChatClient.cs
+      branch: Oliver
+      repo: https://github.com/Kea-1Semester/DLS_Mandatory_Project
+    id: SendBroadcastMessage
+    path: ../DLS_Mandatory_Project.Client/Services/ChatClient.cs
+    startLine: 73
+  assemblies:
+  - DLS_Mandatory_Project.Client
+  namespace: DLS_Mandatory_Project.Client.Clients
+  example: []
+  syntax:
+    content: public Task SendBroadcastMessage(string? user, string? message)
+    parameters:
+    - id: user
+      type: System.String
+    - id: message
+      type: System.String
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Function SendBroadcastMessage(user As String, message As String) As Task
+  overload: DLS_Mandatory_Project.Client.Clients.ChatClient.SendBroadcastMessage*
+  implements:
+  - DLS_Mandatory_Project.Client.Clients.IChatClient.SendBroadcastMessage(System.String,System.String)
+  nameWithType.vb: ChatClient.SendBroadcastMessage(String, String)
+  fullName.vb: DLS_Mandatory_Project.Client.Clients.ChatClient.SendBroadcastMessage(String, String)
+  name.vb: SendBroadcastMessage(String, String)
+references:
+- uid: DLS_Mandatory_Project.Client.Clients
+  commentId: N:DLS_Mandatory_Project.Client.Clients
+  href: DLS_Mandatory_Project.html
+  name: DLS_Mandatory_Project.Client.Clients
+  nameWithType: DLS_Mandatory_Project.Client.Clients
+  fullName: DLS_Mandatory_Project.Client.Clients
+  spec.csharp:
+  - uid: DLS_Mandatory_Project
+    name: DLS_Mandatory_Project
+    href: DLS_Mandatory_Project.html
+  - name: .
+  - uid: DLS_Mandatory_Project.Client
+    name: Client
+    href: DLS_Mandatory_Project.Client.html
+  - name: .
+  - uid: DLS_Mandatory_Project.Client.Clients
+    name: Clients
+    href: DLS_Mandatory_Project.Client.Clients.html
+  spec.vb:
+  - uid: DLS_Mandatory_Project
+    name: DLS_Mandatory_Project
+    href: DLS_Mandatory_Project.html
+  - name: .
+  - uid: DLS_Mandatory_Project.Client
+    name: Client
+    href: DLS_Mandatory_Project.Client.html
+  - name: .
+  - uid: DLS_Mandatory_Project.Client.Clients
+    name: Clients
+    href: DLS_Mandatory_Project.Client.Clients.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: DLS_Mandatory_Project.Client.Clients.IChatClient
+  commentId: T:DLS_Mandatory_Project.Client.Clients.IChatClient
+  parent: DLS_Mandatory_Project.Client.Clients
+  href: DLS_Mandatory_Project.Client.Clients.IChatClient.html
+  name: IChatClient
+  nameWithType: IChatClient
+  fullName: DLS_Mandatory_Project.Client.Clients.IChatClient
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: DLS_Mandatory_Project.Client.Clients.IChatClient.OnMessageReceived
+  commentId: E:DLS_Mandatory_Project.Client.Clients.IChatClient.OnMessageReceived
+  parent: DLS_Mandatory_Project.Client.Clients.IChatClient
+  href: DLS_Mandatory_Project.Client.Clients.IChatClient.html#DLS_Mandatory_Project_Client_Clients_IChatClient_OnMessageReceived
+  name: OnMessageReceived
+  nameWithType: IChatClient.OnMessageReceived
+  fullName: DLS_Mandatory_Project.Client.Clients.IChatClient.OnMessageReceived
+- uid: System.Action{System.String}
+  commentId: T:System.Action{System.String}
+  parent: System
+  definition: System.Action`1
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<string>
+  nameWithType: Action<string>
+  fullName: System.Action<string>
+  nameWithType.vb: Action(Of String)
+  fullName.vb: System.Action(Of String)
+  name.vb: Action(Of String)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.Action`1
+  commentId: T:System.Action`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<T>
+  nameWithType: Action<T>
+  fullName: System.Action<T>
+  nameWithType.vb: Action(Of T)
+  fullName.vb: System.Action(Of T)
+  name.vb: Action(Of T)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: DLS_Mandatory_Project.Client.Clients.IChatClient.OnStateChanged
+  commentId: E:DLS_Mandatory_Project.Client.Clients.IChatClient.OnStateChanged
+  parent: DLS_Mandatory_Project.Client.Clients.IChatClient
+  href: DLS_Mandatory_Project.Client.Clients.IChatClient.html#DLS_Mandatory_Project_Client_Clients_IChatClient_OnStateChanged
+  name: OnStateChanged
+  nameWithType: IChatClient.OnStateChanged
+  fullName: DLS_Mandatory_Project.Client.Clients.IChatClient.OnStateChanged
+- uid: System.Action{Microsoft.AspNetCore.SignalR.Client.HubConnectionState}
+  commentId: T:System.Action{Microsoft.AspNetCore.SignalR.Client.HubConnectionState}
+  parent: System
+  definition: System.Action`1
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<HubConnectionState>
+  nameWithType: Action<HubConnectionState>
+  fullName: System.Action<Microsoft.AspNetCore.SignalR.Client.HubConnectionState>
+  nameWithType.vb: Action(Of HubConnectionState)
+  fullName.vb: System.Action(Of Microsoft.AspNetCore.SignalR.Client.HubConnectionState)
+  name.vb: Action(Of HubConnectionState)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - uid: Microsoft.AspNetCore.SignalR.Client.HubConnectionState
+    name: HubConnectionState
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.signalr.client.hubconnectionstate
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Microsoft.AspNetCore.SignalR.Client.HubConnectionState
+    name: HubConnectionState
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.signalr.client.hubconnectionstate
+  - name: )
+- uid: DLS_Mandatory_Project.Client.Clients.ChatClient.State*
+  commentId: Overload:DLS_Mandatory_Project.Client.Clients.ChatClient.State
+  href: DLS_Mandatory_Project.Client.Clients.ChatClient.html#DLS_Mandatory_Project_Client_Clients_ChatClient_State
+  name: State
+  nameWithType: ChatClient.State
+  fullName: DLS_Mandatory_Project.Client.Clients.ChatClient.State
+- uid: DLS_Mandatory_Project.Client.Clients.IChatClient.State
+  commentId: P:DLS_Mandatory_Project.Client.Clients.IChatClient.State
+  parent: DLS_Mandatory_Project.Client.Clients.IChatClient
+  href: DLS_Mandatory_Project.Client.Clients.IChatClient.html#DLS_Mandatory_Project_Client_Clients_IChatClient_State
+  name: State
+  nameWithType: IChatClient.State
+  fullName: DLS_Mandatory_Project.Client.Clients.IChatClient.State
+- uid: Microsoft.AspNetCore.SignalR.Client.HubConnectionState
+  commentId: T:Microsoft.AspNetCore.SignalR.Client.HubConnectionState
+  parent: Microsoft.AspNetCore.SignalR.Client
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.signalr.client.hubconnectionstate
+  name: HubConnectionState
+  nameWithType: HubConnectionState
+  fullName: Microsoft.AspNetCore.SignalR.Client.HubConnectionState
+- uid: Microsoft.AspNetCore.SignalR.Client
+  commentId: N:Microsoft.AspNetCore.SignalR.Client
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft
+  name: Microsoft.AspNetCore.SignalR.Client
+  nameWithType: Microsoft.AspNetCore.SignalR.Client
+  fullName: Microsoft.AspNetCore.SignalR.Client
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.AspNetCore
+    name: AspNetCore
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore
+  - name: .
+  - uid: Microsoft.AspNetCore.SignalR
+    name: SignalR
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.signalr
+  - name: .
+  - uid: Microsoft.AspNetCore.SignalR.Client
+    name: Client
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.signalr.client
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.AspNetCore
+    name: AspNetCore
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore
+  - name: .
+  - uid: Microsoft.AspNetCore.SignalR
+    name: SignalR
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.signalr
+  - name: .
+  - uid: Microsoft.AspNetCore.SignalR.Client
+    name: Client
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.signalr.client
+- uid: DLS_Mandatory_Project.Client.Clients.ChatClient.#ctor*
+  commentId: Overload:DLS_Mandatory_Project.Client.Clients.ChatClient.#ctor
+  href: DLS_Mandatory_Project.Client.Clients.ChatClient.html#DLS_Mandatory_Project_Client_Clients_ChatClient__ctor
+  name: ChatClient
+  nameWithType: ChatClient.ChatClient
+  fullName: DLS_Mandatory_Project.Client.Clients.ChatClient.ChatClient
+  nameWithType.vb: ChatClient.New
+  fullName.vb: DLS_Mandatory_Project.Client.Clients.ChatClient.New
+  name.vb: New
+- uid: DLS_Mandatory_Project.Client.Clients.ChatClient.StartAsync*
+  commentId: Overload:DLS_Mandatory_Project.Client.Clients.ChatClient.StartAsync
+  href: DLS_Mandatory_Project.Client.Clients.ChatClient.html#DLS_Mandatory_Project_Client_Clients_ChatClient_StartAsync
+  name: StartAsync
+  nameWithType: ChatClient.StartAsync
+  fullName: DLS_Mandatory_Project.Client.Clients.ChatClient.StartAsync
+- uid: DLS_Mandatory_Project.Client.Clients.IChatClient.StartAsync
+  commentId: M:DLS_Mandatory_Project.Client.Clients.IChatClient.StartAsync
+  parent: DLS_Mandatory_Project.Client.Clients.IChatClient
+  href: DLS_Mandatory_Project.Client.Clients.IChatClient.html#DLS_Mandatory_Project_Client_Clients_IChatClient_StartAsync
+  name: StartAsync()
+  nameWithType: IChatClient.StartAsync()
+  fullName: DLS_Mandatory_Project.Client.Clients.IChatClient.StartAsync()
+  spec.csharp:
+  - uid: DLS_Mandatory_Project.Client.Clients.IChatClient.StartAsync
+    name: StartAsync
+    href: DLS_Mandatory_Project.Client.Clients.IChatClient.html#DLS_Mandatory_Project_Client_Clients_IChatClient_StartAsync
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: DLS_Mandatory_Project.Client.Clients.IChatClient.StartAsync
+    name: StartAsync
+    href: DLS_Mandatory_Project.Client.Clients.IChatClient.html#DLS_Mandatory_Project_Client_Clients_IChatClient_StartAsync
+  - name: (
+  - name: )
+- uid: System.Threading.Tasks.Task
+  commentId: T:System.Threading.Tasks.Task
+  parent: System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task
+  name: Task
+  nameWithType: Task
+  fullName: System.Threading.Tasks.Task
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: DLS_Mandatory_Project.Client.Clients.ChatClient.SendBroadcastMessage*
+  commentId: Overload:DLS_Mandatory_Project.Client.Clients.ChatClient.SendBroadcastMessage
+  href: DLS_Mandatory_Project.Client.Clients.ChatClient.html#DLS_Mandatory_Project_Client_Clients_ChatClient_SendBroadcastMessage_System_String_System_String_
+  name: SendBroadcastMessage
+  nameWithType: ChatClient.SendBroadcastMessage
+  fullName: DLS_Mandatory_Project.Client.Clients.ChatClient.SendBroadcastMessage
+- uid: DLS_Mandatory_Project.Client.Clients.IChatClient.SendBroadcastMessage(System.String,System.String)
+  commentId: M:DLS_Mandatory_Project.Client.Clients.IChatClient.SendBroadcastMessage(System.String,System.String)
+  parent: DLS_Mandatory_Project.Client.Clients.IChatClient
+  isExternal: true
+  href: DLS_Mandatory_Project.Client.Clients.IChatClient.html#DLS_Mandatory_Project_Client_Clients_IChatClient_SendBroadcastMessage_System_String_System_String_
+  name: SendBroadcastMessage(string, string)
+  nameWithType: IChatClient.SendBroadcastMessage(string, string)
+  fullName: DLS_Mandatory_Project.Client.Clients.IChatClient.SendBroadcastMessage(string, string)
+  nameWithType.vb: IChatClient.SendBroadcastMessage(String, String)
+  fullName.vb: DLS_Mandatory_Project.Client.Clients.IChatClient.SendBroadcastMessage(String, String)
+  name.vb: SendBroadcastMessage(String, String)
+  spec.csharp:
+  - uid: DLS_Mandatory_Project.Client.Clients.IChatClient.SendBroadcastMessage(System.String,System.String)
+    name: SendBroadcastMessage
+    href: DLS_Mandatory_Project.Client.Clients.IChatClient.html#DLS_Mandatory_Project_Client_Clients_IChatClient_SendBroadcastMessage_System_String_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: DLS_Mandatory_Project.Client.Clients.IChatClient.SendBroadcastMessage(System.String,System.String)
+    name: SendBroadcastMessage
+    href: DLS_Mandatory_Project.Client.Clients.IChatClient.html#DLS_Mandatory_Project_Client_Clients_IChatClient_SendBroadcastMessage_System_String_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
