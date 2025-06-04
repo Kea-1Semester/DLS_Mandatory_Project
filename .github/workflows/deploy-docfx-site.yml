@@ -36,13 +36,13 @@ jobs:
           dotnet-version: 8.x
 
       - run: dotnet tool update -g docfx
-      - run: docfx DLS_Mandatory_Project/docfx.json
+      - run: docfx ./Docfx/docfx.json
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           # Upload entire repository
-          path: "DLS_Mandatory_Project/Docfx/_site"
+          path: "./Docfx/_site"
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
