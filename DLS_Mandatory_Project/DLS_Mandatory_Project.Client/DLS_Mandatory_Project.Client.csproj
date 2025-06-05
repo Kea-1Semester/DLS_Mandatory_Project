@@ -22,6 +22,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AuthClassLibrary\AuthClassLibrary.csproj" />
+    <ProjectReference Include="..\ChatClassLibrary\ChatClassLibrary.csproj" />
     <ProjectReference Include="..\UserClassLibrary\UserClassLibrary.csproj" />
   </ItemGroup>
 

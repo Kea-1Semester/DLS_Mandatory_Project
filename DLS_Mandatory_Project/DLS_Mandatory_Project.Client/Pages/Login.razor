@@ -2,10 +2,10 @@
 @using AuthClassLibrary
 @using DLS_Mandatory_Project.Client.Services
 @inject NavigationManager NavigationManager
-@inject AuthService AuthService
+@* @inject AuthService AuthService *@
 
 <h3>Login</h3>
-<EditForm OnSubmit="OnSubmit" Model="LogIn">
+@* <EditForm OnSubmit="OnSubmit" Model="LogIn">
     <DataAnnotationsValidator />
 
     <label>Email</label>
@@ -19,24 +19,24 @@
     <label class="text-danger">@error</label>
 
     <button type="submit">Login</button>
-</EditForm>
+</EditForm> *@
 
 @code {
     private LogIn LogIn { get; set; } = new LogIn();
     string error { get; set; } = string.Empty;
 
-    async Task OnSubmit()
-    {
-        error = string.Empty;
-        try
-        {
-            bool loggedIn = await AuthService.Login(LogIn);
-            if (loggedIn)
-                NavigationManager.NavigateTo("/");
-        }
-        catch (Exception ex)
-        {
-            error = ex.Message;
-        }
-    }
+    // async Task OnSubmit()
+    // {
+    //     error = string.Empty;
+    //     try
+    //     {
+    //         bool loggedIn = await AuthService.Login(LogIn);
+    //         if (loggedIn)
+    //             NavigationManager.NavigateTo("/");
+    //     }
+    //     catch (Exception ex)
+    //     {
+    //         error = ex.Message;
+    //     }
+    // }
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.SignalR.Client;
+﻿using ChatClassLibrary;
+using Microsoft.AspNetCore.SignalR.Client;
 
 namespace DLS_Mandatory_Project.Client.Clients
 {
@@ -8,7 +9,7 @@ namespace DLS_Mandatory_Project.Client.Clients
         event Action<HubConnectionState> OnStateChanged;
         HubConnectionState State { get; }
 
-        Task SendBroadcastMessage(string? user, string? message);
+        Task SendBroadcastMessage(LobbyMessage lobbyMessage);
         Task StartAsync();
     }
 }
