@@ -2,9 +2,11 @@
 # Trigger the action on push to main
 on:
   push:
-    branches: ["main"]
+    branches:
+      - main
   pull_request:
-    branches: ["main"]
+    branches:
+      - main
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
