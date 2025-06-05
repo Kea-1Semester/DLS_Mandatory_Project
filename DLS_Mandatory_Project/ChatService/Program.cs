@@ -11,6 +11,8 @@ if (builder.Environment.IsDevelopment())
     builder.Logging.AddFilter("Microsoft.AspNetCore.Http.Connections", LogLevel.Debug);
 }
 
+builder.Services.AddScoped<IChatProducer, ChatProducer>();
+
 builder.Services.AddSignalR(hubOptions =>
 {
     hubOptions.EnableDetailedErrors = true;

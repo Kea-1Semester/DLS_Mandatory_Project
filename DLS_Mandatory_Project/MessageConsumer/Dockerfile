@@ -4,27 +4,26 @@
 FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS base
 USER $APP_UID
 WORKDIR /app
-EXPOSE 30000
-EXPOSE 30001
 
 
 # This stage is used to build the service project
 FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["DLS_Mandatory_Project/ChatService/ChatService.csproj", "DLS_Mandatory_Project/ChatService/"]
-RUN dotnet restore "./DLS_Mandatory_Project/ChatService/ChatService.csproj"
+COPY ["DLS_Mandatory_Project/MessageConsumer/MessageConsumer.csproj", "DLS_Mandatory_Project/MessageConsumer/"]
+COPY ["DLS_Mandatory_Project/ChatClassLibrary/ChatClassLibrary.csproj", "DLS_Mandatory_Project/ChatClassLibrary/"]
+RUN dotnet restore "./DLS_Mandatory_Project/MessageConsumer/MessageConsumer.csproj"
 COPY . .
-WORKDIR "/src/DLS_Mandatory_Project/ChatService"
-RUN dotnet build "./ChatService.csproj" -c $BUILD_CONFIGURATION -o /app/build
+WORKDIR "/src/DLS_Mandatory_Project/MessageConsumer"
+RUN dotnet build "./MessageConsumer.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 # This stage is used to publish the service project to be copied to the final stage
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "./ChatService.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "./MessageConsumer.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
 # This stage is used in production or when running from VS in regular mode (Default when not using the Debug configuration)
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "ChatService.dll"]
+ENTRYPOINT ["dotnet", "MessageConsumer.dll"]
