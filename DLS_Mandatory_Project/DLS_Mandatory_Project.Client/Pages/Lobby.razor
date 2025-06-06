@@ -1,45 +1,30 @@
-﻿@page "/"
+@page "/"
+@using ChatClassLibrary
 @using DLS_Mandatory_Project.Client.Clients
-@using Microsoft.AspNetCore.Authorization
 @using Microsoft.AspNetCore.SignalR.Client
 @inject IChatClient ChatClient
 
 <PageTitle>Lobby</PageTitle>
 
-<AuthorizeView>
-    <Authorized>
-        <div class="form-group">
-            <label>
-                User:
-                <input class="border" @bind-value="userInput" />
-            </label>
-        </div>
-        <div class="form-group">
-            <label>
-                Message:
-                <input class="border" @bind-value="messageInput" @bind-value:event="oninput" @onkeypress="EnterPressedHandler" type="text" size="50" />
-            </label>
-        </div>
-        <button @onclick="Send">Send</button>
+<div class="form-group">
+    <label>
+        Message:
+        <input class="border" @bind-value="messageInput" @bind-value:event="oninput" @onkeypress="EnterPressedHandler" type="text" size="50" />
+    </label>
+</div>
+<button @onclick="Send">Send</button>
 
-        <hr>
+<hr>
 
-        <ul id="messagesList">
-            @foreach (var message in messages)
-            {
-                <li>@message</li>
-            }
-        </ul>
-    </Authorized>
-    <NotAuthorized>
-        You are not authorized!
-    </NotAuthorized>
-</AuthorizeView>
-
+<ul id="messagesList">
+    @foreach (var message in messages)
+    {
+        <li>@message</li>
+    }
+</ul>
 
 @code {
     private List<string> messages = [];
-    private string? userInput;
     private string? messageInput;
 
     protected override async Task OnInitializedAsync()
@@ -57,17 +42,23 @@
 
     private async Task Send()
     {
-        await ChatClient.SendBroadcastMessage(userInput, messageInput);
+        if (messageInput is not null)
+        {
+            await ChatClient.SendBroadcastMessage(new LobbyMessage
+                {
+                    SenderId = Guid.NewGuid(),
+                    Message = messageInput,
+                });
 
-        messageInput = string.Empty;
+            messageInput = string.Empty;
+        }
     }
+
     private async Task EnterPressedHandler(KeyboardEventArgs args)
     {
         if (args.Code == "Enter")
         {
-            await ChatClient.SendBroadcastMessage(userInput, messageInput);
-
-            messageInput = string.Empty;
+            await Send();
         }
     }
 }

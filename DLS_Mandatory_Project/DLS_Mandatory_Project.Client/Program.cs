@@ -19,18 +19,18 @@ namespace DLS_Mandatory_Project.Client
                 builder.Logging.AddFilter("Microsoft.AspNetCore.Http.Connections", LogLevel.Debug);
             }          
 
-            builder.Services.AddAuthenticationStateDeserialization();
+            //builder.Services.AddAuthenticationStateDeserialization();
 
             builder.Services.AddMudServices();
-            builder.Services.AddBlazoredLocalStorage();
+            //builder.Services.AddBlazoredLocalStorage();
 
-            builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("http://localhost:8086") });
+            //builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("http://localhost:8086") });
 
-            builder.Services.AddAuthorizationCore();
-            builder.Services.AddCascadingAuthenticationState();
-            builder.Services.AddScoped<AuthenticationStateProvider, CustomClientAuthStateProvider>();
+            //builder.Services.AddAuthorizationCore();
+            //builder.Services.AddCascadingAuthenticationState();
+            //builder.Services.AddScoped<AuthenticationStateProvider, CustomClientAuthStateProvider>();
             builder.Services.AddScoped<IChatClient, ChatClient>();
-            builder.Services.AddScoped<AuthService>();
+            //builder.Services.AddScoped<AuthService>();
 
             await builder.Build().RunAsync();
         }

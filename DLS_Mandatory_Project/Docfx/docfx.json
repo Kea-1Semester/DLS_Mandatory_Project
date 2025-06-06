@@ -6,7 +6,12 @@
         {
           "src": "../",
           "files": [
-            "**/*.csproj"
+            "**/*.csproj",
+            "***/*.csproj",
+            "**/*/*.csproj",
+            "***/*/*.csproj",
+            "**/**/*.csproj",
+            "***/**/*.csproj"
           ]
         }
       ]

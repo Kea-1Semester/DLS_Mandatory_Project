@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http.Connections;
+using ChatClassLibrary;
+using Microsoft.AspNetCore.Http.Connections;
 using Microsoft.AspNetCore.SignalR.Client;
 using Microsoft.Extensions.Logging;
 
@@ -23,9 +24,9 @@ namespace DLS_Mandatory_Project.Client.Clients
                 .WithAutomaticReconnect()
                 .Build();
 
-            _hubConnection.On<string?, string?>("ReceiveBroadcastMessage", (user, message) =>
+            _hubConnection.On<LobbyMessage>("ReceiveBroadcastMessage", (message) =>
             {
-                var encodedMsg = $"{user}: {message}";
+                var encodedMsg = $"{message.SenderId}: {message.Message}";
                 OnMessageReceived?.Invoke(encodedMsg);
             });
 
@@ -71,11 +72,11 @@ namespace DLS_Mandatory_Project.Client.Clients
             }
         }
 
-        public async Task SendBroadcastMessage(string? user, string? message)
+        public async Task SendBroadcastMessage(LobbyMessage lobbyMessage)
         {
             try
             {
-                await _hubConnection.SendAsync("SendBroadcastMessage", user, message);
+                await _hubConnection.SendAsync("SendBroadcastMessage", lobbyMessage);
             }
             catch (Exception ex)
             {
