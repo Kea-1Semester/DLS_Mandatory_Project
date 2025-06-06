@@ -1,4 +1,4 @@
-﻿@page "/Chat"
+@page "/Chat"
 @using ChatClassLibrary
 @using DLS_Mandatory_Project.Client.Clients
 @using Microsoft.AspNetCore.Authorization
@@ -6,6 +6,7 @@
 @inject IChatClient ChatClient
 
 <PageTitle>Chat</PageTitle>
+
 <div class="form-group">
     <label>
         Message:
@@ -23,8 +24,7 @@
     }
 </ul>
 @* <AuthorizeView>
-    <Authorized>
-        
+    <Authorized>      
     </Authorized>
     <NotAuthorized>
         You are not authorized!
