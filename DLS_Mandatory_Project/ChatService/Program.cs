@@ -1,4 +1,5 @@
 using ChatService;
+using MassTransit;
 using Microsoft.AspNetCore.Http.Connections;
 using StackExchange.Redis;
 using System.Net;
@@ -10,6 +11,18 @@ if (builder.Environment.IsDevelopment())
     builder.Logging.AddFilter("Microsoft.AspNetCore.SignalR", LogLevel.Debug);
     builder.Logging.AddFilter("Microsoft.AspNetCore.Http.Connections", LogLevel.Debug);
 }
+
+builder.Services.AddMassTransit(x =>
+{
+    x.UsingRabbitMq((context, cfg) =>
+    {
+        cfg.Host("rabbitmq", "/", h =>
+        {
+            h.Username("guest");
+            h.Password("guest");
+        });
+    });
+});
 
 builder.Services.AddScoped<IChatProducer, ChatProducer>();
 
