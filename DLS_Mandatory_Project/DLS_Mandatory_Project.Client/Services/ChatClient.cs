@@ -7,13 +7,16 @@ namespace DLS_Mandatory_Project.Client.Clients
 {
     public class ChatClient : IChatClient
     {
+        private readonly Guid _lobbyId;
         private readonly HubConnection _hubConnection;
         public event Action<LobbyMessage>? OnLobbyMessageReceived;
-        public event Action<HubConnectionState>? OnStateChanged;       
+        public event Action<HubConnectionState>? OnStateChanged;
         public HubConnectionState State => _hubConnection.State;
 
         public ChatClient()
         {
+            _lobbyId = Guid.NewGuid();
+
             _hubConnection = new HubConnectionBuilder()
                 .WithUrl("http://localhost/ChatHub", options =>
                 {
@@ -82,6 +85,11 @@ namespace DLS_Mandatory_Project.Client.Clients
                 Console.WriteLine(ex.Message);
                 OnStateChanged?.Invoke(_hubConnection.State);
             }
+        }
+
+        public Guid GetLobbyId()
+        {
+            return _lobbyId;
         }
     }
 }

@@ -11,5 +11,6 @@ namespace DLS_Mandatory_Project.Client.Clients
 
         Task SendBroadcastMessage(LobbyMessage lobbyMessage);
         Task StartAsync();
+        Guid GetLobbyId();
     }
 }
