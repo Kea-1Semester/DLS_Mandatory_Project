@@ -19,17 +19,31 @@
 <ul id="messagesList">
     @foreach (var message in messages)
     {
-        <li>@message</li>
+        <li>@message.SenderId - @message.Message</li>
     }
 </ul>
 
 @code {
-    private List<string> messages = [];
+    [Inject] IHttpClientFactory HttpClientFactory { get; set; } = default!;
+
+    private List<LobbyMessage> messages = [];
     private string? messageInput;
 
     protected override async Task OnInitializedAsync()
     {
-        ChatClient.OnMessageReceived += async (message) =>
+        var client = HttpClientFactory.CreateClient("messageapi");
+
+        try
+        {
+            List<LobbyMessage>? lobbyMessages = await client.GetFromJsonAsync<List<LobbyMessage>?>("/LobbyMessages");
+            messages = lobbyMessages!;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }        
+
+        ChatClient.OnLobbyMessageReceived += async (message) =>
         {
             messages.Add(message);
             await InvokeAsync(StateHasChanged);

@@ -15,6 +15,7 @@ services:
     networks:
       - chat-loadbalance-net
       - auth-gateway-net
+      - chat-messageapi-net
 
   rabbitmq:
     container_name: rabbitmq
@@ -22,12 +23,6 @@ services:
     ports:
       - "5672:5672"
       - "15672:15672"
-    healthcheck:
-      test: ["CMD", "rabbitmq-diagnostics", "-q", "ping"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-      start_period: 10s
     networks:
      - rabbitmq-net
      - chat-queue-net
@@ -81,17 +76,14 @@ services:
     image: postgres:17.4
     container_name: chat-database
     ports:
-      - "5434:5432"
+      - "5432"
     environment:
-      POSTGRES_DB: ${POSTGRES_DB}
-      POSTGRES_USER: ${POSTGRES_USER}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-      POSTGRES_HOST: ${POSTGRES_HOST}
+      POSTGRES_DB: ${POSTGRES_CHAT_DB}
+      POSTGRES_USER: ${POSTGRES_CHAT_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_CHAT_PASSWORD}
+      POSTGRES_HOST: ${POSTGRES_CHAT_HOST}
     networks:
       - chat-database-net
-    # We can use volumes to persist data in PostgreSQL, but it's not necessary for this example.
-    # volumes:
-    #   - postgres_chat_data:/var/lib/postgresql/data
 
   mysql:
     image: mysql:latest
@@ -169,11 +161,22 @@ services:
       context: .
       dockerfile: DLS_Mandatory_Project/MessageConsumer/Dockerfile
     depends_on:
-      rabbitmq:
-        condition: service_healthy
+      - rabbitmq
+      - chat-database
     networks:
       - rabbitmq-net
       - chat-database-net
+
+  messageapi:
+    image: ${DOCKER_REGISTRY-}messageapi
+    build:
+      context: .
+      dockerfile: DLS_Mandatory_Project/MessageApi/Dockerfile
+    networks:
+      - chat-messageapi-net
+      - chat-database-net
+    depends_on:
+      - chat-database
 
 networks:
   chat-backplane-net:
@@ -194,3 +197,6 @@ networks:
     driver: bridge
   chat-database-net:
     driver: bridge
+  chat-messageapi-net:
+    driver: bridge
+

@@ -30,7 +30,10 @@ namespace DLS_Mandatory_Project
                 .AddInteractiveWebAssemblyComponents()
                 .AddAuthenticationStateSerialization();
 
-            builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("http://localhost:8086") });
+            builder.Services.AddHttpClient("messageapi", client =>
+            {
+                client.BaseAddress = new Uri("https://localhost:5001");
+            });
             builder.Services.AddScoped<IChatClient, ChatClient>();
             builder.Services.AddScoped<AuthService>();
             builder.Services.AddScoped<AuthenticationStateProvider, CustomServerAuthStateProvider>();

@@ -15,7 +15,9 @@
         "nginx-loadbalancer": "StartWithoutDebugging",
         "mysql": "StartWithoutDebugging",
         "postgres": "StartWithoutDebugging",
-        "messageconsumer": "StartDebugging"
+        "messageconsumer": "StartDebugging",
+        "chat-database": "StartWithoutDebugging",
+        "messageapi": "StartDebugging"
       }
     }
   }

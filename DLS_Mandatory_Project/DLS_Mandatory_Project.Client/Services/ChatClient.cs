@@ -8,7 +8,7 @@ namespace DLS_Mandatory_Project.Client.Clients
     public class ChatClient : IChatClient
     {
         private readonly HubConnection _hubConnection;
-        public event Action<string>? OnMessageReceived;
+        public event Action<LobbyMessage>? OnLobbyMessageReceived;
         public event Action<HubConnectionState>? OnStateChanged;       
         public HubConnectionState State => _hubConnection.State;
 
@@ -26,8 +26,7 @@ namespace DLS_Mandatory_Project.Client.Clients
 
             _hubConnection.On<LobbyMessage>("ReceiveBroadcastMessage", (message) =>
             {
-                var encodedMsg = $"{message.SenderId}: {message.Message}";
-                OnMessageReceived?.Invoke(encodedMsg);
+                OnLobbyMessageReceived?.Invoke(message);
             });
 
             _hubConnection.Closed += async (error) =>

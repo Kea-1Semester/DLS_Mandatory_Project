@@ -4,11 +4,19 @@ using System.Text.Json;
 
 public class LobbyMessageConsumer : IConsumer<LobbyMessage>
 {
-    public Task Consume(ConsumeContext<LobbyMessage> context)
+    private readonly MessageDbContext _dbContext;
+
+    public LobbyMessageConsumer(MessageDbContext dbContext)
     {
-        // Handle the received LobbyMessage here
+        _dbContext = dbContext;
+    }
+    public async Task Consume(ConsumeContext<LobbyMessage> context)
+    {
+        Console.WriteLine("Message received.");
         var jsonMessage = JsonSerializer.Serialize(context.Message);
         Console.WriteLine($"Received message: {jsonMessage}");
-        return Task.CompletedTask;
+
+        await _dbContext.AddAsync(context.Message);
+        await _dbContext.SaveChangesAsync();
     }
 }

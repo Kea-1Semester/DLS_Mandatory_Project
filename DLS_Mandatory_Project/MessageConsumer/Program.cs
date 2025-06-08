@@ -1,6 +1,11 @@
+using ChatClassLibrary;
 using MassTransit;
+using Microsoft.EntityFrameworkCore;
 
-var builder = Host.CreateApplicationBuilder(args);
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<MessageDbContext>(options =>
+    options.UseNpgsql(builder.Configuration.GetConnectionString("ChatDb")));
 
 builder.Services.AddMassTransit(x =>
 {
@@ -21,5 +26,6 @@ builder.Services.AddMassTransit(x =>
     });
 });
 
-var host = builder.Build();
-host.Run();
+var app = builder.Build();
+
+app.Run();

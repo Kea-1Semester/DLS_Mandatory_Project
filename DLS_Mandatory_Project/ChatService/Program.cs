@@ -1,4 +1,5 @@
 using ChatService;
+using MassTransit;
 using Microsoft.AspNetCore.Http.Connections;
 using StackExchange.Redis;
 using System.Net;

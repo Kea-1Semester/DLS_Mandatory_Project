@@ -5,7 +5,7 @@ namespace DLS_Mandatory_Project.Client.Clients
 {
     public interface IChatClient
     {
-        event Action<string> OnMessageReceived;
+        event Action<LobbyMessage> OnLobbyMessageReceived;
         event Action<HubConnectionState> OnStateChanged;
         HubConnectionState State { get; }
 
