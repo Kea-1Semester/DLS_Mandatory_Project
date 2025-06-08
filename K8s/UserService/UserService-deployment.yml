@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: userservice
+  labels:
+    app: userservice
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: userservice
+  template:
+    metadata:
+      labels:
+        app: userservice
+    spec:
+      containers:
+      - name: userservice
+        image: rashox/userservice:latest  # Docker Hub image name
+        imagePullPolicy: Always    # Pull the image from Docker Hub every time the pod is created
+        ports:
+        - containerPort: 8082
+        - containerPort: 8083
+

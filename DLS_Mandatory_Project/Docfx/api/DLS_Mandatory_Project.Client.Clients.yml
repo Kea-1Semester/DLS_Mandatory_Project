@@ -1,0 +1,61 @@
+### YamlMime:ManagedReference
+items:
+- uid: DLS_Mandatory_Project.Client.Clients
+  commentId: N:DLS_Mandatory_Project.Client.Clients
+  id: DLS_Mandatory_Project.Client.Clients
+  children:
+  - DLS_Mandatory_Project.Client.Clients.ChatClient
+  - DLS_Mandatory_Project.Client.Clients.IChatClient
+  langs:
+  - csharp
+  - vb
+  name: DLS_Mandatory_Project.Client.Clients
+  nameWithType: DLS_Mandatory_Project.Client.Clients
+  fullName: DLS_Mandatory_Project.Client.Clients
+  type: Namespace
+  assemblies:
+  - DLS_Mandatory_Project.Client
+references:
+- uid: DLS_Mandatory_Project.Client.Clients.ChatClient
+  commentId: T:DLS_Mandatory_Project.Client.Clients.ChatClient
+  href: DLS_Mandatory_Project.Client.Clients.ChatClient.html
+  name: ChatClient
+  nameWithType: ChatClient
+  fullName: DLS_Mandatory_Project.Client.Clients.ChatClient
+- uid: DLS_Mandatory_Project.Client.Clients.IChatClient
+  commentId: T:DLS_Mandatory_Project.Client.Clients.IChatClient
+  parent: DLS_Mandatory_Project.Client.Clients
+  href: DLS_Mandatory_Project.Client.Clients.IChatClient.html
+  name: IChatClient
+  nameWithType: IChatClient
+  fullName: DLS_Mandatory_Project.Client.Clients.IChatClient
+- uid: DLS_Mandatory_Project.Client.Clients
+  commentId: N:DLS_Mandatory_Project.Client.Clients
+  href: DLS_Mandatory_Project.html
+  name: DLS_Mandatory_Project.Client.Clients
+  nameWithType: DLS_Mandatory_Project.Client.Clients
+  fullName: DLS_Mandatory_Project.Client.Clients
+  spec.csharp:
+  - uid: DLS_Mandatory_Project
+    name: DLS_Mandatory_Project
+    href: DLS_Mandatory_Project.html
+  - name: .
+  - uid: DLS_Mandatory_Project.Client
+    name: Client
+    href: DLS_Mandatory_Project.Client.html
+  - name: .
+  - uid: DLS_Mandatory_Project.Client.Clients
+    name: Clients
+    href: DLS_Mandatory_Project.Client.Clients.html
+  spec.vb:
+  - uid: DLS_Mandatory_Project
+    name: DLS_Mandatory_Project
+    href: DLS_Mandatory_Project.html
+  - name: .
+  - uid: DLS_Mandatory_Project.Client
+    name: Client
+    href: DLS_Mandatory_Project.Client.html
+  - name: .
+  - uid: DLS_Mandatory_Project.Client.Clients
+    name: Clients
+    href: DLS_Mandatory_Project.Client.Clients.html

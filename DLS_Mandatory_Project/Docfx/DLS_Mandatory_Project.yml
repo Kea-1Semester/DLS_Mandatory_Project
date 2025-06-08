@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: DLS_Mandatory_Project
+  commentId: N:DLS_Mandatory_Project
+  id: DLS_Mandatory_Project
+  children:
+  - DLS_Mandatory_Project.Program
+  langs:
+  - csharp
+  - vb
+  name: DLS_Mandatory_Project
+  nameWithType: DLS_Mandatory_Project
+  fullName: DLS_Mandatory_Project
+  type: Namespace
+  assemblies:
+  - DLS_Mandatory_Project
+references:
+- uid: DLS_Mandatory_Project.Program
+  commentId: T:DLS_Mandatory_Project.Program
+  href: DLS_Mandatory_Project.Program.html
+  name: Program
+  nameWithType: Program
+  fullName: DLS_Mandatory_Project.Program

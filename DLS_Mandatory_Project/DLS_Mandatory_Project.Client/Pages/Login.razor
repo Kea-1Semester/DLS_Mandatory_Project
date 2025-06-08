@@ -1,0 +1,42 @@
+@page "/Login"
+@using AuthClassLibrary
+@using DLS_Mandatory_Project.Client.Services
+@inject NavigationManager NavigationManager
+@* @inject AuthService AuthService *@
+
+<h3>Login</h3>
+@* <EditForm OnSubmit="OnSubmit" Model="LogIn">
+    <DataAnnotationsValidator />
+
+    <label>Email</label>
+    <InputText type="email" name="email" @bind-value="LogIn.Email" />
+    <ValidationMessage For="@(() => LogIn.Email)" />
+
+    <label>Password</label>
+    <InputText type="password" name="password" @bind-value="LogIn.Password" />
+    <ValidationMessage For="@(() => LogIn.Password)" />
+
+    <label class="text-danger">@error</label>
+
+    <button type="submit">Login</button>
+</EditForm> *@
+
+@code {
+    private LogIn LogIn { get; set; } = new LogIn();
+    string error { get; set; } = string.Empty;
+
+    // async Task OnSubmit()
+    // {
+    //     error = string.Empty;
+    //     try
+    //     {
+    //         bool loggedIn = await AuthService.Login(LogIn);
+    //         if (loggedIn)
+    //             NavigationManager.NavigateTo("/");
+    //     }
+    //     catch (Exception ex)
+    //     {
+    //         error = ex.Message;
+    //     }
+    // }
+}

@@ -1,0 +1,58 @@
+### YamlMime:ManagedReference
+items:
+- uid: AuthClassLibrary
+  commentId: N:AuthClassLibrary
+  id: AuthClassLibrary
+  children:
+  - AuthClassLibrary.AuthResult
+  - AuthClassLibrary.AuthUserInfo
+  - AuthClassLibrary.LogIn
+  - AuthClassLibrary.User
+  - AuthClassLibrary.UserSession
+  langs:
+  - csharp
+  - vb
+  name: AuthClassLibrary
+  nameWithType: AuthClassLibrary
+  fullName: AuthClassLibrary
+  type: Namespace
+  assemblies:
+  - AuthClassLibrary
+references:
+- uid: AuthClassLibrary.AuthResult
+  commentId: T:AuthClassLibrary.AuthResult
+  href: AuthClassLibrary.AuthResult.html
+  name: AuthResult
+  nameWithType: AuthResult
+  fullName: AuthClassLibrary.AuthResult
+- uid: AuthClassLibrary.AuthUserInfo
+  commentId: T:AuthClassLibrary.AuthUserInfo
+  href: AuthClassLibrary.AuthUserInfo.html
+  name: AuthUserInfo
+  nameWithType: AuthUserInfo
+  fullName: AuthClassLibrary.AuthUserInfo
+- uid: AuthClassLibrary.LogIn
+  commentId: T:AuthClassLibrary.LogIn
+  parent: AuthClassLibrary
+  href: AuthClassLibrary.LogIn.html
+  name: LogIn
+  nameWithType: LogIn
+  fullName: AuthClassLibrary.LogIn
+- uid: AuthClassLibrary.User
+  commentId: T:AuthClassLibrary.User
+  href: AuthClassLibrary.User.html
+  name: User
+  nameWithType: User
+  fullName: AuthClassLibrary.User
+- uid: AuthClassLibrary.UserSession
+  commentId: T:AuthClassLibrary.UserSession
+  href: AuthClassLibrary.UserSession.html
+  name: UserSession
+  nameWithType: UserSession
+  fullName: AuthClassLibrary.UserSession
+- uid: AuthClassLibrary
+  commentId: N:AuthClassLibrary
+  href: AuthClassLibrary.html
+  name: AuthClassLibrary
+  nameWithType: AuthClassLibrary
+  fullName: AuthClassLibrary

@@ -1,18 +1,188 @@
+########environment variables########
+# Docker compose will automatically loads the .env file in the same directory as this file
+
+# To stop the services:
+##  docker-compose down
+
+#####################################
+
 services:
   MudBlazor-Frontend:
     image: ${DOCKER_REGISTRY-}dlsmandatoryproject
     build:
       context: .
       dockerfile: DLS_Mandatory_Project/DLS_Mandatory_Project/Dockerfile
+    networks:
+      - chat-loadbalance-net
+      - auth-gateway-net
+      - chat-messageapi-net
+
+  rabbitmq:
+    container_name: rabbitmq
+    image: rabbitmq:3.12-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+     - rabbitmq-net
+     - chat-queue-net
+    
+  userservice:
+    container_name: userservice
+    image: ${DOCKER_REGISTRY-}userservice
+    build:
+      context: UserService
+      dockerfile: Dockerfile
+    environment:
+      # DATABASE_URL: postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
+      CONNECTION_STRING: Host=postgres;Port=5432;Database=${POSTGRES_DB};Username=${POSTGRES_USER};Password=${POSTGRES_PASSWORD};
+    depends_on:
+      - postgres
+    networks:
+      - user-service-net
+
+  authservice:
+    container_name: authservice
+    image: ${DOCKER_REGISTRY-}authservice
+    build:
+      context: AuthService
+      dockerfile: Dockerfile
+    environment:
+      DATABASE_URL: mysql://${MYSQL_USER}:${MYSQL_PASSWORD}@mysql:3306/${MYSQL_DB}
+      UserServiceClient__PROD_BASE_URL: http://userservice:8082/LoginData/
+    depends_on:
+      - mysql
+    networks:
+      - auth-service-net
+      - user-service-net
+  
+  postgres:
+    image: postgres:17.4
+    container_name: postgres_user_service_container
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_HOST: ${POSTGRES_HOST}
+    networks:
+      - user-service-net
+    # We can use volumes to persist data in PostgreSQL, but it's not necessary for this example.
+    # volumes:
+    #   - postgres_data:/var/lib/postgresql/data
+
+  chat-database:
+    image: postgres:17.4
+    container_name: chat-database
+    ports:
+      - "5432"
+    environment:
+      POSTGRES_DB: ${POSTGRES_CHAT_DB}
+      POSTGRES_USER: ${POSTGRES_CHAT_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_CHAT_PASSWORD}
+      POSTGRES_HOST: ${POSTGRES_CHAT_HOST}
+    networks:
+      - chat-database-net
+
+  mysql:
+    image: mysql:latest
+    container_name: mysql_auth_service_container
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DB}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_HOST: ${MYSQL_HOST}
+    # We can use volumes to persist data in MySQL, but it's not necessary for this example.
+    # volumes:
+
+  apigateway:
+    container_name: apigateway
+    image: ${DOCKER_REGISTRY-}apigateway
+    build:
+      context: ApiGateway
+      dockerfile: Dockerfile
+    depends_on:
+      - userservice
+      - authservice
+    networks:
+      - auth-gateway-net
+      - auth-service-net
+      - user-service-net
+
+  chatservice-1:
+    container_name: chatservice-1
+    image: ${DOCKER_REGISTRY-}chatservice
+    build:
+      context: .
+      dockerfile: DLS_Mandatory_Project/ChatService/Dockerfile
+    depends_on:
+      - Redis-Backplane
+      - rabbitmq
+    networks:
+      - chat-service-net
+      - chat-backplane-net
+      - chat-queue-net
+
+  chatservice-2:
+    container_name: chatservice-2
+    image: ${DOCKER_REGISTRY-}chatservice
+    build:
+      context: .
+      dockerfile: DLS_Mandatory_Project/ChatService/Dockerfile
+    depends_on:
+      - Redis-Backplane
+      - rabbitmq
+    networks:
+      - chat-service-net
+      - chat-backplane-net
+      - chat-queue-net
+
+  nginx-loadbalancer:
+    image: nginx:latest    
+    depends_on:
+      - chatservice-1
+      - chatservice-2
+    networks:
+      - chat-service-net
+      - chat-loadbalance-net
+
+  Redis-Backplane:
+    image: redis:latest
+    networks:
+      - chat-backplane-net
+
+  messageconsumer:
+    image: ${DOCKER_REGISTRY-}messageconsumer
+    build:
+      context: .
+      dockerfile: DLS_Mandatory_Project/MessageConsumer/Dockerfile
+    depends_on:
+      - rabbitmq
+      - chat-database
+    networks:
+      - rabbitmq-net
+      - chat-database-net
+
+  messageapi:
+    image: ${DOCKER_REGISTRY-}messageapi
+    build:
+      context: .
+      dockerfile: DLS_Mandatory_Project/MessageApi/Dockerfile
+    networks:
+      - chat-messageapi-net
+      - chat-database-net
+    depends_on:
+      - chat-database
 
   filetransferservice:
     image: ${DOCKER_REGISTRY-}filetransferservice
     build:
       context: .
       dockerfile: DLS_Mandatory_Project/FileTransferService/Dockerfile
-  
-  RabbitMQ:
-    image: rabbitmq:3.12-management
 
   postgres:
     image: postgres:17.4
@@ -26,4 +196,26 @@ services:
       POSTGRES_HOST: ${POSTGRES_HOST}
     volumes:
       - pgdata:/var/lib/postgresql/data
+
+networks:
+  chat-backplane-net:
+    driver: bridge
+  chat-service-net:
+    driver: bridge
+  chat-loadbalance-net:
+    driver: bridge
+  auth-gateway-net:
+    driver: bridge
+  auth-service-net:
+    driver: bridge
+  user-service-net:
+    driver: bridge
+  rabbitmq-net:
+    driver: bridge
+  chat-queue-net:
+    driver: bridge
+  chat-database-net:
+    driver: bridge
+  chat-messageapi-net:
+    driver: bridge
 

@@ -1,0 +1,72 @@
+@page "/Chat"
+@using ChatClassLibrary
+@using DLS_Mandatory_Project.Client.Clients
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.SignalR.Client
+@inject IChatClient ChatClient
+
+<PageTitle>Chat</PageTitle>
+
+<div class="form-group">
+    <label>
+        Message:
+        <input class="border" @bind-value="messageInput" @bind-value:event="oninput" @onkeypress="EnterPressedHandler" type="text" size="50" />
+    </label>
+</div>
+<button @onclick="Send">Send</button>
+
+<hr>
+
+<ul id="messagesList">
+    @foreach (var message in messages)
+    {
+        <li>@message</li>
+    }
+</ul>
+@* <AuthorizeView>
+    <Authorized>      
+    </Authorized>
+    <NotAuthorized>
+        You are not authorized!
+    </NotAuthorized>
+</AuthorizeView> *@
+
+@code {
+    private List<string> messages = [];
+    private string? messageInput;
+
+    protected override async Task OnInitializedAsync()
+    {
+        // ChatClient.OnMessageReceived += async (message) =>
+        // {
+        //     messages.Add(message);
+        //     await InvokeAsync(StateHasChanged);
+        // };
+
+        await ChatClient.StartAsync();
+
+        await InvokeAsync(StateHasChanged);
+    }
+
+    private async Task Send()
+    {
+        if (messageInput is not null)
+        {
+            await ChatClient.SendBroadcastMessage(new LobbyMessage
+                {
+                    SenderId = Guid.NewGuid(),
+                    Message = messageInput,
+                });
+
+            messageInput = string.Empty;
+        }
+    }
+
+    private async Task EnterPressedHandler(KeyboardEventArgs args)
+    {
+        if (args.Code == "Enter")
+        {
+            await Send();
+        }
+    }
+}
