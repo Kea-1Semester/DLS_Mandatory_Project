@@ -27,7 +27,7 @@ namespace UserService.DbContext
 
         /// <summary>
         /// This method is used to get or insert a user into the database.
-        /// Her we are using the Guid to identify the user. We are uing idempotance to avoid duplicate entries.
+        /// Her we are using the Guid to identify the user. We are using Idempotence to avoid duplicate entries.
         /// </summary>
         /// <param name="userGuid">The Guid of the user to be inserted or retrieved.</param>
         /// <returns>returns the user object.</returns>
@@ -37,7 +37,7 @@ namespace UserService.DbContext
                 .Include(user => user.UserDescriptions)
                 .SingleOrDefault(user => user.Guid == userGuid);
 
-            if (user is not null) return user;
+            if (user is not null) return user; // Idempotence check
             user = new User
             {
                 Guid = userGuid

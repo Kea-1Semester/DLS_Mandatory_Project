@@ -45,6 +45,11 @@ namespace UnitTest.UserServiceUnitTest
         [TestMethod]
         public async Task WhenAddUserTwice_OneUserIsAdded()
         {
+            //check that no users are in the database before adding
+            var initialCount = await _userQueries.GetUsers();
+            Assert.AreEqual(0, initialCount.Count);
+
+
             // Act
             await _userCommands.SaveUser(_user);
             await _userCommands.SaveUser(_user); // Should not add a second one

@@ -11,6 +11,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="logs\**" />
+    <Content Remove="logs\**" />
+    <EmbeddedResource Remove="logs\**" />
+    <None Remove="logs\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
     <PackageReference Include="DBContext" Version="1.0.0" />
     <PackageReference Include="JWT" Version="11.0.0" />
@@ -31,9 +38,5 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DLS_Mandatory_Project\UserClassLibrary\UserClassLibrary.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="logs\" />
   </ItemGroup>
 </Project>

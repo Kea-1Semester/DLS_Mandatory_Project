@@ -27,9 +27,11 @@
         "Role": "User"
       },
       "RateLimitOptions": {
+        "ClientWhitelist": [],
         "EnableRateLimiting": true,
+        "Limit": 5,
         "Period": "1m",
-        "Limit": 5
+        "PeriodTimespan": 10
       }
     },
     {
@@ -44,9 +46,11 @@
         }
       ],
       "RateLimitOptions": {
+        "ClientWhitelist": [],
         "EnableRateLimiting": true,
+        "Limit": 5,
         "Period": "1m",
-        "Limit": 5
+        "PeriodTimespan": 10
       }
     },
     {
@@ -61,9 +65,11 @@
         }
       ],
       "RateLimitOptions": {
+        "ClientWhitelist": [],
         "EnableRateLimiting": true,
+        "Limit": 5,
         "Period": "1m",
-        "Limit": 5
+        "PeriodTimespan": 10
       }
     },
     {
@@ -78,9 +84,11 @@
         }
       ],
       "RateLimitOptions": {
+        "ClientWhitelist": [],
         "EnableRateLimiting": true,
+        "Limit": 5,
         "Period": "1m",
-        "Limit": 5
+        "PeriodTimespan": 10
       }
     },
     {
@@ -95,9 +103,11 @@
         }
       ],
       "RateLimitOptions": {
+        "ClientWhitelist": [],
         "EnableRateLimiting": true,
+        "Limit": 5,
         "Period": "1m",
-        "Limit": 5
+        "PeriodTimespan": 10
       }
     },
 
@@ -114,9 +124,11 @@
         }
       ],
       "RateLimitOptions": {
+        "ClientWhitelist": [],
         "EnableRateLimiting": true,
+        "Limit": 5,
         "Period": "1m",
-        "Limit": 5
+        "PeriodTimespan": 10
       }
     },
     {
@@ -133,9 +145,11 @@
         }
       ],
       "RateLimitOptions": {
+        "ClientWhitelist": [],
         "EnableRateLimiting": true,
+        "Limit": 5,
         "Period": "1m",
-        "Limit": 5
+        "PeriodTimespan": 10
       }
     },
     {
@@ -150,9 +164,11 @@
         }
       ],
       "RateLimitOptions": {
+        "ClientWhitelist": [],
         "EnableRateLimiting": true,
+        "Limit": 5,
         "Period": "1m",
-        "Limit": 5
+        "PeriodTimespan": 10
       }
     }
   ]
