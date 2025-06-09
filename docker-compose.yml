@@ -19,6 +19,7 @@ services:
 
   rabbitmq:
     container_name: rabbitmq
+    # image: masstransit/rabbitmq
     image: rabbitmq:3.12-management
     ports:
       - "5672:5672"
@@ -155,18 +156,6 @@ services:
     networks:
       - chat-backplane-net
 
-  messageconsumer:
-    image: ${DOCKER_REGISTRY-}messageconsumer
-    build:
-      context: .
-      dockerfile: DLS_Mandatory_Project/MessageConsumer/Dockerfile
-    depends_on:
-      - rabbitmq
-      - chat-database
-    networks:
-      - rabbitmq-net
-      - chat-database-net
-
   messageapi:
     image: ${DOCKER_REGISTRY-}messageapi
     build:
@@ -177,6 +166,15 @@ services:
       - chat-database-net
     depends_on:
       - chat-database
+
+  messageconsumer:
+    image: ${DOCKER_REGISTRY-}messageconsumer
+    build:
+      context: .
+      dockerfile: DLS_Mandatory_Project/MessageConsumer1/Dockerfile    
+    networks:
+      - rabbitmq-net
+      - chat-database-net
 
 networks:
   chat-backplane-net:
@@ -199,4 +197,5 @@ networks:
     driver: bridge
   chat-messageapi-net:
     driver: bridge
+
 

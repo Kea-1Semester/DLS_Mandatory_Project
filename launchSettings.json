@@ -1,24 +1,44 @@
 {
-  "profiles": {
-    "Docker Compose": {
-      "commandName": "DockerCompose",
-      "commandVersion": "1.0",
-      "serviceActions": {
-        "MudBlazor-Frontend": "StartDebugging",
-        "rabbitmq": "StartWithoutDebugging",
-        "userservice": "StartDebugging",
-        "authservice": "StartDebugging",
-        "apigateway": "StartDebugging",
-        "chatservice-1": "StartDebugging",
-        "chatservice-2": "StartDebugging",
-        "Redis-Backplane": "StartWithoutDebugging",
-        "nginx-loadbalancer": "StartWithoutDebugging",
-        "mysql": "StartWithoutDebugging",
-        "postgres": "StartWithoutDebugging",
-        "messageconsumer": "StartDebugging",
-        "chat-database": "StartWithoutDebugging",
-        "messageapi": "StartDebugging"
-      }
+    "profiles": {
+        "Docker Compose Dev": {
+            "commandName": "DockerCompose",
+            "commandVersion": "1.0",
+            "serviceActions": {
+                "MudBlazor-Frontend": "StartDebugging",
+                "rabbitmq": "StartWithoutDebugging",
+                "userservice": "StartDebugging",
+                "authservice": "StartDebugging",
+                "apigateway": "StartDebugging",
+                "chatservice-1": "StartDebugging",
+                "chatservice-2": "StartDebugging",
+                "Redis-Backplane": "StartWithoutDebugging",
+                "nginx-loadbalancer": "StartWithoutDebugging",
+                "mysql": "StartWithoutDebugging",
+                "postgres": "StartWithoutDebugging",
+                "messageconsumer": "StartDebugging",
+                "chat-database": "StartWithoutDebugging",
+                "messageapi": "StartDebugging"
+            }
+        },
+        "Docker Compose Prod": {
+            "commandName": "DockerCompose",
+            "commandVersion": "1.0",
+            "serviceActions": {
+                "MudBlazor-Frontend": "StartWithoutDebugging",
+                "rabbitmq": "StartWithoutDebugging",
+                "userservice": "StartWithoutDebugging",
+                "authservice": "StartWithoutDebugging",
+                "apigateway": "StartDebugging",
+                "chatservice-1": "StartWithoutDebugging",
+                "chatservice-2": "StartWithoutDebugging",
+                "Redis-Backplane": "StartWithoutDebugging",
+                "nginx-loadbalancer": "StartWithoutDebugging",
+                "mysql": "StartWithoutDebugging",
+                "postgres": "StartWithoutDebugging",
+                "messageconsumer": "StartWithoutDebugging",
+                "chat-database": "StartWithoutDebugging",
+                "messageapi": "StartDebugging"
+            }
+        }
     }
-  }
 }
