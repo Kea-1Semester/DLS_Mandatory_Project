@@ -35,7 +35,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatClassLibrary", "DLS_Man
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageApi", "DLS_Mandatory_Project\MessageApi\MessageApi.csproj", "{4EDE47AC-3FE7-4FB5-8024-CA7008C414E2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageConsumer", "DLS_Mandatory_Project\MessageConsumer1\MessageConsumer.csproj", "{63C13C4A-622A-4744-BBAF-5A81545DA3D8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageConsumer", "DLS_Mandatory_Project\MessageConsumer\MessageConsumer.csproj", "{06129C3B-0AA4-4298-8D59-ECC37A1D8A18}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -91,10 +91,10 @@ Global
 		{4EDE47AC-3FE7-4FB5-8024-CA7008C414E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4EDE47AC-3FE7-4FB5-8024-CA7008C414E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4EDE47AC-3FE7-4FB5-8024-CA7008C414E2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{63C13C4A-622A-4744-BBAF-5A81545DA3D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{63C13C4A-622A-4744-BBAF-5A81545DA3D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{63C13C4A-622A-4744-BBAF-5A81545DA3D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{63C13C4A-622A-4744-BBAF-5A81545DA3D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06129C3B-0AA4-4298-8D59-ECC37A1D8A18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06129C3B-0AA4-4298-8D59-ECC37A1D8A18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06129C3B-0AA4-4298-8D59-ECC37A1D8A18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06129C3B-0AA4-4298-8D59-ECC37A1D8A18}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

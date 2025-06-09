@@ -10,11 +10,11 @@ WORKDIR /app
 FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["DLS_Mandatory_Project/MessageConsumer1/MessageConsumer.csproj", "DLS_Mandatory_Project/MessageConsumer1/"]
+COPY ["DLS_Mandatory_Project/MessageConsumer/MessageConsumer.csproj", "DLS_Mandatory_Project/MessageConsumer/"]
 COPY ["DLS_Mandatory_Project/ChatClassLibrary/ChatClassLibrary.csproj", "DLS_Mandatory_Project/ChatClassLibrary/"]
-RUN dotnet restore "./DLS_Mandatory_Project/MessageConsumer1/MessageConsumer.csproj"
+RUN dotnet restore "./DLS_Mandatory_Project/MessageConsumer/MessageConsumer.csproj"
 COPY . .
-WORKDIR "/src/DLS_Mandatory_Project/MessageConsumer1"
+WORKDIR "/src/DLS_Mandatory_Project/MessageConsumer"
 RUN dotnet build "./MessageConsumer.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 # This stage is used to publish the service project to be copied to the final stage

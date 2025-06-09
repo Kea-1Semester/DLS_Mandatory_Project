@@ -171,10 +171,10 @@ services:
     image: ${DOCKER_REGISTRY-}messageconsumer
     build:
       context: .
-      dockerfile: DLS_Mandatory_Project/MessageConsumer1/Dockerfile    
+      dockerfile: DLS_Mandatory_Project/MessageConsumer/Dockerfile
     networks:
       - rabbitmq-net
-      - chat-database-net
+      - chat-database-net 
 
 networks:
   chat-backplane-net:
@@ -197,5 +197,6 @@ networks:
     driver: bridge
   chat-messageapi-net:
     driver: bridge
+
 
 

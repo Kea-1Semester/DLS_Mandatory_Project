@@ -70,7 +70,7 @@ namespace DLS_Mandatory_Project
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
 
             app.UseAntiforgery();
 
