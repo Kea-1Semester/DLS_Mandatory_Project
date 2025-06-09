@@ -2,34 +2,60 @@
 @using ChatClassLibrary
 @using DLS_Mandatory_Project.Client.Clients
 @using Microsoft.AspNetCore.SignalR.Client
-@inject IChatClient ChatClient
 
 <PageTitle>Lobby</PageTitle>
 
-<div class="form-group">
-    <label>
-        Message:
-        <input class="border" @bind-value="messageInput" @bind-value:event="oninput" @onkeypress="EnterPressedHandler" type="text" size="50" />
-    </label>
+
+<div class="d-flex flex-grow-1 flex-row">
+    <MudPaper Class="py-4 flex-grow-1" Elevation="25">
+        <div class="d-flex flex-column px-4 overflow-scroll overflow-x-hidden" style="max-height:65vh;min-height:65vh;">
+            @{
+                for (int i = 0; i < messages.Count; i++)
+                {
+                    var lobbyMessage = messages[i];
+                    var position = lobbyMessage.SenderId == ChatClient.GetLobbyId() ? ChatBubblePosition.End : ChatBubblePosition.Start;
+                    var color = lobbyMessage.SenderId == ChatClient.GetLobbyId() ? Color.Primary : Color.Secondary;
+
+                    <MudChat ChatPosition="@position" Variant="Variant.Filled" Color="@color">
+                        <MudChatHeader Name="@lobbyMessage.SenderId.ToString()" />
+                        <MudChatBubble>
+                            @lobbyMessage.Message
+                        </MudChatBubble>
+                    </MudChat>
+                }
+            }
+        </div>        
+        <MudPaper Class="d-flex flex-row px-2 mx-4 mt-4" Elevation="25">
+            <MudTextField T="string" Class="mt-n2 mx-4" @bind-Value="messageInput" Immediate="true" Label="Message"
+                          AutoFocus="true" OnKeyDown="EnterPressedHandler" Placeholder="Enter your message..." Underline="false" />
+            <MudButton Class="mt-2" Color="Color.Primary" OnClick="Send" ButtonType="ButtonType.Button"
+                       Disabled="@(string.IsNullOrWhiteSpace(messageInput))" StartIcon="@Icons.Material.Outlined.Send">Send</MudButton>
+        </MudPaper>
+    </MudPaper>
 </div>
-<button @onclick="Send">Send</button>
-
-<hr>
-
-<ul id="messagesList">
-    @foreach (var message in messages)
-    {
-        <li>@message</li>
-    }
-</ul>
 
 @code {
-    private List<string> messages = [];
-    private string? messageInput;
+    [Inject] IHttpClientFactory HttpClientFactory { get; set; } = default!;
+    [Inject] IChatClient ChatClient { get; set; } = default!;
+
+    private List<LobbyMessage> messages = [];
+    private string messageInput { get; set; } = string.Empty;
 
     protected override async Task OnInitializedAsync()
     {
-        ChatClient.OnMessageReceived += async (message) =>
+        var client = HttpClientFactory.CreateClient("messageapi");
+
+        try
+        {
+            List<LobbyMessage>? lobbyMessages = await client.GetFromJsonAsync<List<LobbyMessage>?>("/LobbyMessages");
+            messages = lobbyMessages!;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }        
+
+        ChatClient.OnLobbyMessageReceived += async (message) =>
         {
             messages.Add(message);
             await InvokeAsync(StateHasChanged);
@@ -42,11 +68,11 @@
 
     private async Task Send()
     {
-        if (messageInput is not null)
+        if (!string.IsNullOrWhiteSpace(messageInput))
         {
             await ChatClient.SendBroadcastMessage(new LobbyMessage
                 {
-                    SenderId = Guid.NewGuid(),
+                    SenderId = ChatClient.GetLobbyId(),
                     Message = messageInput,
                 });
 

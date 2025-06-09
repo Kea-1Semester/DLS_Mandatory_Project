@@ -33,16 +33,15 @@
 
 @code {
     private List<string> messages = [];
-    private string? userInput;
     private string? messageInput;
 
     protected override async Task OnInitializedAsync()
     {
-        ChatClient.OnMessageReceived += async (message) =>
-        {
-            messages.Add(message);
-            await InvokeAsync(StateHasChanged);
-        };
+        // ChatClient.OnMessageReceived += async (message) =>
+        // {
+        //     messages.Add(message);
+        //     await InvokeAsync(StateHasChanged);
+        // };
 
         await ChatClient.StartAsync();
 

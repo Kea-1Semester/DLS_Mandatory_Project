@@ -1,14 +1,21 @@
-﻿using ChatClassLibrary;
+using ChatClassLibrary;
 using MassTransit;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using System.Text.Json;
+using System.Threading.Tasks;
 
-public class LobbyMessageConsumer : IConsumer<LobbyMessage>
+namespace MessageConsumer
 {
-    public Task Consume(ConsumeContext<LobbyMessage> context)
+    public class LobbyMessageConsumer : IConsumer<LobbyMessage>
     {
-        // Handle the received LobbyMessage here
-        var jsonMessage = JsonSerializer.Serialize(context.Message);
-        Console.WriteLine($"Received message: {jsonMessage}");
-        return Task.CompletedTask;
-    }
+        public async Task Consume(ConsumeContext<LobbyMessage> context)
+        {
+            // Process the LobbyMessage here
+            Console.WriteLine($"Received LobbyMessage: {JsonSerializer.Serialize(context.Message)}");
+            // Add any additional processing logic as needed
+        }
+    }    
 }

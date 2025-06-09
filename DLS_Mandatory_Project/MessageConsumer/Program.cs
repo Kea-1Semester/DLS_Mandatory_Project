@@ -1,4 +1,5 @@
 using MassTransit;
+using MessageConsumer;
 
 var builder = Host.CreateApplicationBuilder(args);
 
@@ -16,6 +17,8 @@ builder.Services.AddMassTransit(x =>
 
         cfg.ReceiveEndpoint("lobby-message-queue", e =>
         {
+            e.AutoDelete = false;
+            e.Durable = true;
             e.ConfigureConsumer<LobbyMessageConsumer>(context);
         });
     });
