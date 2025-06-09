@@ -17,10 +17,10 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_HTTP_PORTS=8082
-      - ASPNETCORE_HTTPS_PORTS=8083
+      # - ASPNETCORE_HTTPS_PORTS=8083
     ports:
       - "8082:8082"
-      - "8083:8083"
+      # - "8083:8083"
 
   chatservice-1:
     environment:
@@ -38,10 +38,10 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_HTTP_PORTS=8084
-      - ASPNETCORE_HTTPS_PORTS=8085
+      # - ASPNETCORE_HTTPS_PORTS=8085
     ports:
       - "8084:8084"
-      - "8085:8085"
+      # - "8085:8085"
       
   chatservice-2:
     environment:
@@ -60,10 +60,10 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_HTTP_PORTS=8086
-      - ASPNETCORE_HTTPS_PORTS=8087
+      # - ASPNETCORE_HTTPS_PORTS=8087
     ports:
       - "8086:8086"
-      - "8087:8087"
+      # - "8087:8087"
 
   nginx-loadbalancer:
     ports:

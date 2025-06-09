@@ -32,8 +32,8 @@ services:
     container_name: userservice
     image: ${DOCKER_REGISTRY-}userservice
     build:
-      context: UserService
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: UserService/Dockerfile
     environment:
       # DATABASE_URL: postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
       CONNECTION_STRING: Host=postgres;Port=5432;Database=${POSTGRES_DB};Username=${POSTGRES_USER};Password=${POSTGRES_PASSWORD};
@@ -46,8 +46,8 @@ services:
     container_name: authservice
     image: ${DOCKER_REGISTRY-}authservice
     build:
-      context: AuthService
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: AuthService/Dockerfile
     environment:
       DATABASE_URL: mysql://${MYSQL_USER}:${MYSQL_PASSWORD}@mysql:3306/${MYSQL_DB}
       UserServiceClient__PROD_BASE_URL: http://userservice:8082/LoginData/
@@ -104,8 +104,8 @@ services:
     container_name: apigateway
     image: ${DOCKER_REGISTRY-}apigateway
     build:
-      context: ApiGateway
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: ApiGateway/Dockerfile
     depends_on:
       - userservice
       - authservice

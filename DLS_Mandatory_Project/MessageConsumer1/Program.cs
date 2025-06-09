@@ -19,7 +19,7 @@ bus.Start();
 try
 {
     Console.WriteLine("Receiving messages. Press a key to stop...");
-    Console.Read();
+    await Task.Run(() => Console.ReadKey(true));
 }
 finally
 {
