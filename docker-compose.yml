@@ -24,7 +24,6 @@ services:
     ports:
       - "5672:5672"
       - "15672:15672"
-
     networks:
      - rabbitmq-net
      - chat-queue-net
@@ -175,7 +174,10 @@ services:
       dockerfile: DLS_Mandatory_Project/MessageConsumer/Dockerfile
     networks:
       - rabbitmq-net
-      - chat-database-net 
+      - chat-database-net
+    depends_on:
+      - chat-database
+      - rabbitmq
 
 networks:
   chat-backplane-net:
