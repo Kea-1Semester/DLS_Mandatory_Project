@@ -11,11 +11,19 @@ namespace MessageConsumer
 {
     public class LobbyMessageConsumer : IConsumer<LobbyMessage>
     {
-        public async Task Consume(ConsumeContext<LobbyMessage> context)
+        private readonly MessageDbContext _context;
+
+        public LobbyMessageConsumer(MessageDbContext messageDbContext)
         {
-            // Process the LobbyMessage here
+            _context = messageDbContext;
+        }
+
+        public async Task Consume(ConsumeContext<LobbyMessage> context)
+        {            
             Console.WriteLine($"Received LobbyMessage: {JsonSerializer.Serialize(context.Message)}");
-            // Add any additional processing logic as needed
+            await _context.LobbyMessages.AddAsync(context.Message);
+            await _context.SaveChangesAsync();
+            Console.WriteLine("LobbyMessage saved...");
         }
     }    
 }
