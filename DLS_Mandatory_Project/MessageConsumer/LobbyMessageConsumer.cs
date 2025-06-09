@@ -1,4 +1,4 @@
-﻿using ChatClassLibrary;
+using ChatClassLibrary;
 using MassTransit;
 using System;
 using System.Collections.Generic;

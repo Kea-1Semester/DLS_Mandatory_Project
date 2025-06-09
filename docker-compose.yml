@@ -24,6 +24,7 @@ services:
     ports:
       - "5672:5672"
       - "15672:15672"
+
     networks:
      - rabbitmq-net
      - chat-queue-net
@@ -197,6 +198,3 @@ networks:
     driver: bridge
   chat-messageapi-net:
     driver: bridge
-
-
-

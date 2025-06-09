@@ -18,4 +18,5 @@
   <ItemGroup>
     <ProjectReference Include="..\ChatClassLibrary\ChatClassLibrary.csproj" />
   </ItemGroup>
+
 </Project>
